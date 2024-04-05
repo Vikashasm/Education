@@ -3,24 +3,29 @@ import { NavLink } from "react-router-dom";
 import { Usethem } from "../Context/Context";
 
 function MData3() {
-  const { questions, Mhandelclick, state, Mhandelchange, Mprevhandelclick } =
-    Usethem();
+  const {
+    questions,
+    Mhandelclick,
+    state,
+    Mhandelchange,
+    Mprevhandelclick,
+    value,
+  } = Usethem();
 
   return (
     <div className=" phone_img p-5 min-h-screen relative">
       <p className=" font-normal text-white text-sm lg:text-base max-w-[90%] ">
-        Part I has 10 Item (Questions 1-10), First Look at the word in capital
-        letters. There are four options – A, B, C, D. Find the word which means
-        the same as the word in capitals from the given options
+        Part IV has 25 Items (Question 1-25).Each item has a series of words.
+        Out of the four options- A, B, C, D, find the correct analogy.
       </p>
       <div className="bg-[#FFFFFFC9] rounded-xl mt-5 p-4">
         <div className=" flex flex-col min-h-[68vh] justify-between">
           <div>
             <h2 className=" md:text-md lg:text-2xl text-black font-medium p-2 h-16 capitalize">
-              Question {state + 1} : {questions[state].questionstext}
+              Question {state + 1} : {questions[3].part4[state].questionstext}
             </h2>
             <div className=" flex justify-between gap-8 flex-wrap">
-              {questions[state].answeroption.map((value, index) => {
+              {questions[3].part4[state].answeroption.map((value, index) => {
                 return (
                   <input
                     key={index}
@@ -31,7 +36,7 @@ function MData3() {
                     value={value.optionNo + " " + value.answertext}
                     onClick={() =>
                       Mhandelchange(
-                        questions[state].answeroption[index].iscorrect,
+                        questions[3].part4[state].answeroption[index].iscorrect,
                         value.optionNo
                       )
                     }
@@ -45,20 +50,20 @@ function MData3() {
               id="prevbuton2"
               onClick={Mprevhandelclick}
               className={` ${
-                state < 1
+                state < 1 || state === 9
                   ? "pointer-events-none opacity-30"
                   : "pointer-events-auto opacity-100"
-              } w-full font-normal text-black md:text-md lg:text-2xl  text-center py-2 lg:py-3 rounded-xl m,scm,`}
+              } w-full font-normal text-black md:text-md lg:text-2xl  text-center py-2 lg:py-3 rounded-xl bg-white`}
             >
               Previous Question
             </NavLink>
             <NavLink
               id="buton1"
               className={` ${
-                state === 9
+                value === undefined || state === 9
                   ? "pointer-events-none opacity-30"
                   : "pointer-events-auto opacity-100"
-              } w-full font-normal text-black md:text-md lg:text-2xl  text-center py-2 lg:py-3 rounded-xl bg-white`}
+              } w-full font-normal text-black md:text-md lg:text-2xl  text-center py-2 lg:py-3 rounded-xl bg-[#FFCE32]`}
               onClick={Mhandelclick}
             >
               Next Question

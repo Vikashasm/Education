@@ -1,0 +1,1397 @@
+[
+  {
+    "part1": [
+      {
+        "questionstext": "BRIEF",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Limited",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Small",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Little",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Short",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "ALERT",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Energetic",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Observant",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Intelligent",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Watchfull",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "WARRIOR",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Soldier",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "Sailor",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "Pirate",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "Spy",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "DISTANT",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Far",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Removed",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Reserved",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Separate",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "ADVERSITY",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Failure",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Helplessness",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Misfortune",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Crisis",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "FAKE",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Original",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Limitation",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Trustworthy",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Loyal",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "HESITATED",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Stopped",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Paused",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Slowed",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Postponed",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "ATTEMPT",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Serve",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Explore",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Try",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Explain",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "CONSEQUENCES",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Results",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Difficulties",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Conclusions",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Applications",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "IMPROVEMENT",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Advancement",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Betterment",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Promotion",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Preference",
+            "iscorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part2": [
+      {
+        "questionstext": "Question 1. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Foreign",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Foreine",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Fariegn",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Forein",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 2. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Pessenger",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Passenger",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Pasanger",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Pesanger",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 3. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Benefitted",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "Benifited",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "Benefited",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "Benefeted",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 4. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Forcast",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Forecaste",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Forcaust",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Forecast",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 5. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Palete",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Palet",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Palate",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Pelate",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 6. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Excessive",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Exccessive",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Exxcesive",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Excesive",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 7. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Itinarery",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Itinerary",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Itenary",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Itinarary",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 8. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Acommodation",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Accomodation",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Accommodation",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Acomodation",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 9. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Schedulle",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Schedeule",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Schdule",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Schedule",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "Question 10. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Skillful",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Skillfull",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Skilfull",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Skilpull",
+            "iscorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part3": [
+      {
+        "questionstext": " To keep one’s temper ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "To become angry",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  To be in good mood",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  To preserve one's energy",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  To be aloof from",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " To drive home ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " To find one's root",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  To return to place of rest",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Back to original position",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  To emphasise",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": " To cry wolf  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "To listen eagerly",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " To give false alarm",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " To turn pale",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " To keep of starvation",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " To be above board  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " To have a good height ",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " To be honest in any business deal",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  To have no doubts",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  To try to be beautiful",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " To put one’s hand to the plough ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " To take up agricultural farming",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  To take a difficult task",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  To get entangled into unnecessary things",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  To take interest in technical work",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " To pick holes ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " To find some reason to quarrel",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  To destroy something",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  To criticize someone",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  To cut some part of an item",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " To beg the question  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " To refer to",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  To provoke a specific question ",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " To raise objection ",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " To be discussed",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " A black sheep  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " An unlucky person",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  A lucky person",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  An ugly person",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  A partner unworthy",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "A man of straw ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " A man of no substance",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  A very active person",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  A worthy follow",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  An unreasonable person",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "To smell a rat  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "  To behave like a rat",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "  To get bad smell",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "   To suspect a trick",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  To trust blindly ",
+            "iscorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part4": [
+      {
+        "questionstext": "Word is to Dictionary as Map is to……… ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Globe",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Atlas",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Geography",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Location",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " Thread is to Needle as Book is to………..  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Wood",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Rack",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Shelf",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Sack",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Wood is to Carpenter as Clay is to……….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Potter",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "Sculptor",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "Architect",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "Mason",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Skeleton is to Body as Grammar is to……… ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Sentence",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Language",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Education",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Meaning",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " Flexible is to Rigid as Confident is to………….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Coward",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Indifferent",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Hesitant",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Pesimistic",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Forecast is to Future as Regret is to………….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Present",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Past",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Mistake",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Apology",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Contestant is to Competition as Witness is to…..",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Journey",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Trial",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Election",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Royality",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "Innumerable is to Quantity as Invaluable is to….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Size",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Surface",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Worth",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Volume",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Ice is to Igloo as Straw is to…….  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Hive",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Field",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Form",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Nest",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "Train is to Station as Ship is to…..  ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Harbour",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Sail",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Mast",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Anchor",
+            "iscorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part5": [
+      {
+        "questionstext": " Appreciation is to Reward as Repentance is to….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Punishment",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Scold",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Complaint",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Regret",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": " Insulator is to Wood as Conductor is to……. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Iron ",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Cotton",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Plastic",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Pearl",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "Breeze is to Cyclone as Rain is to……. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "Earthquake",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": "Strome",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "Drizzle",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "Flood",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": " Bridge is to River as Tunnel is to…..",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Road",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Passage",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Mountain",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " River",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "______is to Car as Water is to…. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Road____Drink",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Road____Boat",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Tyre_____Boat",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Driver___Sailor",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "_____is to Justice as School is to….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Court____Teacher",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Law____Education",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Law_____Class",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Court____Education",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "_____is to Country as Governor is to……",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " President____State",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Flag____Nation",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " President_____District",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Minister___State",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "_____is to Wheel as Blade is to……",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Movement____Grass",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Air____Cut",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Spokes_____Fan",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Circle___Shave",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "______is to Strom as Smoke is to…..",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Weather____Fire",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Thunder____Fire",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "C:",
+            "answertext": " Danger_____Cooking",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Thunder___Cooking",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "_______is to Hand as Sock is to…..",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Glove____Feet",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Pencil____Feet",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Glove____Shoe",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Ring_____Toes",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "______is to Chirp as Duck is to…….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Snake____Quack",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Sparrow____Chatter",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Frog_____Quack",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Sparrow___Quack",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "______is to Lion as Lamb is to…….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Cub____Deer",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Kid____Deer",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Cub____Sheep",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Kid___Sheep",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "_____is to Ocean as Elephant is to……… ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Fish____Earth",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Whale____Desert",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Fish_____Land",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Whale___Land",
+            "iscorrect": true
+          }
+        ]
+      },
+      {
+        "questionstext": "______is to Country as Frame is to……….. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": " Boarder____Colour",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Boarder____Picture",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Capital_____Picture",
+            "iscorrect": true
+          },
+          {
+            "optionNo": "D:",
+            "answertext": " Capital___Colour",
+            "iscorrect": false
+          }
+        ]
+      },
+      {
+        "questionstext": "______is to Stable as Dog is to……. ",
+        "answeroption": [
+          {
+            "optionNo": "A:",
+            "answertext": "  Horse____Shed",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "B:",
+            "answertext": " Cow____House",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "C:",
+            "answertext": "  Cow____Kennel",
+            "iscorrect": false
+          },
+          {
+            "optionNo": "D:",
+            "answertext": "  Horse___Kennel",
+            "iscorrect": true
+          }
+        ]
+      }
+    ]
+  }
+]

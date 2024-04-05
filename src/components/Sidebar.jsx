@@ -1,13 +1,11 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Usethem } from "../Context/Context";
 
 function Sidebar() {
-  const path = useLocation();
   const { show } = Usethem();
-  console.log(show);
   return (
-    <div className=" bg-[#125566] h-screen flex flex-col gap-4 ps-3 pt-3 sm:w-[25%] md:w-[23%] ">
+    <div className=" bg-[#125566] h-screen flex flex-col gap-4 ps-3 pt-3 sm:w-[25%] md:max-w-[21.7%]">
       <NavLink
         to="/"
         className={`flex items-center font-normal md:text-sm lg:text-base bg-white pl-3 md:pl-5 pr-4 justify-between rounded-l-full py-2 lg:py-4 pointer-events-none`}
@@ -29,7 +27,7 @@ function Sidebar() {
         <span className="mr-3">Acknowledge</span>
         {show === 0 ? (
           <img src={`/images/svg/Vector.svg`} alt="Vector" />
-        ) : show === 2 ? (
+        ) : show >= 2 ? (
           <img src={`/images/svg/Vector2.svg`} alt="Vector" />
         ) : null}
       </NavLink>
@@ -38,35 +36,31 @@ function Sidebar() {
         className={`flex items-center font-normal md:text-sm lg:text-base ${
           show !== 2 ? "pointer-events-none" : "pointer-events-auto"
         } ${
-          show !== 2 ? "bg-[#66BCB4]" : "bg-white"
+          show >= 0 && show <= 1 ? "bg-[#66BCB4]" : "bg-white"
         } pl-3 md:pl-5 pr-4 justify-between rounded-l-full py-2 lg:py-4`}
         to="/two"
       >
         <span className="mr-3">Explanation</span>
-        {show === 0 ? (
+        {show >= 0 && show <= 1 ? (
           <img src={`/images/svg/Vector.svg`} alt="Vector" />
-        ) : show === 3 ? (
+        ) : show >= 3 ? (
           <img src={`/images/svg/Vector2.svg`} alt="Vector" />
-        ) : (
-          <img src={`/images/svg/Vector.svg`} alt="Vector" />
-        )}
+        ) : null}
       </NavLink>
       <NavLink
         className={`flex items-center font-normal md:text-sm lg:text-base ${
           show !== 3 ? "pointer-events-none" : "pointer-events-auto"
         } ${
-          show !== 3 ? "bg-[#66BCB4]" : "bg-white"
+          show >= 0 && show <= 2 ? "bg-[#66BCB4]" : "bg-white"
         } pl-3 md:pl-5 pr-4 justify-between rounded-l-full py-2 lg:py-4 `}
         to="/three"
       >
         <span className="mr-3">Fill Up</span>
-        {show === 0 ? (
+        {show >= 0 && show <= 2 ? (
           <img src={`/images/svg/Vector.svg`} alt="Vector" />
-        ) : show === 4 ? (
+        ) : show >= 4 ? (
           <img src={`/images/svg/Vector2.svg`} alt="Vector" />
-        ) : (
-          <img src={`/images/svg/Vector.svg`} alt="Vector" />
-        )}
+        ) : null}
       </NavLink>
     </div>
   );
