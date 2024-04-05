@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg_img {
+  background: url(../public/images/png/bg_img.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.scale {
+  transition: all 1s;
+  transform: scale(1.4);
+}
+
+.phone_img {
+  background: url(../public/images/png/phone_img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 580px) {
+  .w_100 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 580px) and (max-width: 768px) {
+  .w_xsm {
+    width: 46%;
+  }
+}
+
+@media (min-width: 1240px) and (max-width: 1400px) {
+  .font_lg {
+    font-size: 18px !important;
+  }
+}
