@@ -5,7 +5,7 @@ import { Usethem } from "../Context/Context";
 function MNavbar() {
   const { Mshow } = Usethem();
   return (
-    <div className=" bg-black flex justify-between items-center w-full px-5 py-5 rounded-t-2xl">
+    <div className=" bg-black flex justify-between items-center w-full px-5 py-5 rounded-t-2xl fixed bottom-0 z-30 ">
       <NavLink to="/" className="flex flex-col items-center justify-center">
         <div
           className={`w-14 h-14 rounded-full bg-white flex flex-col items-center justify-center text-sm font-normal text-black`}

@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import { Usethem } from "../Context/Context";
 
 function Sidebar() {
-  const { show } = Usethem();
+  const { show, Mshow } = Usethem();
   return (
-    <div className=" bg-[#125566] h-screen flex flex-col gap-4 ps-3 pt-3 sm:w-[25%] md:max-w-[21.7%]">
+    <div className=" bg-[#125566] min-h-screen flex flex-col gap-4 ps-3 pt-3 sm:w-[25%] md:max-w-[21.7%]">
       <NavLink
         to="/"
         className={`flex items-center font-normal md:text-sm lg:text-base bg-white pl-3 md:pl-5 pr-4 justify-between rounded-l-full py-2 lg:py-4 pointer-events-none`}
@@ -58,7 +58,7 @@ function Sidebar() {
         <span className="mr-3">Fill Up</span>
         {show >= 0 && show <= 2 ? (
           <img src={`/images/svg/Vector.svg`} alt="Vector" />
-        ) : show >= 4 ? (
+        ) : Mshow === 1 ? (
           <img src={`/images/svg/Vector2.svg`} alt="Vector" />
         ) : null}
       </NavLink>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Usethem } from "../Context/Context";
 
@@ -11,15 +11,36 @@ function Data() {
     handelchange,
     value,
   } = Usethem();
+
+  useEffect(() => {
+    let all = document.querySelectorAll("input");
+    let heading = document.querySelector("#text");
+    heading.style.position = "relative";
+    heading.style.transition = "2s";
+    heading.style.right = "0";
+    let count = 0;
+    let stop = setInterval(() => {
+      if (count === all.length) {
+        clearInterval(stop);
+      } else {
+        all[count].style.position = "relative";
+        all[count].style.transition = "600ms";
+        all[count].style.top = "0%";
+        all[count].style.right = "0%";
+        count++;
+      }
+    }, 250);
+  }, [state]);
+
   return (
     <div className=" bg_img min-h-screen sm:w-[75%] md:w-[79.3%] ">
       <div className=" flex flex-col items-center justify-center  lg:gap-10 gap-8 h-full ">
-        <p className=" font-normal text-sm lg:text-base text-white lg:max-w-[61%] sm:max-w-[70%] ">
+        <p className=" font-normal text-sm lg:text-base text-white lg:max-w-[61%] sm:max-w-[70%] mb-5 lg:mb-0">
           Part II has 10 items (Questions 1-10).Each item has a series of words.
           Out of the four options- A, B, C, D, find the word that has been spelt
           correctly
         </p>
-        <div className=" bg-[#66bcb4]  py-5 rounded-3xl  relative max-w-[65%]">
+        <div className=" bg-[#66bcb4]  py-5 rounded-3xl  relative max-w-[80%] lg:max-w-[65%]">
           <div
             className="flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2"
             id="maindiv"
@@ -115,15 +136,22 @@ function Data() {
               <p className=" text-sm font-normal text-slate-600">10</p>
             </div>
           </div>
-          <h2 className=" md:text-md lg:text-2xl text-black font-medium px-9 lg:pt-6 md:mt-3 md:h-12 lg:h-16 capitalize">
-            Question {state + 1} : {questions[1].part2[state].questionstext}
-          </h2>
-          <div className="flex flex-wrap gap-3 lg:gap-y-8 lg:mt-8 px-8 lg:px-0 lg:justify-around lg:pb-44 pb-10">
+
+          <div className=" md:text-base lg:text-2xl text-black font-medium  lg:pt-6 md:mt-3 md:h-12 lg:h-16 capitalize overflow-hidden flex">
+            <span className="bg-[#66BCB4] z-30 ps-9 pe-1">
+              {" "}
+              Question {state + 1} :
+            </span>
+            <span className=" relative -right-[-500%] z-10" id="text">
+              {questions[1].part2[state].questionstext}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-3 lg:gap-y-8 lg:mt-8 px-8 lg:px-0 lg:justify-around lg:pb-44 pb-10 overflow-hidden">
             {questions[1].part2[state].answeroption.map((value, i) => {
               return (
                 <div key={i} className="md:w-9/12 lg:w-5/12">
                   <input
-                    className="w-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-default"
+                    className="w-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-default relative -top-[500%] -right-[500%]"
                     type="text"
                     readOnly
                     id={i}

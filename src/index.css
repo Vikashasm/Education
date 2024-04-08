@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +9,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+* {
+  font-family: "Ubuntu", sans-serif;
 }
 
 .scale {
@@ -30,10 +36,57 @@
   .w_xsm {
     width: 46%;
   }
+
+  .min_h_71 {
+    min-height: 71vh;
+  }
+
+  .max_w_80 {
+    max-width: 80%;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 1240px) and (max-width: 1400px) {
   .font_lg {
     font-size: 18px !important;
   }
+}
+
+.slick-slide {
+  height: 50px !important;
+}
+
+.container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 8px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid #ffce32;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.min_h_calc {
+  min-height: calc(680px - 140px) !important;
+}
+.box_shadow {
+  box-shadow: 0px 4px 10px 0px #00000026;
 }
