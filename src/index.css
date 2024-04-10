@@ -45,6 +45,10 @@
     max-width: 80%;
     margin: 0 auto;
   }
+
+  .w_60 {
+    width: 60% !important;
+  }
 }
 
 @media (min-width: 1240px) and (max-width: 1400px) {

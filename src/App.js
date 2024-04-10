@@ -16,6 +16,7 @@ import SignUp from "./Page/SignUp";
 import MLogin from "./Screen/MLogin";
 import MSignUp from "./Screen/MSignUp";
 import Submitted from "./components/Submitted";
+import MSubmitted from "./mobile/MSubmitted";
 
 function App() {
   return (
@@ -26,8 +27,10 @@ function App() {
             <Route index element={<Main />} />
             <Route path="one" element={<Data />} />
             <Route path="two" element={<Data2 />} />
-            <Route path="three" element={<Data3 />} />
-            <Route path="Submitted" element={<Submitted />} />
+            <Route>
+              <Route path="three" element={<Data3 />} />
+              <Route path="result" element={<Submitted />} />
+            </Route>
           </Route>
         </Routes>
       </div>
@@ -38,9 +41,11 @@ function App() {
             <Route path="one" element={<MData />} />
             <Route path="two" element={<MData2 />} />
             <Route path="three" element={<MData3 />} />
+            <Route path="result" element={<Submitted />} />
           </Route>
         </Routes>
       </div>
+      {/* <MSubmitted /> */}
 
       <div>
         <div className=" hidden md:inline">
@@ -57,8 +62,3 @@ function App() {
 }
 
 export default App;
-
-/*
-         
-
-*/

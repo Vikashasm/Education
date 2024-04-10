@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function Submitted() {
+
+  const path = useLocation();
+
   useEffect(() => {
     let img = document.getElementsByClassName("slide_img");
     let box_shadow = document.getElementsByClassName("box_shadow");
@@ -19,7 +23,7 @@ function Submitted() {
       i.style.transition = "3s";
       i.style.left = "0px";
     }
-  }, []);
+  }, [path.pathname]);
 
   return (
     <div className="bg_img z-10 pb-8 min-h-screen sm:w-[75%] md:w-[79.3%]  relative after:contents-[] after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:-z-10">

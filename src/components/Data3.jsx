@@ -1,8 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect  , useState} from "react";
 import { NavLink } from "react-router-dom";
 import { Usethem } from "../Context/Context";
 
+
+
 function Data3() {
+ 
+
+  
   const {
     questions,
     handelclick3,
@@ -41,7 +46,7 @@ function Data3() {
     >
       <div
         className={`bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4   ${
-          Mshow === 1 ? "opacity-100 z-40" : "opacity-0"
+          Mshow === 1 ? "opacity-100 z-40" : "opacity-0 -z-10"
         }`}
       >
         <div>
@@ -53,7 +58,7 @@ function Data3() {
         <p className=" text-black text-sm font-normal my-2">
           You have completed the test.
         </p>
-        <NavLink className="w-full" to="Submitted">
+        <NavLink className="w-full" to="/result">
           <h6 className="text-white font-normal text-2xl bg-[#125566] rounded-lg text-center p-2">
             Okay
           </h6>
@@ -71,243 +76,72 @@ function Data3() {
               className="flex sm:flex-row  sm:-top-8 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-8 lg:left-2/4 lg:-translate-x-1/2 p-3 "
               id="maindiv"
             >
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 20
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">21</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 21
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">22</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 22
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">23</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 23
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">24</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 24
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">25</p>
-              </div>
+              {questions[3].part4
+                .map((value, index) => {
+                  return (
+                    <div
+                       key={index}
+                      className={`w-9 h-9 ${
+                        newstate === index
+                          ? "scale-[1.4] bg-white border-2  border-[#125566]"
+                          : "scale-1"
+                      }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
+                    >
+                      <p className=" text-sm font-normal text-slate-600">
+                        {index + 1}
+                      </p>
+                    </div>
+                  );
+                })
+                .slice(20, 25)}
             </div>
           ) : newstate < 10 ? (
             <div
               className="flex sm:flex-row  sm:-top-8 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-8 lg:left-2/4 lg:-translate-x-1/2 p-3 "
               id="maindiv"
             >
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 0
-                    ? "scale-[1.4] bg-whiteborder-2 "
-                    : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">1</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 1
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">2</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 2
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">3</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 3
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">4</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 4
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">5</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 5
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">6</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 6
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">7</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 7
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">8</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 8
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">9</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 9
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">10</p>
-              </div>
+              {questions[3].part4
+                .map((value, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`w-9 h-9 ${
+                        newstate === index
+                          ? "scale-[1.4] bg-white border-2  border-[#125566]"
+                          : "scale-1"
+                      }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
+                    >
+                      <p className=" text-sm font-normal text-slate-600">
+                        {index + 1}
+                      </p>
+                    </div>
+                  );
+                })
+                .slice(0, 10)}
             </div>
           ) : (
             <div
               className="flex sm:flex-row  sm:-top-8 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-8 lg:left-2/4 lg:-translate-x-1/2 p-3 "
               id="maindiv"
             >
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 10
-                    ? "scale-[1.4] bg-whiteborder-2 "
-                    : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">11</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 11
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">12</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 12
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">13</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 13
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">14</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 14
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">15</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 15
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">16</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 16
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">17</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 17
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">18</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 18
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">19</p>
-              </div>
-              <div
-                className={`w-9 h-9 ${
-                  newstate === 19
-                    ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                    : "scale-1"
-                }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-              >
-                <p className=" text-sm font-normal text-slate-600">20</p>
-              </div>
+              {questions[3].part4
+                .map((value, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`w-9 h-9 ${
+                        newstate === index
+                          ? "scale-[1.4] bg-white border-2  border-[#125566]"
+                          : "scale-1"
+                      }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
+                    >
+                      <p className=" text-sm font-normal text-slate-600">
+                        {index + 1}
+                      </p>
+                    </div>
+                  );
+                })
+                .slice(10, 20)}
             </div>
           )}
 
@@ -377,14 +211,4 @@ function Data3() {
 
 export default Data3;
 
-// <div key={index}>
-//   <div
-//     className={`w-9 h-9 ${
-//       newstate === index
-//         ? "scale-[1.4] bg-white border-2  border-[#125566]"
-//         : "scale-1"
-//     }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-//   >
-//     <p className=" text-sm font-normal text-slate-600">{index + 1}</p>
-//   </div>
-// </div>;
+

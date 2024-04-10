@@ -46,100 +46,29 @@ function Main() {
             className="flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2"
             id="maindiv"
           >
-            <div
-              className={`w-9 h-9 ${
-                state === 0
-                  ? "scale-[1.4] bg-whiteborder-2 "
-                  : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-              }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">1</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 1
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">2</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 2
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">3</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 3
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">4</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 4
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">5</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 5
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">6</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 6
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">7</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 7
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">8</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 8
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">9</p>
-            </div>
-            <div
-              className={`w-9 h-9 ${
-                state === 9
-                  ? "scale-[1.4] bg-white border-2  border-[#125566]"
-                  : "scale-1"
-              }  rounded-full bg-[#F1F1F1] flex items-center justify-center`}
-            >
-              <p className=" text-sm font-normal text-slate-600">10</p>
-            </div>
+            {questions[0].part1.map((value, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`w-9 h-9 ${
+                    state === index
+                      ? "scale-[1.4] bg-whiteborder-2 "
+                      : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
+                  }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
+                >
+                  <p className=" text-sm font-normal text-slate-600">
+                    {index + 1}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <div className=" md:text-md lg:text-2xl text-black font-medium  lg:pt-6 md:mt-3 md:h-12 lg:h-16 capitalize overflow-hidden flex">
-            <span className="bg-[#66BCB4] z-30 ps-9 pe-1"> Question {state + 1} :</span>
+            <span className="bg-[#66BCB4] z-30 ps-9 pe-1">
+              {" "}
+              Question {state + 1} :
+            </span>
             <span className=" relative -right-[-500%] z-10" id="text">
               {questions[0].part1[state].questionstext}
             </span>
