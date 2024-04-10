@@ -12,7 +12,7 @@ function MNavbar() {
         >
           <span>Stage</span> 1
         </div>
-        <p className=" text-sm font-normal text-white mt-2">Synonymize</p>
+        <p className=" text-[12px] font-normal text-white mt-2">Synonymize</p>
       </NavLink>
 
       <NavLink
@@ -28,7 +28,7 @@ function MNavbar() {
         >
           <span>Stage</span> 2
         </div>
-        <p className=" text-sm font-normal text-white mt-2">Acknowledge</p>
+        <p className=" text-[12px] font-normal text-white mt-2">Acknowledge</p>
       </NavLink>
 
       <NavLink
@@ -44,7 +44,7 @@ function MNavbar() {
         >
           <span>Stage</span> 3
         </div>
-        <p className=" text-sm font-normal text-white mt-2">Explanation</p>
+        <p className=" text-[12px] font-normal text-white mt-2">Explanation</p>
       </NavLink>
 
       <NavLink
@@ -60,7 +60,7 @@ function MNavbar() {
         >
           <span>Stage</span> 4
         </div>
-        <p className=" text-sm font-normal text-white mt-2">Fill Up</p>
+        <p className="text-[12px] font-normal text-white mt-2">Fill Up</p>
       </NavLink>
     </div>
   );
