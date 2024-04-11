@@ -4,10 +4,7 @@ import { Usethem } from "../Context/Context";
 
 
 
-function Data3() {
- 
-
-  
+function Data3() {  
   const {
     questions,
     handelclick3,

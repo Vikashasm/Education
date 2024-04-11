@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 function Layout() {
   return (
-    <div className=" md:flex hidden">
+    <div className="flex">
       <Sidebar />
       <Outlet />
     </div>

@@ -15,6 +15,9 @@
   font-family: "Ubuntu", sans-serif;
 }
 
+.min_vh_calc {
+  min-height: calc(100vh - 300px);
+}
 .scale {
   transition: all 1s;
   transform: scale(1.4);

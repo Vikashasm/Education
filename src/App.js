@@ -1,64 +1,84 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
-import MSidebar from "./mobile/MSidebar";
 import Layout from "./components/Layout";
 import Data from "./components/Data";
 import Data2 from "./components/Data2";
 import Data3 from "./components/Data3";
-import MData from "./mobile/MData";
-import MData2 from "./mobile/MData2";
-import MData3 from "./mobile/MData3";
-import MLayout from "./mobile/MLayout";
-import Login from "./Page/Login";
-import SignUp from "./Page/SignUp";
-import MLogin from "./Screen/MLogin";
-import MSignUp from "./Screen/MSignUp";
 import Submitted from "./components/Submitted";
-import MSubmitted from "./mobile/MSubmitted";
+import Login from './Page/Login'
+import SignUp from "./Page/SignUp";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import { UseAuthcontext } from './Context/LoginSignup';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+
+  const { LoginUserWithEmail } = UseAuthcontext()
+  const Navigate = useNavigate()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const userFromLocalStorage = localStorage.getItem("rememberedUser");
+    const userFromSessionStorage = sessionStorage.getItem("rememberedUser");
+
+    if (userFromLocalStorage || userFromSessionStorage) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  async function LoginUser(email, password, checkbox) {
+    if (!email || !password) {
+      toast.error("Please Enter the email or password")
+    } else {
+      try {
+        const user = await LoginUserWithEmail(email, password)
+        if (checkbox === "Remember") {
+          localStorage.setItem("rememberedUser", JSON.stringify({ id: user.uid, email: user.email }));
+        } else {
+          sessionStorage.setItem("rememberedUser", JSON.stringify({ id: user.uid, email: user.email }));
+        }
+        console.log("User login success.");
+        setIsLoggedIn(true); // Update isLoggedIn state to true
+        Navigate('/');
+      } catch (error) {
+        if (error.code === "auth/invalid-credential") {
+          toast.error("Wrong password. Please try again.");
+        } else if (error.code === "auth/user-not-found") {
+          toast.error("Email not found. Please sign up.");
+        } else if (error.code === "auth/invalid-email") {
+          toast.error("Please Provide Valid Email Address");
+        } else {
+          console.error("Error logging in:", error.message);
+          toast.error("Error logging in. Please try again later.");
+        }
+      }
+    }
+  }
+
   return (
-    <div className="App">
-      <div>
-        <Routes>
+    <Routes>
+      {isLoggedIn ? (
+        <>
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="one" element={<Data />} />
             <Route path="two" element={<Data2 />} />
-            <Route>
-              <Route path="three" element={<Data3 />} />
-              <Route path="result" element={<Submitted />} />
-            </Route>
-          </Route>
-        </Routes>
-      </div>
-      <div className="md:hidden">
-        <Routes>
-          <Route path="/" element={<MLayout />}>
-            <Route index element={<MSidebar />} />
-            <Route path="one" element={<MData />} />
-            <Route path="two" element={<MData2 />} />
-            <Route path="three" element={<MData3 />} />
+            <Route path="three" element={<Data3 />} />
             <Route path="result" element={<Submitted />} />
           </Route>
-        </Routes>
-      </div>
-      {/* <MSubmitted /> */}
-
-      <div>
-        <div className=" hidden md:inline">
-          {/* <Login /> */}
-          {/* <SignUp /> */}
-        </div>
-        <div className="md:hidden ">
-          {/* <MLogin /> */}
-          {/* <MSignUp/> */}
-        </div>
-      </div>
-    </div>
+        </>
+      ) : (
+        <>
+            <Route path="/login" element={<Login onLogin={LoginUser} />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route element={<Navigate to="/login" />} />
+        </>
+      )}
+    </Routes>
   );
+
 }
 
 export default App;
