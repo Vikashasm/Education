@@ -26,10 +26,10 @@ function Submitted() {
   }, [path.pathname]);
 
   return (
-    <div className="bg_img z-10 pb-8 min-h-screen sm:w-[75%] md:w-[79.3%]  relative after:contents-[] after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:-z-10">
+    <div className="bg_img z-10 pt-10 pb-36 md:pb-0 min-h-screen w-full md:w-[79.3%]  relative after:contents-[] after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:-z-10">
       <div className=" flex items-center justify-center h-full relative">
         <img
-          className=" absolute top-9 lg:top-[-10px] hidden lg:inline"
+          className=" absolute  top-[-50px] hidden sm:inline"
           src="/images/png/holiday.png"
           alt="holiday"
         />
@@ -58,7 +58,7 @@ function Submitted() {
             </p>
           </div>
           <div className=" flex flex-wrap gap-4 lg:gap-8 mt-7  pb-2 justify-around lg:justify-center">
-            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[45%] lg:w-5/12 relative left-[-100%]">
+            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[85%] sm:w-[45%] lg:w-5/12 relative left-[-100%]">
               <h6 className="text-black font-bold text-xl text-center">
                 Synonymize
               </h6>
@@ -77,7 +77,7 @@ function Submitted() {
                 </div>
               </div>
             </div>
-            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[45%] lg:w-5/12 relative left-[-100%]">
+            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[85%] sm:w-[45%] lg:w-5/12 relative left-[-100%]">
               <h6 className="text-black font-bold text-xl text-center">
                 Acknowledge
               </h6>
@@ -96,7 +96,7 @@ function Submitted() {
                 </div>
               </div>
             </div>
-            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[45%] lg:w-5/12 relative left-[-100%]">
+            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[85%] sm:w-[45%] lg:w-5/12 relative left-[-100%]">
               <h6 className="text-black font-bold text-xl text-center">
                 Explanation
               </h6>
@@ -115,7 +115,7 @@ function Submitted() {
                 </div>
               </div>
             </div>
-            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[45%] lg:w-5/12 relative left-[-100%]">
+            <div className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[85%] sm:w-[45%] lg:w-5/12 relative left-[-100%]">
               <h6 className="text-black font-bold text-xl text-center">
                 Fill Up
               </h6>

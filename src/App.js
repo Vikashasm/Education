@@ -6,14 +6,13 @@ import Layout from "./components/Layout";
 import Data from "./components/Data";
 import Data2 from "./components/Data2";
 import Data3 from "./components/Data3";
-import Submitted from "./components/Submitted";
 import Login from './Page/Login'
 import SignUp from "./Page/SignUp";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import { UseAuthcontext } from './Context/LoginSignup';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Submitted from "./components/Submitted";
 function App() {
 
   const { LoginUserWithEmail } = UseAuthcontext()
@@ -41,7 +40,7 @@ function App() {
         }
         console.log("User login success.");
         setIsLoggedIn(true); // Update isLoggedIn state to true
-        Navigate('/');
+        Navigate('/dashboard');
       } catch (error) {
         if (error.code === "auth/invalid-credential") {
           toast.error("Wrong password. Please try again.");
@@ -59,26 +58,22 @@ function App() {
 
   return (
     <Routes>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Main />} />
-            <Route path="one" element={<Data />} />
-            <Route path="two" element={<Data2 />} />
-            <Route path="three" element={<Data3 />} />
-            <Route path="result" element={<Submitted />} />
-          </Route>
+          <Route path="/login" element={<Login onLogin={LoginUser} />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={ <Login  onLogin={LoginUser} />} />
         </>
       ) : (
         <>
-            <Route path="/login" element={<Login onLogin={LoginUser} />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route element={<Navigate to="/login" />} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Main />} />
+              <Route path="result" element={<Submitted />} />
+            </Route>
         </>
       )}
     </Routes>
   );
-
 }
 
 export default App;

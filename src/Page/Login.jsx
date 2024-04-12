@@ -124,7 +124,7 @@ function Login({ onLogin}) {
               <div className="mt-7 lg:mt-5 flex flex-col items-center">
                 <p className=" font-normal text-base text-white">
                   Don’t have an account?
-                  <Link to={'/signup'} className="text-[#66BCB4]">Get Started</Link>
+                  <Link to={'signup'} className="text-[#66BCB4]">Get Started</Link>
                 </p>
                 <div className=" mt-4 text-center">
                   <p className="text-[#66BCB4] font-normal text-base">
