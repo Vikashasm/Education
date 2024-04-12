@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UseAuthcontext } from '../Context/LoginSignup';
-function Login({ onLogin}) {
+function Login({ onLogin }) {
   const navigate = useNavigate()
 
   const { LoginUserWithEmail } = UseAuthcontext()
@@ -109,7 +109,9 @@ function Login({ onLogin}) {
                     type="checkbox"
                     className=" absolute top-0 left-0 cursor-pointer h-0 w-0"
                     required
-                    onChange={() => setCheckbox(checkbox === "Remember" ? "" : "Remember")}
+                    onChange={() =>
+                      setCheckbox(checkbox === "Remember" ? "" : "Remember")
+                    }
                     checked={checkbox === "Remember"}
                     name="Remember me"
                   />
@@ -117,14 +119,19 @@ function Login({ onLogin}) {
                 </label>
               </div>
               <div className="mt-6">
-                <button onClick={() => LoginUser()} className="bg-[#66BCB4] font-normal text-base 2xl:py-4 py-2 lg:py-3 px-3 block text-center">
+                <button
+                  onClick={() => LoginUser()}
+                  className="bg-[#66BCB4] font-normal text-base 2xl:py-4 py-2 lg:py-3 px-3  w-full text-center"
+                >
                   Log In
                 </button>
               </div>
               <div className="mt-7 lg:mt-5 flex flex-col items-center">
                 <p className=" font-normal text-base text-white">
                   Don’t have an account?
-                  <Link to={'signup'} className="text-[#66BCB4]">Get Started</Link>
+                  <Link to={"/signup"} className="text-[#66BCB4]">
+                    Get Started
+                  </Link>
                 </p>
                 <div className=" mt-4 text-center">
                   <p className="text-[#66BCB4] font-normal text-base">

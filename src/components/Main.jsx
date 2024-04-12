@@ -7,6 +7,7 @@ function Main() {
   const { selectedTitleTests, Tests, selectedTitleId, setSelectedTitleId } = useTestcontext()
   console.log("sdfasdf", selectedTitleTests)
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  
   const [congs, setCongs] = useState(false)
   const [isselected, setIsSelected] = useState(false)
   const questions = selectedTitleTests.length > 0 && selectedTitleTests[0].questions;
@@ -55,7 +56,6 @@ function Main() {
     <div className=" bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
       {congs === true ? <div
         className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100"
-
       >
         <div>
           <img src="./images/svg/trophy.svg" alt="Golden trophy" />

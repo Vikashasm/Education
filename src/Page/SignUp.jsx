@@ -97,7 +97,7 @@ function SignUp() {
       <ToastContainer></ToastContainer>
       <div>
         <div className=" flex flex-row-reverse ">
-          <div className=" bg-[#66BCB4] p-3 hidden md:flex min-h-screen  flex-col justify-center items-center w-[54%] lg-w-7/12">
+          <div className=" bg-[#66BCB4] p-3 hidden md:flex min-h-screen   flex-col justify-center items-center w-[54%] lg-w-7/12">
             <h2 className=" font-bold text-2xl lg:text-4xl text-black mt-3 lg:mt-5">
               Let’s Register Your Account
             </h2>
@@ -112,7 +112,7 @@ function SignUp() {
               Please Login / Sign up before proceeding to the test.
             </p>
           </div>
-          <div className=" bg-[#202125] min-h-screen w-full md:w-[46%] lg-w-5/12 py-3 relative">
+          <div className=" bg-[#202125] min-h-screen w-full md:w-[46%] lg-w-5/12 py-3 md:py-0 relative">
             <img
               className=" absolute top-0 left-0 md:hidden"
               width="100%"
@@ -148,7 +148,7 @@ function SignUp() {
                   </label>
                   <br />
                   <input
-                    className="bg-[#3F4044] px-3 2xl:py-4 py-2 lg:py-3  text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
+                    className="bg-[#3F4044] px-3 2xl:py-4 py-3 lg:py-3  text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
                     type="email"
                     id="email"
                     name="email"
@@ -168,7 +168,7 @@ function SignUp() {
                   </label>
                   <br />
                   <input
-                    className="bg-[#3F4044] px-3 2xl:py-4 py-2 lg:py-3   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
+                    className="bg-[#3F4044] px-3 2xl:py-4 py-3 lg:py-3   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
                     type="Password"
                     id="Password"
                     name="Password"
@@ -187,18 +187,17 @@ function SignUp() {
                   </label>
                   <br />
                   <input
-                    className="bg-[#3F4044] px-3 2xl:py-4 py-2 lg:py-3   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none mb-1"
+                    className="bg-[#3F4044] px-3 2xl:py-4 py-3 lg:py-3   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none mb-1"
                     type="Password"
                     id="CPassword"
                     name="Confirm Password"
                     placeholder="Re-Enter Password"
                     required
                     onChange={(e) => setRePassword(e.target.value)}
-                    
                   />
                 </div>
 
-                <div className=" mt-4 flex items-center justify-between gap-5 flex-col lg:flex-row">
+                <div className=" mt-4 flex items-end justify-between gap-5 flex-col lg:flex-row">
                   <div className="w-full lg:w-[50%]">
                     <label
                       className=" text-base font-normal text-[#66BCB4]"
@@ -209,7 +208,7 @@ function SignUp() {
                     </label>
                     <br />
                     <input
-                      className="bg-[#3F4044] px-3 2xl:py-4 py-2 lg:py-3   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
+                      className="bg-[#3F4044] px-3 2xl:py-4 py-3 lg:py-4   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
                       type="text"
                       id="Gender"
                       name="Gender"
@@ -228,21 +227,32 @@ function SignUp() {
                     </label>
                     <br />
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DesktopDatePicker onChange={(date) => {
-                        handleDateChange(date);
-                      }} disableFuture format="DD-MM-YYYYY" />
+                      <DesktopDatePicker
+                        className="bg-[#3F4044] text-base font-normal text-[#FFFFFF80] mt-3 w-full outline-none"
+                        onChange={(date) => {
+                          handleDateChange(date);
+                        }}
+                        disableFuture
+                        format="DD-MM-YYYY"
+                      />
                     </LocalizationProvider>
                   </div>
                 </div>
                 <div className=" mt-6">
-                  <button onClick={() => RegisterUSer()} className="bg-[#66BCB4] font-normal text-base 2xl:py-4 py-2 lg:py-3 px-3 block text-center">
+                  <button
+                    onClick={() => RegisterUSer()}
+                    className="bg-[#66BCB4] font-normal text-base 2xl:py-4 py-3 lg:py-3 px-3 w-full text-center"
+                  >
                     Register
                   </button>
                 </div>
                 <div className="mt-7 lg:mt-5 text-center">
                   <p className=" font-normal text-base text-white">
                     Already have an account?
-                    <Link to={'/login'} className="text-[#66BCB4]"> Sign In</Link>
+                    <Link to={"/login"} className="text-[#66BCB4]">
+                      {" "}
+                      Sign In
+                    </Link>
                   </p>
                 </div>
               </form>
