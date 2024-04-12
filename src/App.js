@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
 import Layout from "./components/Layout";
-import Data from "./components/Data";
-import Data2 from "./components/Data2";
-import Data3 from "./components/Data3";
 import Login from './Page/Login'
 import SignUp from "./Page/SignUp";
 import { useEffect, useState } from "react";
@@ -40,7 +37,7 @@ function App() {
         }
         console.log("User login success.");
         setIsLoggedIn(true); // Update isLoggedIn state to true
-        Navigate('/dashboard');
+        Navigate('/');
       } catch (error) {
         if (error.code === "auth/invalid-credential") {
           toast.error("Wrong password. Please try again.");
