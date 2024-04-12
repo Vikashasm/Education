@@ -45,8 +45,8 @@ function SignUp() {
     }
   };
 
-  async function RegisterUSer() {
-    console.log("first")
+  async function RegisterUSer(e) {
+    e.preventDefault()
     if (!email || !password || !repassword || !dob || !gender) {
       toast.error("Please fill all the fields.");
     } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -61,6 +61,7 @@ function SignUp() {
       try {
         // Check if email is already in use
         const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+        console.log("Asdff",signInMethods)
         if (signInMethods.length > 0) {
           handleReset()
           return;
@@ -75,7 +76,7 @@ function SignUp() {
           data.uid = user.uid;
           let deliveryRef = doc(db, 'Users', user.uid);
           await setDoc(deliveryRef, data);
-          navigate('/')
+          navigate('/login')
           handleReset()
         }
       } catch (error) {
@@ -88,8 +89,6 @@ function SignUp() {
       }
     }
   }
-
-
 
 
   return (
@@ -138,7 +137,7 @@ function SignUp() {
               <h3 className=" text-center text-white font-bold text-2xl pt-20 md:hidden relative z-10">
                 Register to “Website Name”
               </h3>
-              <form action="#" className=" mt-7 xl:mt-12 w-full relative z-20">
+              <form  className=" mt-7 xl:mt-12 w-full relative z-20">
                 <div>
                   <label
                     className=" text-base font-normal text-[#66BCB4]"
@@ -240,7 +239,8 @@ function SignUp() {
                 </div>
                 <div className=" mt-6">
                   <button
-                    onClick={() => RegisterUSer()}
+                    type="submit"
+                    onClick={(e) => RegisterUSer(e)}
                     className="bg-[#66BCB4] font-normal text-base 2xl:py-4 py-3 lg:py-3 px-3 w-full text-center"
                   >
                     Register

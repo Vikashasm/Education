@@ -7,7 +7,6 @@ function Main() {
   const { selectedTitleTests, Tests, selectedTitleId, setSelectedTitleId } = useTestcontext()
   console.log("sdfasdf", selectedTitleTests)
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  
   const [congs, setCongs] = useState(false)
   const [isselected, setIsSelected] = useState(false)
   const questions = selectedTitleTests.length > 0 && selectedTitleTests[0].questions;
@@ -19,17 +18,40 @@ function Main() {
       setIsSelected(false);
       setSelectedOption([...selectedOption.slice(0, currentQuestion + 1), null]);
     } else if (currentQuestion === questions.length - 1 && selectedOption[currentQuestion] !== null) {
+      // Calculate the score
+      let correctAnswers = 0;
+      let wrongAnswers = 0;
+      questions.forEach((question, index) => {
+        const selectedAnswerIndex = selectedOption[index];
+        if (selectedAnswerIndex !== null) {
+          const selectedAnswer = question.answeroption[selectedAnswerIndex];
+          if (selectedAnswer.iscorrect) {
+            correctAnswers++;
+          } else {
+            wrongAnswers++;
+          }
+        }
+      });
+
+      // Save the score
+      const score = {
+        totalQuestions: questions.length,
+        correctAnswers,
+        wrongAnswers,
+      };
+      console.log("Score for this title:", score);
+
       const currentIndex = Tests.findIndex((test) => test.id === selectedTitleId);
       const nextIndex = currentIndex + 1;
       if (nextIndex < Tests.length) {
         setSelectedTitleId(Tests[nextIndex].id);
-      }
-      else {
-        setCongs(true)
-
+      } else {
+        setCongs(true);
       }
     }
   };
+
+
   const handlePrevQuestion = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
@@ -56,6 +78,7 @@ function Main() {
     <div className=" bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
       {congs === true ? <div
         className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100"
+
       >
         <div>
           <img src="./images/svg/trophy.svg" alt="Golden trophy" />
@@ -75,9 +98,7 @@ function Main() {
       }
       <div className=" flex flex-col items-center md:justify-center py-7 md:py-0  lg:gap-10 gap-8 h-full ">
         <h6 className=" font-normal text-sm lg:text-base text-white lg:max-w-[61%] max-w-[80%] mb-4 lg:mb-0">
-          Part I has 10 Item (Questions 1-10), First Look at the word in capital
-          letters. There are four options – A, B, C, D. Find the word which
-          means the same as the word in capitals from the given options
+          {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
         </h6>
         <div className=" md:bg-[#66bcb4] bg-[#FFFFFF99] py-5 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%] z-20 min_vh_calc">
           <div
@@ -131,7 +152,6 @@ function Main() {
             {question && question.answeroption.map((option, i) => (
               <div className="w-full lg:w-5/12" key={i}>
                 <p
-                  id={i}
                   onClick={() => handleOptionClick(i)}
                   className={`w-full h-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${selectedOption[currentQuestion] === i ? "bg-green-500" : "bg-white"
                     }`}
