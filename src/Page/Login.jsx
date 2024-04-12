@@ -10,6 +10,7 @@ function Login({ onLogin }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [checkbox, setCheckbox] = useState('')
+  
   async function LoginUser() {
     await onLogin(email, password, checkbox);
   }

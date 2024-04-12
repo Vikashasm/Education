@@ -15,6 +15,7 @@ import { auth } from '../firebase';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchSignInMethodsForEmail } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import Loader from "../Loader";
 
 function SignUp() {
 
@@ -25,6 +26,7 @@ function SignUp() {
   const [repassword, setRePassword] = useState('')
   const [gender, setGender] = useState('')
   const [dob, setDob] = useState('')
+  const [loading , setloading ] = useState(false)
 
   const handleReset = () => {
     setDob('')
@@ -47,6 +49,7 @@ function SignUp() {
 
   async function RegisterUSer(e) {
     e.preventDefault()
+
     if (!email || !password || !repassword || !dob || !gender) {
       toast.error("Please fill all the fields.");
     } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -59,6 +62,7 @@ function SignUp() {
       toast.error("Please select a valid gender.");
     } else {
       try {
+        setloading(true)
         // Check if email is already in use
         const signInMethods = await fetchSignInMethodsForEmail(auth, email);
         console.log("Asdff",signInMethods)
@@ -76,10 +80,12 @@ function SignUp() {
           data.uid = user.uid;
           let deliveryRef = doc(db, 'Users', user.uid);
           await setDoc(deliveryRef, data);
+          setloading(false)
           navigate('/login')
           handleReset()
         }
       } catch (error) {
+        setloading(false)
         if (error.code === 'auth/email-already-in-use') {
           toast.error("Email is already in use. Please Login");
         } else {
@@ -88,6 +94,10 @@ function SignUp() {
         }
       }
     }
+  }
+
+  if (loading) {
+    return (<Loader></Loader>)
   }
 
 

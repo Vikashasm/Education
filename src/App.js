@@ -10,11 +10,13 @@ import { toast, ToastContainer } from 'react-toastify';
 import { UseAuthcontext } from './Context/LoginSignup';
 import 'react-toastify/dist/ReactToastify.css';
 import Submitted from "./components/Submitted";
+import Loader from "./Loader";
 function App() {
 
   const { LoginUserWithEmail } = UseAuthcontext()
   const Navigate = useNavigate()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading,setloading] = useState(false)
   useEffect(() => {
     const userFromLocalStorage = localStorage.getItem("rememberedUser");
     const userFromSessionStorage = sessionStorage.getItem("rememberedUser");
@@ -29,6 +31,7 @@ function App() {
       toast.error("Please Enter the email or password")
     } else {
       try {
+        setloading(true)
         const user = await LoginUserWithEmail(email, password)
         if (checkbox === "Remember") {
           localStorage.setItem("rememberedUser", JSON.stringify({ id: user.uid, email: user.email }));
@@ -37,8 +40,10 @@ function App() {
         }
         console.log("User login success.");
         setIsLoggedIn(true); // Update isLoggedIn state to true
+        setloading(false)
         Navigate('/');
       } catch (error) {
+        setloading(false)
         if (error.code === "auth/invalid-credential") {
           toast.error("Wrong password. Please try again.");
         } else if (error.code === "auth/user-not-found") {
@@ -51,6 +56,9 @@ function App() {
         }
       }
     }
+  }
+  if (loading) {
+    return ( <Loader></Loader> )
   }
 
   return (
