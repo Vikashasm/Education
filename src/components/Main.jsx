@@ -90,7 +90,7 @@ function Main() {
   }, [selectedTitleTests, Tests]);
 
   return (
-    <div className=" bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
+    <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
       {congs === true ? <div
         className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100"
       >
