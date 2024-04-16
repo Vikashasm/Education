@@ -30,6 +30,7 @@ export function UserAuthContextProvider({ children }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
+                console.log("currentUser is ",currentUser)
                 const userData = { userid: currentUser.uid, useremail: currentUser.email };
                 localStorage.setItem('user', JSON.stringify(userData));
                 setuser(true)

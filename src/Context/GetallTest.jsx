@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { collection, onSnapshot,getDocs } from 'firebase/firestore';
+import { collection, onSnapshot, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 const TestContext = createContext()
 
@@ -11,12 +11,9 @@ export const useTestcontext = () => {
 export const TestContextProvider = ({ children }) => {
     const [Tests, setTests] = useState([])
     const [isdatafetched, setIsDataFetched] = useState(false)
-    const [selectedTitleId, setSelectedTitleId] = useState(() => {
-        const storedId = localStorage.getItem('selectedTitleId');
-        return storedId ? storedId : (Tests.length > 0 ? Tests[0].id : null);
-
-
-
+    const [selectedLevel, setselectedLevel] = useState(() => {
+        const storedLevel = localStorage.getItem('selectedLevel');
+        return storedLevel ? storedLevel : (Tests.length > 0 ? Tests[0].Level : null);
     });
     useEffect(() => {
         const fetchTests = async () => {
@@ -45,30 +42,29 @@ export const TestContextProvider = ({ children }) => {
     }, [isdatafetched])
 
 
-
-
     useEffect(() => {
-        localStorage.setItem('selectedTitleId', selectedTitleId);
-    }, [selectedTitleId]);
+        localStorage.setItem('selectedLevel', selectedLevel);
+    }, [selectedLevel]);
 
     const memodata = useMemo(() => Tests, [Tests])
 
     const selectedTitleTests = useMemo(() => {
-        if (!selectedTitleId && Tests.length > 0) {
-            setSelectedTitleId(Tests[0].id);
+        if (!selectedLevel && Tests.length > 0) {
+            setselectedLevel(Tests[0].Level);
             return [Tests[0]];
         }
-        return Tests.filter(test => test.id === selectedTitleId);
-    }, [Tests, selectedTitleId]);
+        return Tests.filter(test => test.Level === parseInt(selectedLevel));
+    }, [Tests, selectedLevel]);
 
     useEffect(() => {
-        localStorage.setItem('selectedTitleId', String(selectedTitleId));
-    }, [selectedTitleId]);
+        localStorage.setItem('selectedLevel', selectedLevel);
+    }, [selectedLevel]);
 
-//  reutrn context 
+    //  reutrn context 
     return (
-        <TestContext.Provider value={{ Tests: memodata , selectedTitleId, setSelectedTitleId, selectedTitleTests }}>
+        <TestContext.Provider value={{ Tests: memodata, selectedLevel, setselectedLevel, selectedTitleTests }}>
             {children}
         </TestContext.Provider>
     )
+
 }

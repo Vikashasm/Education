@@ -16,7 +16,7 @@ function Main() {
   //     console.log("Error is ", error)
   //   }
   // }
-  const { selectedTitleTests, Tests, selectedTitleId, setSelectedTitleId } = useTestcontext()
+  const { selectedTitleTests, Tests, selectedLevel, setselectedLevel } = useTestcontext()
   console.log("sdfasdf", selectedTitleTests)
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [congs, setCongs] = useState(false)
@@ -53,10 +53,10 @@ function Main() {
       };
       console.log("Score for this title:", score);
 
-      const currentIndex = Tests.findIndex((test) => test.id === selectedTitleId);
+      const currentIndex = Tests.findIndex((test) => test.Level === selectedLevel);
       const nextIndex = currentIndex + 1;
       if (nextIndex < Tests.length) {
-        setSelectedTitleId(Tests[nextIndex].id);
+        setselectedLevel(Tests[nextIndex].Level);
       } else {
         setCongs(true);
       }
@@ -88,7 +88,6 @@ function Main() {
     <div className=" bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
       {congs === true ? <div
         className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100"
-
       >
         <div>
           <img src="./images/svg/trophy.svg" alt="Golden trophy" />
@@ -138,7 +137,6 @@ function Main() {
             </span>
             <span id="text">{question.question}</span>
           </div>
-
           <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-8 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-10 overflow-hidden">
             {/* {questions[0].part1[state].answeroption.map((value, i) => {
               return (
