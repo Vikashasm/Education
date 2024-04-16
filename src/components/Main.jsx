@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTestcontext } from '../Context/GetallTest'
+import { UseAuthcontext } from "../Context/GoggleAuth";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
-
+  const { logoutUser } = UseAuthcontext()  
+  const navigate = useNavigate()
+  // async function HandleLogout() {
+  //   try {
+  //     await logoutUser()
+  //     navigate('/login')
+  //     console.log("logout working")
+  //   } catch (error) {
+  //     console.log("Error is ", error)
+  //   }
+  // }
   const { selectedTitleTests, Tests, selectedTitleId, setSelectedTitleId } = useTestcontext()
   console.log("sdfasdf", selectedTitleTests)
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -119,7 +131,6 @@ function Main() {
               );
             })}
           </div>
-
           <div className=" md:text-md lg:text-2xl text-black font-medium  px-9 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
             <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
               {" "}

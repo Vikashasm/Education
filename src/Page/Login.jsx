@@ -2,19 +2,33 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UseAuthcontext } from '../Context/LoginSignup';
-function Login({ onLogin }) {
+import { UseAuthcontext } from '../Context/GoggleAuth';
+import Loader from '../Loader'
+import { useEffect } from "react";
+function Login() {
+
+  const [loading, setloading] = useState(false)
   const navigate = useNavigate()
+  const { GoggleSignIn,user } = UseAuthcontext()
 
-  const { LoginUserWithEmail } = UseAuthcontext()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [checkbox, setCheckbox] = useState('')
-  
-  async function LoginUser() {
-    await onLogin(email, password, checkbox);
+  const handleLogin =  async () => {
+    try {
+      setloading(true);
+      await GoggleSignIn()
+      setloading(false)
+    } catch (error) {
+      console.log("Error in Goggle sign in ",error)
+    }
   }
-
+  useEffect(() => {
+    if (user !== null) {
+      navigate('/')
+    }
+  }, [])
+  
+  if (loading) {
+    return (<Loader></Loader>)
+  }
 
   return (
     <div>
@@ -43,11 +57,11 @@ function Login({ onLogin }) {
           </p>
         </div>
         <div className=" bg-[#202125] min-h-screen w-full md:w-5/12 lg-w-5/12">
-          <div className="flex flex-col items-center md:justify-center min-h-screen py-8 xl:px-20 px-6 relative z-10">
+          <div className="flex flex-col items-center justify-around md:justify-center min-h-screen py-8 xl:px-20 px-6 relative z-10">
             <div className=" text-center relative md:hidden">
               <div className=" flex justify-center">
                 <img
-                  className="w-[75%] h-full"
+                  className="w-[100%] h-full"
                   src="/images/svg/Mlogin_img.svg"
                   alt="Login_img"
                 />
@@ -59,88 +73,13 @@ function Login({ onLogin }) {
                 ENGLISH LEVEL TEST
               </h2>
             </div>
-            <h2 className=" text-white font-bold text-lg lg:text-2xl mt-20 md:mt-0">
-              Sign In to “Website Name”
-            </h2>
-            <form
-              action="#"
-              className="md:mt-7 lg:mt-12 w-full relative z-20 mt-14 "
-            >
-              <div>
-                <label
-                  className=" text-base font-normal text-[#66BCB4]"
-                  htmlFor="email"
-                >
-                  Email
-                </label>
-                <br />
-                <input
-                  className="bg-[#3F4044] px-3 2xl:py-4 py-2 lg:py-3  text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className=" mt-5">
-                <label
-                  className=" text-base font-normal text-[#66BCB4]"
-                  htmlFor="Password"
-                  required
-                >
-                  Password
-                </label>
-                <br />
-                <input
-                  className="bg-[#3F4044] px-3 2xl:py-4 py-2 lg:py-3   text-base font-normal text-[#FFFFFF80] mt-2 w-full outline-none"
-                  type="Password"
-                  id="Password"
-                  name="Password"
-                  placeholder="Enter  Password"
-                  required
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className=" mt-7">
-                <label className="container inline relative ps-9 mb-3 cursor-pointer text-base font-normal text-[#66BCB4]">
-                  Remember me
-                  <input
-                    type="checkbox"
-                    className=" absolute top-0 left-0 cursor-pointer h-0 w-0"
-                    required
-                    onChange={() =>
-                      setCheckbox(checkbox === "Remember" ? "" : "Remember")
-                    }
-                    checked={checkbox === "Remember"}
-                    name="Remember me"
-                  />
-                  <span className="checkmark absolute top-0 left-0 h-[24px] rounded-md w-[24px] border-2 border-[#ffce32]"></span>
-                </label>
-              </div>
-              <div className="mt-6">
-                <button
-                  onClick={() => LoginUser()}
-                  className="bg-[#66BCB4] font-normal text-base 2xl:py-4 py-2 lg:py-3 px-3  w-full text-center"
-                >
-                  Log In
-                </button>
-              </div>
-              <div className="mt-7 lg:mt-5 flex flex-col items-center">
-                <p className=" font-normal text-base text-white">
-                  Don’t have an account?
-                  <Link to={"/signup"} className="text-[#66BCB4]">
-                    Get Started
-                  </Link>
-                </p>
-                <div className=" mt-4 text-center">
-                  <p className="text-[#66BCB4] font-normal text-base">
-                    Forgot your password?
-                  </p>
+
+                <div className=" flex justify-center flex-col gap-6 md:gap-12 items-center">
+                  <h1 className="text-center text-white font-bold text-xl lg:text-2xl">LOGIN TO YOUR ACCOUNT</h1>
+                  <button onClick={() => handleLogin()} className=" bg-white py-[13px] px-[10px] flex justify-center w-full lg:w-[125%]">
+                    <img src="images/svg/GoggleLogo.svg" alt="GoggleLogo" />
+                  </button>
                 </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
