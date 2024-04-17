@@ -34,7 +34,7 @@ function App() {
       ) : (
         <>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Main />} />
+            <Route index element={<Form1/>} />
             <Route path="result" element={<Submitted />} />
           </Route>
         </>

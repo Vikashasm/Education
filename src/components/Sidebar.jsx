@@ -45,15 +45,27 @@ function Sidebar() {
           const isPreviousLevel = data.Level < parseInt(selectedLevel);
           const isLockedLevel = data.Level > parseInt(selectedLevel);
           return (
-            <NavLink key={data.id} className="flex flex-col items-center justify-center">
+            <NavLink
+              key={data.id}
+              className="flex flex-col items-center justify-center"
+            >
               <div
-                className={`w-14 h-14 rounded-full flex flex-col items-center justify-center text-sm font-normal ${isCurrentLevel ? "bg-white text-black  border-[3px] border-[green] " : isPreviousLevel ? "bg-white text-black" : "bg-[#66BCB4] text-black cursor-not-allowed"   }`}
+                className={`w-14 h-14 rounded-full flex flex-col items-center justify-center text-sm font-normal ${
+                  isCurrentLevel
+                    ? "bg-white text-black  border-[3px] border-[#125566] "
+                    : isPreviousLevel
+                    ? "bg-white text-black"
+                    : "bg-[#66BCB4] text-black cursor-not-allowed"
+                }`}
               >
-                <span>Stage</span>{data.Level}
+                <span>Stage</span>
+                {data.Level}
               </div>
-              <p className=" text-sm font-normal text-white mt-2">{data.LevelTitle}</p>
+              <p className=" text-sm font-normal text-white mt-2">
+                {data.LevelTitle}
+              </p>
             </NavLink>
-          )
+          );
         })}
       </div>
     </>
