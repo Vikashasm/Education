@@ -3,20 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useTestcontext } from "../Context/GetallTest";
 
 function Sidebar() {
-  const { Tests, setselectedLevel, selectedLevel } = useTestcontext()
-  console.log("selcred level in sidebar is ",selectedLevel)
-  
-  // const [selectedIds, setSelectedIds] = useState([selectedTitleId]);
-
-  // const handleTitleClick = (titleId) => {
-  //   setSelectedTitleId(titleId);
-  //   setSelectedIds((prevSelectedIds) => [...prevSelectedIds, titleId]);
-  // };
-
-  // useEffect(() => {
-  //   setSelectedIds((prevSelectedIds) => [...prevSelectedIds, selectedTitleId]);
-  // },[selectedTitleId])
-
+  const { Tests, selectedLevel } = useTestcontext()
   return (
     <>
       <div className=" hidden md:flex w-[25%]">

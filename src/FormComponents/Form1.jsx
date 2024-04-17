@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Form1() {
+function Form1({ onSubmit }) {
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    alternatePhoneNumber: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.phoneNumber === formData.alternatePhoneNumber) {
+      // Display an error message or handle the error as needed
+      alert("Phone Number and Alternate Phone Number cannot be the same.");
+      return;
+    }
+    onSubmit(formData); // Submit the form data if validation passes
+  };
+
+
+  
   return (
     <div className=" bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:py-4 relative overflow-y-scroll">
       <div className="flex items-center justify-center h-full py-80">
@@ -23,6 +48,10 @@ function Form1() {
                   id="name"
                   name="name"
                   placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+
                 />
               </div>
               <div className=" flex flex-col gap-3">
@@ -38,40 +67,49 @@ function Form1() {
                   id="email"
                   name="email"
                   placeholder="email@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className=" flex flex-col gap-3">
                 <label
                   className=" text-[#125566] text-sm font-normal"
-                  htmlFor="number"
+                  htmlFor="phoneNumber"
                 >
                   Phone Number*
                 </label>
                 <input
                   className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none"
                   type="number"
-                  id="number"
-                  name="number"
+                  id="phoneNumber"
+                  name="phoneNumber"
                   placeholder="+91 "
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className=" flex flex-col gap-3">
                 <label
                   className=" text-[#125566] text-sm font-normal"
-                  htmlFor="Number"
+                  htmlFor="alternatePhoneNumber"
                 >
                   Alternate Phone Number*
                 </label>
                 <input
                   className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none"
                   type="number"
-                  id="Number"
-                  name="Number"
+                  id="alternatePhoneNumber"
+                  name="alternatePhoneNumber"
                   placeholder="+91"
+                  value={formData.alternatePhoneNumber}
+                  onChange={handleChange}
+                  required
                 />
               </div>
-              <div className=" text-end">
-                <button className=" text-white text-lg font-normal bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
+              <div className="text-end">
+                <button onClick={handleSubmit} className=" text-white text-lg font-normal bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
                   Submit
                 </button>
               </div>
