@@ -2,6 +2,7 @@ import { useContext, createContext, useState } from "react";
 import { auth } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth"; 
 import { useEffect } from "react";
+import Loader from "../Loader";
 
 
 const AuthContext = createContext();
@@ -11,7 +12,8 @@ export const UseAuthcontext = () => {
     return useContext(AuthContext)
 }
 export function UserAuthContextProvider({ children }) {
-    const [user , setuser ] = useState(null)
+    const [user, setuser] = useState(null)
+    const [loading, setLoading] = useState(true);
 
     async function GoggleSignIn() {
         const provider = new GoogleAuthProvider();
@@ -30,7 +32,7 @@ export function UserAuthContextProvider({ children }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
-                console.log("currentUser is ",currentUser)
+                // console.log("currentUser is ",currentUser)
                 const userData = { userid: currentUser.uid, useremail: currentUser.email };
                 localStorage.setItem('user', JSON.stringify(userData));
                 setuser(true)
@@ -38,11 +40,16 @@ export function UserAuthContextProvider({ children }) {
                 localStorage.removeItem('user');
                 setuser(null)
             }
+            setLoading(false)
         });
         return () => {
             unsubscribe();
         };
     }, []);
+
+    if (loading) {
+        return <Loader></Loader>
+    }
     return <AuthContext.Provider value={{ GoggleSignIn , logoutUser, user }}>
         {children}
     </AuthContext.Provider>

@@ -18,7 +18,6 @@ import Submitted from "./Submitted";
 function Main() {
   const { logoutUser } = UseAuthcontext()
   const { Users, updateData } = useUserContext()
-  const navigate = useNavigate()
 
   const { selectedTitleTests, Tests, selectedLevel, setselectedLevel } = useTestcontext()
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -28,6 +27,7 @@ function Main() {
   const [congs, setCongs] = useState(false)
   const [isselected, setIsSelected] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [scoreSubmitted, setScoreSubmitted] = useState(localStorage.getItem('scoreSubmitted'));
 
   const [scores, setScores] = useState([]);
 
@@ -54,7 +54,10 @@ function Main() {
   }, [Users]);
 
 
-
+    /**  *************************************************
+     * Hanle Next Question Start
+     * *************************************************
+     *     */
 
   const handleNextQuestion = async () => {
     if (currentQuestion < questions.length - 1) {
@@ -90,44 +93,83 @@ function Main() {
       setScores([...scores, score]);
 
       const currentIndex = Tests.findIndex((test) => test.Level === selectedLevel);
-      console.log("currentIndex",currentIndex)
       const nextIndex = currentIndex + 1;
       if (nextIndex < Tests.length) {
         setCongratulationsPopup(true)
         // setselectedLevel(Tests[nextIndex].Level);
-      } else {
+      }
+      else {
         try {
-          setLoading(true)
+          setLoading(true);
           const userString = localStorage.getItem('user');
           // Parse the user object string to JSON
           const user = JSON.parse(userString);
           // Get the userid from the user object
           const userid = user.userid;
           console.log("userid", userid);
+
+          // Check if the score has already been submitted
+          if (scoreSubmitted) {
+            console.log("Score already submitted");
+            setCongs(true);
+            setLoading(false);
+            return;
+          }
           const userRef = doc(db, "Users", userid);
           const userSnap = await getDoc(userRef);
           if (userSnap.exists()) {
             await updateDoc(userRef, {
               Level: selectedLevel,
               uid: userid,
-              scores: [...scores, score] ,
+              scores: [...scores, score],
             });
           }
-          updateData(userid, { Level: selectedLevel, scores: [...scores, score] })
-          setLoading(false)
+          updateData(userid, { Level: selectedLevel, scores: [...scores, score] });
+
+          // Set the flag to indicate that the score has been submitted
+          localStorage.setItem('scoreSubmitted', 'true');
+
+          setLoading(false);
           setCongs(true);
         } catch (error) {
-          console.log("Error in last ", error)
+          console.log("Error in last ", error);
         }
       }
     }
   };
+
+  /**  *************************************************
+     * Hanle Next Question End
+     * *************************************************
+     *     */
+
+
+  /**  *************************************************
+     * Hanle PreviQuestion Question Start
+     * *************************************************
+     *     */
+
+
   const handlePrevQuestion = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
       setIsSelected(true)
     }
   };
+
+
+  /**  *************************************************
+    * Hanle PreviQuestion Question end
+    * *************************************************
+    *     */
+  
+
+
+  /**  *************************************************
+         Hanle Option  Click  Start
+      **************************************************
+       */
+
 
   const [selectedOption, setSelectedOption] = useState(Array.from({ length: questions.length }, () => null));
   const handleOptionClick = (index) => {
@@ -137,7 +179,16 @@ function Main() {
     setIsSelected(true)
   };
 
+  /**  *************************************************
+    Hanle Option  Click  End
+    *************************************************
+        */
 
+
+  
+
+
+  // Set The States to null 
   useEffect(() => {
     setCurrentQuestion(0);
     setIsSelected(false);
@@ -155,8 +206,15 @@ function Main() {
     // }
   };
 
+
+
+  /**  *************************************************
+    * Hanle Form Data  Submit  Start
+    * *************************************************
+    *     */
+
   async function handleFormSubmit(formData) {
-    console.log("Form data:", formData);
+    // console.log("Form data:", formData);
     setLoading(true);
     SetformPopup(false);
     const userString = localStorage.getItem('user');
@@ -164,7 +222,7 @@ function Main() {
     const user = JSON.parse(userString);
     // Get the userid from the user object
     const userid = user.userid;
-    console.log("userid", userid);
+    // console.log("userid", userid);
     const formDataKeyValue = Object.entries(formData).reduce(
       (acc, [key, value]) => {
         return { ...acc, [key]: value };
@@ -202,6 +260,13 @@ function Main() {
     }
   }
 
+
+  /**  *************************************************
+      Hanle Form Data  Submit  End
+     * *************************************************
+          */
+
+
   if (loading) {
     return <Loader></Loader>
   }
@@ -210,12 +275,10 @@ function Main() {
     return <Submitted></Submitted>
   }
 
-
-
   return (
     <>
       {selectedLevel === 0 && <LevelOne></LevelOne>}
-      {selectedLevel !== 0 && !CongratulationsPopup && !formPopup && <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
+      {selectedLevel !== 0 && !CongratulationsPopup && !formPopup && !scoreSubmitted  ?  <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
         {congs === true ? (
           <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100">
             <div>
@@ -340,7 +403,32 @@ function Main() {
           </div>
         </div>
       </div>
-      }
+        : scoreSubmitted  ? <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
+          <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100">
+            <div>
+              <img src="./images/svg/trophy.svg" alt="Golden trophy" />
+            </div>
+            <h3 className=" text-black font-medium text-2xl mt-3">
+              Congratulations
+            </h3>
+            <p className=" text-black text-sm font-normal my-2">
+              You have completed the test.
+            </p>
+            <div
+              className="w-full"
+              onClick={() => {
+
+                setCongs(false)
+                setResult(true)
+              }
+              }
+            >
+              <h6 className="text-white font-normal text-2xl bg-[#125566] rounded-lg text-center p-2">
+                Okay
+              </h6>
+            </div>
+          </div>  
+        </div> : null} 
       {(selectedLevel === 1 && CongratulationsPopup === true) ? <LevelThree onClose={handleCongrasultaionClose} /> : (selectedLevel >= 2 && CongratulationsPopup === true) ? <LevelTwo onClose={handleCongrasultaionClose} /> : null}
       {(selectedLevel === 1 && !CongratulationsPopup && formPopup) ? <Form1 onSubmit={handleFormSubmit} /> : (selectedLevel === 2 && !CongratulationsPopup && formPopup) ? <Form2 onSubmit={handleFormSubmit} /> : (selectedLevel === 3 && !CongratulationsPopup && formPopup) ? <Form3 onSubmit={handleFormSubmit} /> : null}
     </>

@@ -15,23 +15,24 @@ function Submitted() {
     let data = Users.filter((Data) => Data.id === userid)
     setUserData(data)
   }, [Users]);
-  console.log("user DAta",userData)
+  // console.log("user DAta",userData)
 
   let totalCorrectAnswers = 0;
   let totalQuestions = 0;
-  let totalCorrectAnswerPercentage;
+  let totalCorrectAnswerPercentage = 0;
 
   if (userData.length > 0) {
     userData[0].scores.forEach((score) => {
       totalCorrectAnswers += score.correctAnswers;
       totalQuestions += score.totalQuestions;
     });
-    totalCorrectAnswerPercentage = (totalCorrectAnswers / totalQuestions) * 100;
+    
+    if (totalQuestions > 0) {
+      totalCorrectAnswerPercentage = (totalCorrectAnswers / totalQuestions) * 100;
+    }
   }
 
-
   // Calculate total correct answer percentage
-
 
 
   return (
@@ -60,7 +61,7 @@ function Submitted() {
               Score : {totalCorrectAnswerPercentage.toFixed(2)} %
             </h1>
             <h5 className="text-black font-medium text-lg lg:text-2xl my-4 lg:my-5 ">
-              You are on Level  
+              You are on Level  {Tests.length}  
             </h5>
             <p className="text-black font-normal text-base lg:text-xl">
               Your Message goes here......
