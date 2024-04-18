@@ -14,6 +14,11 @@ function Form2({ onSubmit }) {
   };
 
   const handleSubmit = (e) => {
+    if (Object.values(formData).some(value => value.trim() === "")) {
+      // Display an error message or handle the error as needed
+      alert("Please fill in all fields.");
+      return;
+    }
     e.preventDefault();
     onSubmit(formData); // Submit the form data if validation passes
   };

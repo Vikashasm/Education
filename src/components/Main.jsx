@@ -27,7 +27,7 @@ function Main() {
   const [congs, setCongs] = useState(false)
   const [isselected, setIsSelected] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [scoreSubmitted, setScoreSubmitted] = useState(localStorage.getItem('scoreSubmitted'));
+  const [isFormSubmit, setIsFormSubmit] = useState(false);
 
   const [scores, setScores] = useState([]);
 
@@ -48,8 +48,17 @@ function Main() {
     }
 
     const userScores = Users.find(user => user.uid === userid)?.scores;
+    const userData = Users.filter(user => user.id === userid)
+    console.log(userData)
     if (userScores) {
       setScores(userScores);
+    }
+
+    if (userData.length > 0 && userData[0].hasOwnProperty('isFormSubmit') && userData[0].isFormSubmit) {
+      console.log("isFormSubmit is present and true");
+      setIsFormSubmit(true);
+    } else {
+      console.log("isFormSubmit is not present or false");
     }
   }, [Users]);
 
@@ -107,28 +116,26 @@ function Main() {
           // Get the userid from the user object
           const userid = user.userid;
           console.log("userid", userid);
-
-          // Check if the score has already been submitted
-          if (scoreSubmitted) {
-            console.log("Score already submitted");
-            setCongs(true);
-            setLoading(false);
-            return;
-          }
+          
           const userRef = doc(db, "Users", userid);
           const userSnap = await getDoc(userRef);
           if (userSnap.exists()) {
+            const userData = userSnap.data();
+            if (userData.isFormSubmit) {
+              console.log("Form already submitted");
+              setLoading(false);
+              setCongs(true);
+              return;
+            }
             await updateDoc(userRef, {
               Level: selectedLevel,
               uid: userid,
               scores: [...scores, score],
+              isFormSubmit:true,
             });
+            setIsFormSubmit(true);
           }
-          updateData(userid, { Level: selectedLevel, scores: [...scores, score] });
-
-          // Set the flag to indicate that the score has been submitted
-          localStorage.setItem('scoreSubmitted', 'true');
-
+          updateData(userid, { Level: selectedLevel, scores: [...scores, score], isFormSubmit: true, });
           setLoading(false);
           setCongs(true);
         } catch (error) {
@@ -166,7 +173,7 @@ function Main() {
 
 
   /**  *************************************************
-         Hanle Option  Click  Start
+          Hanle Option  Click  Start
       **************************************************
        */
 
@@ -240,7 +247,7 @@ function Main() {
           ...formDataKeyValue,
           scores,
         });
-        updateData(userid, { Level: selectedLevel, scores: scores,uid : userid })
+        updateData(userid, { Level: selectedLevel + 1, scores: scores,uid : userid })
       } else {
         await setDoc(userRef, {
           Level: selectedLevel + 1,
@@ -278,7 +285,7 @@ function Main() {
   return (
     <>
       {selectedLevel === 0 && <LevelOne></LevelOne>}
-      {selectedLevel !== 0 && !CongratulationsPopup && !formPopup && !scoreSubmitted  ?  <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
+      {selectedLevel !== 0 && !CongratulationsPopup && !formPopup && !isFormSubmit  ?  <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
         {congs === true ? (
           <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100">
             <div>
@@ -403,7 +410,7 @@ function Main() {
           </div>
         </div>
       </div>
-        : scoreSubmitted  ? <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
+        : isFormSubmit ? <div className="bg_img min-h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative">
           <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100">
             <div>
               <img src="./images/svg/trophy.svg" alt="Golden trophy" />
