@@ -20,10 +20,10 @@ import Form2 from "./FormComponents/Form2";
 import Form3 from "./FormComponents/Form3";
 import LevelOne from "./MsgComponents/LevelOne";
 import LevelTwo from "./MsgComponents/LevelTwo";
-import LevelThree from "./MsgComponents/LevelThree";
+import Loader from "./Loader";
 
 function App() {
-  const navigate = useNavigate();
+
   const { user } = UseAuthcontext();
   return (
     <Routes>
@@ -35,8 +35,7 @@ function App() {
       ) : (
         <>
           <Route path="/" element={<Layout />}>
-            <Route index element={<LevelTwo/>} />
-            <Route path="result" element={<Submitted />} />
+            <Route index element={<Main/>} />
           </Route>
         </>
       )}

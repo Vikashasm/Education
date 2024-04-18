@@ -1,19 +1,21 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { collection, onSnapshot, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot, getDocs ,doc,getDoc} from 'firebase/firestore';
+import { UseAuthcontext } from './GoggleAuth';
 import { db } from '../firebase';
+import { useUserContext } from './GetUsers';  
 const TestContext = createContext()
 
 export const useTestcontext = () => {
-    return useContext(TestContext);
+    return useContext(TestContext); 
 }
 
-
 export const TestContextProvider = ({ children }) => {
+    const { user } = UseAuthcontext();
     const [Tests, setTests] = useState([])
     const [isdatafetched, setIsDataFetched] = useState(false)
     const [selectedLevel, setselectedLevel] = useState(() => {
         const storedLevel = localStorage.getItem('selectedLevel');
-        return storedLevel ? storedLevel : (Tests.length > 0 ? Tests[0].Level : null);
+        return storedLevel ? parseInt(storedLevel) : 0;
     });
     useEffect(() => {
         const fetchTests = async () => {
@@ -30,7 +32,6 @@ export const TestContextProvider = ({ children }) => {
             }
         }
 
-
         if (!isdatafetched) {
             fetchTests();
         }
@@ -41,7 +42,6 @@ export const TestContextProvider = ({ children }) => {
         return () => unsubscribe();
     }, [isdatafetched])
 
-
     useEffect(() => {
         localStorage.setItem('selectedLevel', selectedLevel);
     }, [selectedLevel]);
@@ -49,22 +49,49 @@ export const TestContextProvider = ({ children }) => {
     const memodata = useMemo(() => Tests, [Tests])
 
     const selectedTitleTests = useMemo(() => {
-        if (!selectedLevel && Tests.length > 0) {
-            setselectedLevel(Tests[0].Level);
-            return [Tests[0]];
+        if (selectedLevel === 0 && Tests.length > 0) {
+            return  [];
         }
         return Tests.filter(test => test.Level === parseInt(selectedLevel));
     }, [Tests, selectedLevel]);
 
-    useEffect(() => {
-        localStorage.setItem('selectedLevel', selectedLevel);
-    }, [selectedLevel]);
 
-    //  reutrn context 
+    // Fetch user-specific data from Firestore
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const userString = localStorage.getItem('user');
+            // Parse the user object string to JSON
+            const user = JSON.parse(userString);
+            // Get the userid from the user object
+            const userid = user.userid;
+            if (user !== null) {
+                try {
+                    const userRef = doc(db, 'Users', userid);
+                    const userSnapshot = await getDoc(userRef);
+                    if (userSnapshot.exists()) {
+                        const userData = userSnapshot.data();
+                        // Update state with user-specific data
+                        setselectedLevel(userData.Level);
+                        // Add other user-specific data to state as needed
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        };
+
+        fetchUserData();
+    }, [user]);
+
+
+
+
+    
+    //  return context 
     return (
         <TestContext.Provider value={{ Tests: memodata, selectedLevel, setselectedLevel, selectedTitleTests }}>
             {children}
         </TestContext.Provider>
     )
-
 }
+
