@@ -26,7 +26,7 @@ function Sidebar() {
           })}
         </div>
       </div>
-      <div className=" bg-black flex justify-between items-center w-full px-5 py-5 rounded-t-2xl fixed bottom-0 z-30 md:hidden">
+      <div className=" bg-white flex  justify-evenly gap-2 items-center left-[50%] -translate-x-2/4 w-[90%]  px-5 py-5 rounded-[30px] fixed bottom-[20px] z-30 md:hidden">
         {Tests.map((data) => {
           const isCurrentLevel = data.Level === parseInt(selectedLevel);
           const isPreviousLevel = data.Level < parseInt(selectedLevel);
@@ -37,18 +37,18 @@ function Sidebar() {
               className="flex flex-col items-center justify-center"
             >
               <div
-                className={`w-14 h-14 rounded-full flex flex-col items-center justify-center text-sm font-normal ${
+                className={`w-[60px] h-[60px] rounded-full flex flex-col items-center justify-center text-sm font-normal ${
                   isCurrentLevel
-                    ? "bg-white text-black  border-[3px] border-[#125566] "
+                    ? "bg-[#10C500] text-white"
                     : isPreviousLevel
                     ? "bg-white text-black"
-                    : "bg-[#66BCB4] text-black cursor-not-allowed"
+                    : "bg-[#FF2000] text-white cursor-not-allowed"
                 }`}
               >
                 <span>Stage</span>
                 {data.Level}
               </div>
-              <p className=" text-sm font-normal text-white mt-2">
+              <p className=" text-sm font-normal text-black mt-2">
                 {data.LevelTitle}
               </p>
             </NavLink>

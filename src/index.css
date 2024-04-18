@@ -16,8 +16,13 @@
 }
 
 .min_vh_calc {
-  min-height: calc(100vh - 300px);
+  height: 700px;
 }
+
+.height_calc {
+  height: calc(100% - 50px);
+}
+
 .scale {
   transition: all 1s;
   transform: scale(1.4);

@@ -16,18 +16,27 @@ function LevelThree({ onClose }) {
             alt="party_celebration"
           />
 
-          <h1 className=" text-[#125566] text-4xl font-medium text-center ">
+          <h1 className=" text-[#FF2000] text-4xl font-bold text-center ">
             Congrats!
           </h1>
           <h2 className=" text-[#125566] text-2xl font-medium text-center mt-3">
             You've conquered Level 01!
           </h2>
-          <p className=" font-normal text-lg text-center text-[#909090] my-7">
+          <p className=" font-normal text-lg text-center text-black my-7">
             Your excitement is like finding a rare Pokémon – not everyone's got
             that kind of energy!
           </p>
-          <div onClick={() => onClose()} className=" text-end">
-            <button className=" text-white text-lg font-normal bg-[#FF725E] md:bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
+          <div className=" flex justify-center">
+            <img
+              className="md:hidden"
+              width="194px"
+              height='260px'
+              src="images/svg/dance3_group.svg"
+              alt="dance_group"
+            />
+          </div>
+          <div onClick={() => onClose()} className=" text-end mt-3">
+            <button className=" text-white text-lg font-normal bg-[#FF2000] md:bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
               Proceed
             </button>
           </div>

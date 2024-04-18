@@ -18,25 +18,32 @@ function LevelTwo({ onClose }) {
         alt="party_celebration"
       /> */}
       <div className="flex items-center justify-center h-full md:py-0">
-        <div className=" bg-white rounded-[20px] p-10  w-[86%] md:w-[460px]">
-          <h1 className=" text-[#125566] text-4xl font-medium text-center mt-3">
+        <div className=" bg-white rounded-[20px] py-10 px-5  w-[88%] md:w-[460px]">
+          <h1 className=" text-[#FF2000] text-4xl font-bold text-center mt-3">
             {selectedLevel === 2 ? "Way to go! " : "Big Congrats!"}
           </h1>
-          <p className=" font-medium text-[#909090] text-2xl text-center mb-5 mt-4 md:my-7">
+          <p className=" font-medium text-black text-lg text-center mb-5 mt-4 md:my-7 px-2">
             {selectedLevel === 2
               ? "You've conquered the second round of awesomeness!"
               : "You've Officially Joined the rare league of finishers."}
           </p>
           <div className=" flex justify-center items-center">
             <img
+              className=" hidden md:flex"
               width="90%"
               src="images/svg/dance_group.svg"
               alt="dance_group"
             />
+            <img
+              className="md:hidden"
+              width="90%"
+              src="images/svg/dance2_group.svg"
+              alt="dance_group"
+            />
           </div>
           <div onClick={onClose} className=" text-end mt-5">
-            <button className=" text-white text-lg font-normal bg-[#FF725E] md:bg-[#66BCB4]  rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
-              Move to Level 03
+            <button className=" text-white text-lg font-normal bg-[#FF2000] md:bg-[#66BCB4]  rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
+              Move to Final Step
             </button>
           </div>
         </div>

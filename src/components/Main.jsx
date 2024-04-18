@@ -22,12 +22,12 @@ function Main() {
   const { selectedTitleTests, Tests, selectedLevel, setselectedLevel } =
     useTestcontext();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [CongratulationsPopup, setCongratulationsPopup] = useState(false)
-  const [formPopup, SetformPopup] = useState(false)
-  const [resultpopup, setResult] = useState(false)
-  const [congs, setCongs] = useState(false)
-  const [isselected, setIsSelected] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [CongratulationsPopup, setCongratulationsPopup] = useState(false);
+  const [formPopup, SetformPopup] = useState(false);
+  const [resultpopup, setResult] = useState(false);
+  const [congs, setCongs] = useState(false);
+  const [isselected, setIsSelected] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isFormSubmit, setIsFormSubmit] = useState(false);
 
   const [scores, setScores] = useState([]);
@@ -47,14 +47,18 @@ function Main() {
       setScores(storedScores);
     }
 
-    const userScores = Users.find(user => user.uid === userid)?.scores;
-    const userData = Users.filter(user => user.id === userid)
+    const userScores = Users.find((user) => user.uid === userid)?.scores;
+    const userData = Users.filter((user) => user.id === userid);
     // console.log(userData)
     if (userScores) {
       setScores(userScores);
     }
 
-    if (userData.length > 0 && userData[0].hasOwnProperty('isFormSubmit') && userData[0].isFormSubmit) {
+    if (
+      userData.length > 0 &&
+      userData[0].hasOwnProperty("isFormSubmit") &&
+      userData[0].isFormSubmit
+    ) {
       // console.log("isFormSubmit is present and true");
       setIsFormSubmit(true);
     } else {
@@ -122,7 +126,7 @@ function Main() {
           // Get the userid from the user object
           const userid = user.userid;
           console.log("userid", userid);
-          
+
           const userRef = doc(db, "Users", userid);
           const userSnap = await getDoc(userRef);
           if (userSnap.exists()) {
@@ -137,11 +141,15 @@ function Main() {
               Level: selectedLevel,
               uid: userid,
               scores: [...scores, score],
-              isFormSubmit:true,
+              isFormSubmit: true,
             });
             setIsFormSubmit(true);
           }
-          updateData(userid, { Level: selectedLevel, scores: [...scores, score], isFormSubmit: true, });
+          updateData(userid, {
+            Level: selectedLevel,
+            scores: [...scores, score],
+            isFormSubmit: true,
+          });
           setLoading(false);
           setCongs(true);
         } catch (error) {
@@ -247,7 +255,11 @@ function Main() {
           ...formDataKeyValue,
           scores,
         });
-        updateData(userid, { Level: selectedLevel + 1, scores: scores,uid : userid })
+        updateData(userid, {
+          Level: selectedLevel + 1,
+          scores: scores,
+          uid: userid,
+        });
       } else {
         await setDoc(userRef, {
           Level: selectedLevel + 1,
@@ -318,12 +330,12 @@ function Main() {
               </div>
             </div>
           ) : null}
-          <div className=" flex flex-col overflow-y-scroll items-center md:justify-center py-7 md:py-4  lg:gap-10 gap-8 h-full ">
-            <h6 className=" font-normal text-sm lg:text-base text-white lg:max-w-[61%] max-w-[80%] mb-4 lg:mb-0">
+          <div className=" flex flex-col overflow-y-scroll items-center  justify-center md:py-4 pt-3 lg:gap-10 gap-8 height_calc md:h-full">
+            <h6 className=" font-normal text-sm lg:text-base text-white lg:max-w-[61%] max-w-[80%] lg:mb-0">
               {selectedTitleTests.length > 0 &&
                 selectedTitleTests[0].instructionText}
             </h6>
-            <div className=" md:bg-[#66bcb4] bg-[#FFFFFF99] z-50 py-5 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc">
+            <div className=" md:bg-[#66bcb4] bg-[#FFFFFF] z-50 py-5 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc md:h-auto">
               <div
                 className="hidden md:flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2"
                 id="maindiv"
@@ -346,14 +358,20 @@ function Main() {
                     );
                   })}
               </div>
-              <div className=" md:text-md lg:text-2xl text-black font-medium  px-9 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
+              <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
+                <p className=" text-center font-medium text-base text-black md:hidden">
+                  “ Unlock the true vibes of these idioms! 🤓 Can you decode
+                  their SECRET MEANINGS? “
+                </p>
+                <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
                 <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
                   {" "}
                   Question {currentQuestion + 1} :
                 </span>
                 <span id="text">{question.question}</span>
               </div>
-              <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-8 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-10 overflow-hidden">
+
+              <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">
                 {/* {questions[0].part1[state].answeroption.map((value, i) => {
               return (
                 <div className="w-full lg:w-5/12" key={i}>
@@ -379,8 +397,8 @@ function Main() {
                         onClick={() => handleOptionClick(i)}
                         className={`w-full h-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
                           selectedOption[currentQuestion] === i
-                            ? "md:bg-[#125566] bg-[#FF725E] text-white"
-                            : "bg-white"
+                            ? "md:bg-[#125566] bg-[#FF2000] text-white"
+                            : "bg-white border border-[#00000033]"
                         }`}
                       >
                         {option.optionNo + " " + option.answertext}
@@ -388,7 +406,7 @@ function Main() {
                     </div>
                   ))}
               </div>
-              <div className=" flex rounded-b-2xl absolute bottom-0 w-full">
+              <div className=" flex flex-col pb-5 md:pb-0 gap-3 md:gap-0 md:flex-row  rounded-b-2xl absolute bottom-0 w-full px-5 md:px-0">
                 <button
                   id="prevbuton"
                   onClick={handlePrevQuestion}
@@ -396,7 +414,7 @@ function Main() {
                     currentQuestion < 1
                       ? "pointer-events-none opacity-30"
                       : "pointer-events-auto opacity-100"
-                  } font-normal text-black md:text-md lg:text-2xl w-2/4  text-center py-2 lg:py-3 rounded-bl-xl md:rounded-bl-3xl bg-white`}
+                  } font-normal text-black md:text-md lg:text-2xl w-full md:w-2/4  text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-bl-3xl bg-[#E0E0E0]`}
                 >
                   Previous Question
                 </button>
@@ -409,7 +427,7 @@ function Main() {
                       ? "pointer-events-auto opacity-100"
                       : "pointer-events-auto opacity-100"
                   }
-                 font-normal md:text-black md:text-md lg:text-2xl w-2/4 text-center py-2 lg:py-3 rounded-br-xl md:rounded-br-3xl  md:bg-[#FFCE32] bg-[#FF725E] text-white`}
+                 font-normal md:text-black md:text-md lg:text-2xl w-full md:w-2/4 text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-br-3xl  md:bg-[#FFCE32] bg-[#FF2000] text-white`}
                   onClick={handleNextQuestion}
                 >
                   {currentQuestion === questions?.length - 1 && isselected

@@ -13,8 +13,8 @@ function LevelOne() {
           <h2 className=" text-[#125566] text-2xl font-medium text-center">
             Welcome to the
           </h2>
-          <h1 className=" text-[#125566] text-4xl font-medium text-center mt-3">
-            English Test
+          <h1 className=" text-[#FF2000] text-4xl font-medium text-center mt-3">
+            ETP English Level Test
           </h1>
           <p className=" font-normal text-lg text-center my-7">
             We've got <span className=" font-bold">{Tests.length} levels</span>{" "}
@@ -25,7 +25,7 @@ function LevelOne() {
           <div className=" text-end">
             <button
               onClick={() => handleContinue()}
-              className=" text-white text-lg font-normal bg-[#FF725E] md:bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center"
+              className=" text-white text-lg font-normal bg-[#FF2000] md:bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center"
             >
               Continue
             </button>

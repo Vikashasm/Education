@@ -25,7 +25,7 @@ function Form3({onSubmit }) {
     <div className=" bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:py-4 relative overflow-y-scroll">
       <div className="flex items-center justify-center h-full py-80 md:py-20">
         <div className=" bg-white rounded-[20px] p-10 lg:p-6 xl:p-10 w-[90%] md:w-[460px]">
-          <h2 className=" text-[#125566] text-xl font-medium mb-8 lg:mb-6 xl:mb-8">
+          <h2 className=" text-[#FF2000] text-center text-xl font-medium mb-8 lg:mb-6 xl:mb-8">
             Before you dive into your results, hang tight for just two more
             questions!
           </h2>
@@ -68,7 +68,7 @@ function Form3({onSubmit }) {
               <div className=" text-end">
                 <button
                   onClick={handleSubmit}
-                  className=" text-white text-lg font-normal md:bg-[#66BCB4] bg-[#FF725E] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center"
+                  className=" text-white text-lg font-normal md:bg-[#66BCB4] bg-[#FF2000] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center"
                 >
                   Submit for Final Result
                 </button>

@@ -47,17 +47,7 @@ function Login() {
             Please Login / Sign up before proceeding to the test.
           </p>
         </div>
-        <div className=" bg-[#F5F5F5] md:bg-[#202125]  min-h-screen w-full md:w-5/12 lg-w-5/12 px-8 relative">
-          <img
-            className=" absolute md:hidden top-0 left-0"
-            src="/images/png/Group.png"
-            alt="img"
-          />
-          <img
-            className=" absolute md:hidden bottom-0 right-0"
-            src="/images/png/Group2.png"
-            alt="img"
-          />
+        <div className=" bg-[white] md:bg-[#202125]  min-h-screen w-full md:w-5/12 lg-w-5/12 px-8 ">
           <div className="flex flex-col items-center justify-center min-h-screen py-8 xl:px-20  relative z-10">
             <div className=" text-center relative md:hidden w-[80%]">
               <div className=" flex justify-center">
@@ -84,14 +74,19 @@ function Login() {
               <h1 className="text-center text-white font-bold text-xl lg:text-2xl hidden md:inline">
                 LOGIN TO YOUR ACCOUNT
               </h1>
-              <div className=" bg-[#FF725E] px-[20px] py-[40px] rounded-[20px] md:hidden mt-8 w-full">
+              <div className=" bg-[#FF2000] px-[20px] py-[40px] rounded-[20px] md:hidden  w-full">
                 <h5 className="text-white text-lg font-normal md:hidden text-center">
                   Welcome to
                 </h5>
-                <h2 className="  text-[#FFCE32] font-bold text-2xl md:hidden mt-3 text-center">
-                  ENGLISH LEVEL TEST
+                <h2 className="  text-white  font-bold text-2xl md:hidden mt-3 text-center">
+                  ETP English Level Test!
                 </h2>
-                <h1 className="text-center text-white font-normal text-xl lg:text-2xl mt-856  md:hidden my-8">
+                <p className=" text-sm font-normal text-center text-white mt-3 w-[85%] mx-auto">
+                  Get set for an exhilarating journey through this thrilling
+                  game of English proficiency. Are you prepared to put your
+                  skills to the test? Let the English adventure commence!
+                </p>
+                <h1 className="text-center text-white font-bold text-xl lg:text-2xl mt-856  md:hidden my-3">
                   LOGIN TO YOUR ACCOUNT
                 </h1>
                 <button
