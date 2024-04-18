@@ -59,12 +59,15 @@ export const TestContextProvider = ({ children }) => {
     // Fetch user-specific data from Firestore
     useEffect(() => {
         const fetchUserData = async () => {
+            let userid =''
             const userString = localStorage.getItem('user');
-            // Parse the user object string to JSON
-            const user = JSON.parse(userString);
-            // Get the userid from the user object
-            const userid = user.userid;
-            if (user !== null) {
+            if (userString) {
+                // Parse the user object string to JSON
+                const user = JSON.parse(userString);
+                // Get the userid from the user object
+                userid = user.userid;
+            }
+            if (user !== null && userid !== null) {
                 try {
                     const userRef = doc(db, 'Users', userid);
                     const userSnapshot = await getDoc(userRef);
@@ -79,13 +82,8 @@ export const TestContextProvider = ({ children }) => {
                 }
             }
         };
-
         fetchUserData();
     }, [user]);
-
-
-
-
     
     //  return context 
     return (

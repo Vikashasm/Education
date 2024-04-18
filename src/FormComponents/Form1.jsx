@@ -16,13 +16,19 @@ function Form1({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (Object.values(formData).some(value => value.trim() === "")) {
+      // Display an error message or handle the error as needed
+      alert("Please fill in all fields.");
+      return;
+    }
     if (formData.phoneNumber === formData.alternatePhoneNumber) {
       // Display an error message or handle the error as needed
       alert("Phone Number and Alternate Phone Number cannot be the same.");
       return;
     }
     onSubmit(formData); // Submit the form data if validation passes
-  };
+  }
+  
 
 
   

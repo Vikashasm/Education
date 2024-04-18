@@ -2,7 +2,7 @@ import React from 'react'
 import { useTestcontext } from '../Context/GetallTest';
 function LevelOne() {
   const { Tests, setselectedLevel, selectedLevel } = useTestcontext();
-  console.log("selectedLevel ",selectedLevel)
+  // console.log("selectedLevel ",selectedLevel)
   async function handleContinue() {
     setselectedLevel(1)
   }

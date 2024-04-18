@@ -36,35 +36,38 @@ function Submitted() {
 
 
   return (
-    <div className="bg_img z-10  pb-36 md:py-0 overflow-hidden h-screen w-full md:w-[79.3%]  relative overflow-y-scroll">
+    <div className="bg_img z-10  pt-5 md:pt-0  pb-36 md:py-0   overflow-hidden h-screen w-full md:w-[79.3%]  relative overflow-y-scroll    sm:after:contents-[]  sm:after:bg-[#0000008A] sm:after:absolute sm:after:h-full sm:after:w-full sm:after:top-0 sm:after:left-0">
       <div>
-        <div className=" flex items-center justify-center h-full relative">
+        <div className=" flex items-center justify-center sm:h-full relative overflow-y-scroll md:overflow-visible">
           <img
-            className=" absolute  top-[-50px] hidden sm:inline"
+            className=" absolute -top-10 md:top-[40px] lg:top-[0px] hidden sm:flex z-10"
             src="/images/png/holiday.png"
             alt="holiday"
           />
-          <div className=" bg-[#66bcb4] lg:mt-24 py-8 lg:py-12 rounded-3xl  relative max-w-[92%] lg:max-w-[88%] xl:max-w-[65%] flex flex-col items-center border-[5px] border-white overflow-x-hidden">
+          <div className=" bg-[#66bcb4] z-20 lg:mt-24 py-8 lg:py-12 rounded-3xl  relative max-w-[92%] lg:max-w-[88%] xl:max-w-[65%] flex flex-col items-center border-[5px] border-white  md:overflow-x-hidden">
             <img
               id="oneimg"
-              className=" absolute left-[100%] top-[-100%] slide_img hidden lg:inline"
+              className=" absolute left-[-7%] top-[0%] slide_img hidden lg:inline"
               src="/images/svg/party_celebration.svg"
               alt="party_celebration"
             />
             <img
               id="twoimg"
-              className=" absolute right-[100%] top-[-100%] slide_img hidden lg:inline"
+              className=" absolute right-[-7%] top-[0%] slide_img hidden lg:inline"
               src="/images/svg/Rparty_celebration.svg"
               alt="party_celebration"
             />
             <div className=" text-center">
-              <h1 className=" text-black font-medium text-5xl lg:text-6xl ">
+              <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
                 Score : {totalCorrectAnswerPercentage.toFixed(2)} %
               </h1>
-              <h5 className="text-black font-medium text-lg lg:text-2xl my-4 lg:my-5 ">
+              <h1 className=" text-[42px]  font-bold text-[#455A64] text_shadow md:hidden">
+                Excellent <span className="block">Scorer</span>
+              </h1>
+              <h5 className="text-black font-medium text-lg lg:text-2xl my-4 lg:my-5 hidden md:block">
                 You are on Level {Tests.length}
               </h5>
-              <p className="text-black font-normal text-base lg:text-xl">
+              <p className="md:text-black text-white font-normal text-base lg:text-xl mt-5 md:mt-0">
                 Your Message goes here......
               </p>
             </div>
@@ -77,7 +80,7 @@ function Submitted() {
                       key={index}
                       className=" bg-white rounded-2xl p-4 lg:p-5 box_shadow w-[85%] sm:w-[45%] lg:w-5/12 "
                     >
-                      <h6 className="text-black font-bold text-xl text-center">
+                      <h6 className="md:text-black text-[#FF725E] font-bold text-xl text-center">
                         {data.title}
                       </h6>
                       <div className=" flex justify-between mt-3">
