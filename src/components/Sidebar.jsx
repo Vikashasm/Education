@@ -8,7 +8,7 @@ function Sidebar() {
     <>
       <div className=" hidden md:flex w-[25%]">
         <div className=" bg-[#125566] min-h-screen flex flex-col gap-4 ps-3 pt-3 w-full">
-          {Tests.map((data) => {
+          {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
             const isCurrentLevel = data.Level === parseInt(selectedLevel);
             const isPreviousLevel = data.Level < parseInt(selectedLevel);
             const isLockedLevel = data.Level > parseInt(selectedLevel);

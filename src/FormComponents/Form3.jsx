@@ -26,8 +26,7 @@ function Form3({onSubmit }) {
       <div className="flex items-center justify-center h-full py-80 md:py-20">
         <div className=" bg-white rounded-[20px] p-10 lg:p-6 xl:p-10 w-[90%] md:w-[460px]">
           <h2 className=" text-[#125566] text-xl font-medium mb-8 lg:mb-6 xl:mb-8">
-            Before you dive into your results, hang tight for just two more
-            questions!
+            Before you dive into your results, hang tight for just two more questions! 
           </h2>
           <form>
             <div className=" flex flex-col gap-8 lg:gap-5 xl:gap-8">
@@ -53,7 +52,7 @@ function Form3({onSubmit }) {
                   className=" text-[#125566] text-sm font-normal"
                   htmlFor="Age"
                 >
-                  how many trips around the sun have you completed?
+                  Also, spill the beans – how many trips around the sun have you completed?" I mean your Age.
                 </label>
                 <input
                   className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none"

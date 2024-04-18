@@ -14,7 +14,7 @@ function LevelOne() {
             Welcome to the
           </h2>
           <h1 className=" text-[#125566] text-4xl font-medium text-center mt-3">
-            English Test
+            English Game! 
           </h1>
           <p className=" font-normal text-lg text-center my-7">
             We've got <span className=" font-bold">{Tests.length} levels</span>{" "}

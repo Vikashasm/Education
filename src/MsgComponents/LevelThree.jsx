@@ -20,7 +20,7 @@ function LevelThree({ onClose }) {
             Congrats!
           </h1>
           <h2 className=" text-[#125566] text-2xl font-medium text-center mt-3">
-            You've conquered Level 01!
+            You've conquered Level 01! 
           </h2>
           <p className=" font-normal text-lg text-center text-[#909090] my-7">
             Your excitement is like finding a rare Pokémon – not everyone's got
@@ -28,7 +28,7 @@ function LevelThree({ onClose }) {
           </p>
           <div onClick={() => onClose()} className=" text-end">
             <button className=" text-white text-lg font-normal bg-[#FF725E] md:bg-[#66BCB4] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
-              Proceed
+              Move to Level 02
             </button>
           </div>
         </div>
