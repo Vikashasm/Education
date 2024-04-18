@@ -49,16 +49,16 @@ function Main() {
 
     const userScores = Users.find(user => user.uid === userid)?.scores;
     const userData = Users.filter(user => user.id === userid)
-    console.log(userData)
+    // console.log(userData)
     if (userScores) {
       setScores(userScores);
     }
 
     if (userData.length > 0 && userData[0].hasOwnProperty('isFormSubmit') && userData[0].isFormSubmit) {
-      console.log("isFormSubmit is present and true");
+      // console.log("isFormSubmit is present and true");
       setIsFormSubmit(true);
     } else {
-      console.log("isFormSubmit is not present or false");
+      // console.log("isFormSubmit is not present or false");
     }
   }, [Users]);
 
