@@ -20,6 +20,7 @@ import Form2 from "./FormComponents/Form2";
 import Form3 from "./FormComponents/Form3";
 import LevelOne from "./MsgComponents/LevelOne";
 import LevelTwo from "./MsgComponents/LevelTwo";
+import LevelThree from "./MsgComponents/LevelThree";
 
 function App() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function App() {
       ) : (
         <>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Form1/>} />
+            <Route index element={<LevelTwo/>} />
             <Route path="result" element={<Submitted />} />
           </Route>
         </>
