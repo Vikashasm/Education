@@ -2,7 +2,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { collection, onSnapshot, getDocs ,doc,getDoc} from 'firebase/firestore';
 import { UseAuthcontext } from './GoggleAuth';
 import { db } from '../firebase';
-import { useUserContext } from './GetUsers';  
+import { useUserContext } from './GetUsers'; 
+import Loader from '../Loader'; 
 const TestContext = createContext()
 
 export const useTestcontext = () => {
@@ -13,6 +14,7 @@ export const TestContextProvider = ({ children }) => {
     const { user } = UseAuthcontext();
     const [Tests, setTests] = useState([])
     const [isdatafetched, setIsDataFetched] = useState(false)
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedLevel, setselectedLevel] = useState(() => {
         const storedLevel = localStorage.getItem('selectedLevel');
         return storedLevel ? parseInt(storedLevel) : 0;
@@ -32,6 +34,8 @@ export const TestContextProvider = ({ children }) => {
                 })
             } catch (error) {
                 console.error(error)
+            } finally {
+                setIsLoading(false); // Set loading to false after fetching data
             }
         }
 
@@ -87,11 +91,13 @@ export const TestContextProvider = ({ children }) => {
         };
         fetchUserData();
     }, [user]);
+
+
     
     //  return context 
     return (
         <TestContext.Provider value={{ Tests: memodata, selectedLevel, setselectedLevel, selectedTitleTests, SetactiveComponent, activeComponent }}>
-            {children}
+            {isLoading ? <Loader></Loader>  :  children}
         </TestContext.Provider>
     )
 }
