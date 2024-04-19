@@ -9,7 +9,7 @@ import LevelThree from "../MsgComponents/LevelThree";
 import Form1 from "../FormComponents/Form1";
 import Form2 from "../FormComponents/Form2";
 import Form3 from "../FormComponents/Form3";
-import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase";
 import Loader from "../Loader";
 import { useUserContext } from "../Context/GetUsers";
@@ -65,6 +65,326 @@ function Main() {
       // console.log("isFormSubmit is not present or false");
     }
   }, [Users]);
+
+
+
+//   const addDAta = async () => {
+//     const Data =
+//     {
+
+//       questions: [
+//         {
+//           "question": "Choose the correct spelling of a person who assists in the commission of a crime, but who does not actually participate in the commission of the crime as a joint principal.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Acessory",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Accessory",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Accesory",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes the condition or quality of being true, correct, or exact; freedom from error or defect; precision or exactness; correctness.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Accuracy",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Accurecy",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Acurracy",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that means to cease to be seen; vanish from sight.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Disappear",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Dissapear",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Disapier",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that means to offer an excuse for some fault, insult, failure, or injury.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Apologise",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Apoligize",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Apologize",
+//               "iscorrect": true
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes a person or group of persons elected or appointed to perform some service or function, as to investigate, report on, or act upon a particular matter.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Committee",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Comittee",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Commitee",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes an act or circumstance of entering upon an action or state.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Begginning",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Beginning",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Begining",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes performing or functioning in the best possible manner with the least waste of time and effort; having and using requisite knowledge, skill, and industry; competent; capable.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Efficient",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Effichent",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Effecient",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes having suitable or sufficient skill, knowledge, experience, etc., for some purpose; properly qualified.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Competent",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Competant",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Compatent",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes a lack of adequate power, strength, or physical or mental ability; incapacity.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Disibility",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Desability",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Disability",
+//               "iscorrect": true
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes any proceeding, experience, or the like considered as a mode of anticipation for the future.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Preperation",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Preparation",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Perparation",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that means to persist in anything undertaken; maintain a purpose in spite of difficulty, obstacles, or discouragement; continue steadfastly.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Persevere",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Presevere",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Persevear",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that means to be pleasing to the receiver; satisfactory; agreeable; welcome.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Accepteble",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Accepptable",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Acceptable",
+//               "iscorrect": true
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that means without any name acknowledged, as that of author, contributor, or the like.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Anonimous",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Anonymous",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Anonymos",
+//               "iscorrect": false
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that means being essential, indispensable, or requisite.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Necesary",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Necessery",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Necessary",
+//               "iscorrect": true
+//             }
+//           ]
+//         },
+//         {
+//           "question": "Choose the correct spelling of the word that describes the manufactured goods bought and sold in any business.",
+//           "answeroption": [
+//             {
+//               "optionNo": "A.",
+//               "answertext": "Merchandise",
+//               "iscorrect": true
+//             },
+//             {
+//               "optionNo": "B.",
+//               "answertext": "Merchandice",
+//               "iscorrect": false
+//             },
+//             {
+//               "optionNo": "C.",
+//               "answertext": "Merchendise",
+//               "iscorrect": false
+//             }
+//           ]
+//         }
+//       ]
+
+
+// ,
+//       Level: 3,
+//       LevelTitle: "Spelling",
+//       instructionText: "Spell It Out: Let's Dive into Spelling Shenanigans!"
+//     }
+//     const docRef = await addDoc(collection(db, 'Test'), Data)
+//   }
+
+
 
   /**  *************************************************
    * Hanle Next Question Start
@@ -356,15 +676,18 @@ function Main() {
               </div>
               <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
                 <p className=" text-center font-medium text-base text-black md:hidden">
-                  “ Unlock the true vibes of these idioms! 🤓 Can you decode
-                  their SECRET MEANINGS? “
+                  {selectedTitleTests.length > 0 &&
+                    selectedTitleTests[0].instructionText}
                 </p>
                 <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
-                <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
-                  {" "}
-                  Question {currentQuestion + 1} :
-                </span>
-                <span id="text">{question.question}</span>
+                <div className="flex flex-wrap">
+                  <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
+                    {" "}
+                    Question {currentQuestion + 1} :
+                  </span>
+                  <span id="text">{question.question}</span>
+                </div>
+                {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
               </div>
 
               <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">

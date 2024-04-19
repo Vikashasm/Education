@@ -13,7 +13,7 @@ function LevelOne() {
           <h2 className=" text-[#125566] text-2xl font-medium text-center">
             Welcome to the
           </h2>
-          <h1 className=" text-[#FF2000] text-4xl font-medium text-center mt-3">
+          <h1 className=" text-[#FF2000] md:text-[#125566] text-4xl font-medium text-center mt-3">
             ETP English Level Test
           </h1>
           <p className=" font-normal text-lg text-center my-7">

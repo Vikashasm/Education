@@ -6,17 +6,17 @@ function LevelThree({ onClose }) {
       <div className="flex items-center justify-center h-full md:py-0">
         <div className=" bg-white rounded-[20px] py-10 px-5 lg:p-10  w-[86%] md:w-[460px] relative">
           <img
-            className=" hidden md:flex absolute left-0 lg:left-[-21%] top-[-34%]"
+            className=" hidden lg:flex absolute left-0 lg:left-[-21%] top-[-34%]"
             src="images/svg/party_celebration.svg"
             alt="party_celebration"
           />
           <img
-            className=" hidden md:flex absolute right-0 lg:right-[-21%] top-[-34%]"
+            className=" hidden lg:flex absolute right-0 lg:right-[-21%] top-[-34%]"
             src="images/svg/Rparty_celebration.svg"
             alt="party_celebration"
           />
 
-          <h1 className=" text-[#FF2000] text-4xl font-bold text-center ">
+          <h1 className=" text-[#FF2000] md:text-[#125566] text-4xl font-bold text-center ">
             Congrats!
           </h1>
           <h2 className=" text-[#125566] text-2xl font-medium text-center mt-3">
@@ -30,7 +30,7 @@ function LevelThree({ onClose }) {
             <img
               className="md:hidden"
               width="194px"
-              height='260px'
+              height="260px"
               src="images/svg/dance3_group.svg"
               alt="dance_group"
             />

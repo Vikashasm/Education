@@ -19,7 +19,7 @@ function LevelTwo({ onClose }) {
       /> */}
       <div className="flex items-center justify-center h-full md:py-0">
         <div className=" bg-white rounded-[20px] py-10 px-5  w-[88%] md:w-[460px]">
-          <h1 className=" text-[#FF2000] text-4xl font-bold text-center mt-3">
+          <h1 className=" text-[#FF2000] md:text-[#125566] text-4xl font-bold text-center mt-3">
             {selectedLevel === 2 ? "Way to go! " : "Big Congrats!"}
           </h1>
           <p className=" font-medium text-black text-lg text-center mb-5 mt-4 md:my-7 px-2">
