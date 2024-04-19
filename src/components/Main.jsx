@@ -654,7 +654,7 @@ function Main() {
                 <div className="flex flex-wrap">
                   <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
                     {" "}
-                    Question {currentQuestion + 1} :
+                      Question {currentQuestion + 1} / { questions.length}  :
                   </span>
                     <span id="text">{question.question}</span>
                     <br />
