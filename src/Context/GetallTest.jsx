@@ -17,6 +17,9 @@ export const TestContextProvider = ({ children }) => {
         const storedLevel = localStorage.getItem('selectedLevel');
         return storedLevel ? parseInt(storedLevel) : 0;
     });
+
+    const [activeComponent,SetactiveComponent] = useState(null)
+
     useEffect(() => {
         const fetchTests = async () => {
             let list = []
@@ -87,7 +90,7 @@ export const TestContextProvider = ({ children }) => {
     
     //  return context 
     return (
-        <TestContext.Provider value={{ Tests: memodata, selectedLevel, setselectedLevel, selectedTitleTests }}>
+        <TestContext.Provider value={{ Tests: memodata, selectedLevel, setselectedLevel, selectedTitleTests, SetactiveComponent, activeComponent }}>
             {children}
         </TestContext.Provider>
     )

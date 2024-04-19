@@ -36,6 +36,10 @@ function Main() {
     selectedTitleTests.length > 0 && selectedTitleTests[0].questions;
   const question = selectedTitleTests.length > 0 && questions[currentQuestion];
 
+  const totalQuestions = selectedTitleTests.length > 0 ? selectedTitleTests[0].questions.length : 0;
+  const questionsToShow = totalQuestions > 10 ? 10 : totalQuestions;
+  const remainingQuestions = totalQuestions - questionsToShow;
+
   useEffect(() => {
     const userString = localStorage.getItem("user");
     const user = JSON.parse(userString);
@@ -653,26 +657,43 @@ function Main() {
           <div className=" flex flex-col overflow-y-scroll items-center  justify-center md:py-4 pt-3 lg:gap-10 gap-8 height_calc md:h-full">
             <div className=" md:bg-[#66bcb4] bg-[#FFFFFF] z-50 py-5 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc md:h-auto">
               <div
-                className="hidden md:flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2"
+                className="hidden md:flex   sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
                 id="maindiv"
               >
-                {selectedTitleTests.length > 0 &&
-                  selectedTitleTests[0].questions.map((value, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className={`w-9 h-9 ${
-                          currentQuestion === index
-                            ? "scale-[1.4] bg-whiteborder-2 "
-                            : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                        }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
-                      >
-                        <p className=" text-sm font-normal text-slate-600">
-                          {index + 1}
-                        </p>
-                      </div>
-                    );
-                  })}
+                  {selectedTitleTests.length > 0 && (
+                    <>
+                      {currentQuestion <= 9 && (
+                        <>
+                          {Array.from({ length: questionsToShow }, (_, index) => index).map((index) => (
+                            <div
+                              key={index}
+                              className={`w-9 h-9 lg:mx-2  mx-2 ${currentQuestion === index
+                                  ? "scale-[1.4] bg-white border-2 "
+                                  : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
+                                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
+                            >
+                              <p className="text-sm font-normal text-slate-600">{index + 1}</p>
+                            </div>
+                          ))}
+                        </>
+                      )}
+                      {remainingQuestions > 0 && currentQuestion > 9 && (
+                        <div className="flex">
+                          {Array.from({ length: remainingQuestions }, (_, index) => index).map((index) => (
+                            <div
+                              key={index + questionsToShow}
+                              className={`w-9 h-9  lg:mx-2  mx-2 ${currentQuestion === index + questionsToShow
+                                  ? "scale-[1.4] bg-white border-2 "
+                                  : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
+                                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
+                            >
+                              <p className="text-sm font-normal text-slate-600">{index + questionsToShow + 1}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
               </div>
               <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
                 <p className=" text-center font-medium text-base text-black md:hidden">

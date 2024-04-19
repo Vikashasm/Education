@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTestcontext } from '../Context/GetallTest';
 function LevelOne() {
-  const { Tests, setselectedLevel, selectedLevel } = useTestcontext();
+  const { Tests, setselectedLevel, selectedLevel, SetactiveComponent } = useTestcontext();
   // console.log("selectedLevel ",selectedLevel)
   async function handleContinue() {
     setselectedLevel(1)
   }
+
+  useEffect(() => {
+    SetactiveComponent(true); // Set active component to LevelOne
+    return () => {
+      SetactiveComponent(null); // Clear active component on unmount
+    };
+  })
+
   return (
-    <div className=" bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:py-4 relative overflow-y-scroll">
+    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll">
       <div className="flex items-center justify-center h-full md:py-0">
         <div className=" bg-white rounded-[20px] py-10 px-5 lg:p-10  w-[86%] md:w-[460px]">
           <h2 className=" text-[#125566] text-2xl font-medium text-center">

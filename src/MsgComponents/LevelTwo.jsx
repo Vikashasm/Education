@@ -1,12 +1,22 @@
 import React from 'react'
-
 import { useTestcontext } from '../Context/GetallTest';
+import { useEffect } from 'react';
 
 function LevelTwo({ onClose }) {
 
-  const { selectedLevel } = useTestcontext()
+  const { selectedLevel, SetactiveComponent } = useTestcontext()
+
+
+  useEffect(() => {
+    SetactiveComponent(true); // Set active component to LevelOne
+    return () => {
+      SetactiveComponent(null); // Clear active component on unmount
+    };
+  })
+
+
   return (
-    <div className=" bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:py-4 relative overflow-y-scroll">
+    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll">
       {/* <img
         className=" absolute left-[16%] top-0"
         src="images/svg/party_celebration.svg"

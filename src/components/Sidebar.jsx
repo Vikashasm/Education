@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useTestcontext } from "../Context/GetallTest";
 
 function Sidebar() {
-  const { Tests, selectedLevel } = useTestcontext()
+  const { Tests, selectedLevel, activeComponent } = useTestcontext()
   return (
     <>
       <div className=" hidden md:flex w-[25%]">
@@ -26,8 +26,8 @@ function Sidebar() {
           })}
         </div>
       </div>
-      <div className=" bg-white flex  justify-evenly gap-2 items-center left-[50%] -translate-x-2/4 w-[90%]  px-5 py-5 rounded-[30px] fixed bottom-[20px] z-30 md:hidden">
-        {Tests.map((data) => {
+      {!activeComponent && <div className=" bg-white flex  justify-evenly gap-2 items-center left-[50%] -translate-x-2/4 w-[90%]  px-5 py-5 rounded-[30px] fixed bottom-[20px] z-30 md:hidden">
+        {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
           const isCurrentLevel = data.Level === parseInt(selectedLevel);
           const isPreviousLevel = data.Level < parseInt(selectedLevel);
           const isLockedLevel = data.Level > parseInt(selectedLevel);
@@ -37,13 +37,12 @@ function Sidebar() {
               className="flex flex-col items-center justify-center"
             >
               <div
-                className={`w-[60px] h-[60px] rounded-full flex flex-col items-center justify-center text-sm font-normal ${
-                  isCurrentLevel
+                className={`w-[60px] h-[60px] rounded-full flex flex-col items-center justify-center text-sm font-normal ${isCurrentLevel
                     ? "bg-[#10C500] text-white"
                     : isPreviousLevel
-                    ? "bg-[#10C500] text-white"
-                    : "bg-[#FF2000] text-white cursor-not-allowed"
-                }`}
+                      ? "bg-[#10C500] text-white"
+                      : "bg-[#FF2000] text-white cursor-not-allowed"
+                  }`}
               >
                 <span>Level</span>
                 {data.Level}
@@ -54,7 +53,7 @@ function Sidebar() {
             </NavLink>
           );
         })}
-      </div>
+      </div> }
     </>
   );
 }

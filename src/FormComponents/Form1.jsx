@@ -1,6 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useTestcontext } from "../Context/GetallTest";
 
 function Form1({ onSubmit }) {
+
+  const { SetactiveComponent } = useTestcontext();
+
+  useEffect(() => {
+    SetactiveComponent(true); // Set active component to LevelOne
+    return () => {
+      SetactiveComponent(null); // Clear active component on unmount
+    };
+  })
+
+
+
+  
   
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +47,7 @@ function Form1({ onSubmit }) {
 
   
   return (
-    <div className=" bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:py-4 relative overflow-y-scroll">
+    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll">
       <div className="flex items-center justify-center h-full py-80">
         <div className=" bg-white rounded-[20px] p-10 lg:p-6 xl:p-10 w-[90%] md:w-[460px]">
           <h2 className=" text-[#FF2000] md:text-[#125566] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center">

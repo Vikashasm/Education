@@ -3,10 +3,15 @@ import { useLocation } from "react-router-dom";
 import { useTestcontext } from "../Context/GetallTest";
 import { useUserContext } from "../Context/GetUsers";
 function Submitted() {
-  const { Tests } = useTestcontext()
+  const { Tests, SetactiveComponent } = useTestcontext()
   const { Users } = useUserContext()
   const [userData, setUserData] = useState([])
-  
+  useEffect(() => {
+    SetactiveComponent(true); // Set active component to LevelOne
+    return () => {
+      SetactiveComponent(null); // Clear active component on unmount
+    };
+  })
   
   useEffect(() => {
     const userString = localStorage.getItem('user');
@@ -36,15 +41,15 @@ function Submitted() {
 
 
   return (
-    <div className="bg_img z-10  pt-5 md:pt-0  pb-36 md:py-0   overflow-hidden h-screen w-full md:w-[79.3%]  relative overflow-y-scroll    sm:after:contents-[]  sm:after:bg-[#0000008A] sm:after:absolute sm:after:h-full sm:after:w-full sm:after:top-0 sm:after:left-0">
+    <div className="bg_img  z-10 pb-12 pt-5 md:pt-0 flex items-end justify-center md:inline  md:py-0 overflow-y-scroll  md:overflow-hidden h-screen w-full md:w-[79.3%]  relative   after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0">
       <div>
-        <div className=" flex items-center justify-center sm:h-full relative overflow-y-scroll md:overflow-visible">
+        <div className=" flex items-center justify-center  md:h-full relative ">
           <img
-            className=" absolute -top-10 md:top-[40px] lg:top-[0px] hidden sm:flex z-10"
+            className=" absolute -top-40 sm:-top-52 md:top-[40px] lg:top-[0px] 2xl:top-12 flex z-30 sm:z-20"
             src="/images/png/holiday.png"
             alt="holiday"
           />
-          <div className=" bg-[#66bcb4] z-20 lg:mt-24 py-8 lg:py-12 rounded-3xl  relative max-w-[92%] lg:max-w-[88%] xl:max-w-[65%] flex flex-col items-center border-[5px] border-white  md:overflow-x-hidden">
+          <div className=" bg-[#66bcb4] z-30 sm:z-20 lg:mt-24 py-8 lg:py-12 rounded-3xl  relative max-w-[92%] lg:max-w-[88%] xl:max-w-[65%] flex flex-col items-center border-[5px] border-white  md:overflow-x-hidden">
             <img
               id="oneimg"
               className=" absolute left-[-7%] top-[0%] slide_img hidden lg:inline"
@@ -59,14 +64,18 @@ function Submitted() {
             />
             <div className=" text-center">
               <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
-                Score : {totalCorrectAnswerPercentage.toFixed(2)} %
+                {totalCorrectAnswerPercentage >= 80 ? "Excellent Scorer" : totalCorrectAnswerPercentage >= 60 ? "Very Good Scorer" : totalCorrectAnswerPercentage >= 33 ? "Good Scorer" : "Less Scorer"}
               </h1>
-              <h1 className=" text-[42px]  font-bold text-[#455A64] text_shadow md:hidden">
-                Excellent <span className="block">Scorer</span>
+              <h1 className="text-[42px] font-bold text-[#455A64] text_shadow md:hidden">
+                {totalCorrectAnswerPercentage >= 80
+                  ? "Excellent"
+                  : totalCorrectAnswerPercentage >= 60
+                    ? "Very Good"
+                    : totalCorrectAnswerPercentage >= 33
+                      ? "Good"
+                      : "Less"}{" "}
+                <span className="block">Scorer</span>
               </h1>
-              <h5 className="text-black font-medium text-lg lg:text-2xl my-4 lg:my-5 hidden md:block">
-                You are on Level {Tests.length}
-              </h5>
               <p className="md:text-black text-white font-normal text-base lg:text-xl mt-5 md:mt-0">
                 Your Message goes here......
               </p>
