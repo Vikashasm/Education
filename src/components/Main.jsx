@@ -9,7 +9,14 @@ import LevelThree from "../MsgComponents/LevelThree";
 import Form1 from "../FormComponents/Form1";
 import Form2 from "../FormComponents/Form2";
 import Form3 from "../FormComponents/Form3";
-import { doc, setDoc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  addDoc,
+  collection,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import Loader from "../Loader";
 import { useUserContext } from "../Context/GetUsers";
@@ -36,7 +43,8 @@ function Main() {
     selectedTitleTests.length > 0 && selectedTitleTests[0].questions;
   const question = selectedTitleTests.length > 0 && questions[currentQuestion];
 
-  const totalQuestions = selectedTitleTests.length > 0 ? selectedTitleTests[0].questions.length : 0;
+  const totalQuestions =
+    selectedTitleTests.length > 0 ? selectedTitleTests[0].questions.length : 0;
   const questionsToShow = totalQuestions > 10 ? 10 : totalQuestions;
   const remainingQuestions = totalQuestions - questionsToShow;
 
@@ -70,275 +78,271 @@ function Main() {
     }
   }, [Users]);
 
+  //   const addDAta = async () => {
+  //     const Data =
+  //     {
 
-
-//   const addDAta = async () => {
-//     const Data =
-//     {
-
-//       questions: [
-//         {
-//           "question": "teething problems | teething troubles",
-//           "description":" The project went through the usual teething troubles",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "early on",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "later on",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "at the end",
-//               "iscorrect": false
-//             }
-//           ]
-//         },
-//         {
-//           "question": "deep pockets ",
-//           "description":"Harold has very deep pockets, and",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "he doesn't have much money",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "he keeps losing his keys",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "he spends a lot of money",
-//               "iscorrect": true
-//             }
-//           ]
-//         },
-//         {
-//           "question": "dressed (up) to the nines ",
-//           "description":"We were all dressed to the nines because we were",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "going to a wedding",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "going to play golf",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "going to the beach",
-//               "iscorrect": false
-//             }
-//           ]
-//         },
-//         {
-//           "question": "hot under the collar ",
-//           "description": "Henry always gets hot under the collar when he thinks people are",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "trying to cheat him",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "doing a good job",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "treating him well",
-//               "iscorrect": false
-//             }
-//           ]
-//         },
-//         {
-//           "question": "forty winks ",
-//           "description": "I'll sometimes have forty winks if",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "I see a pretty girl",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "I get something in my eye",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "I feel a bit sleepy",
-//               "iscorrect": true
-//             }
-//           ]
-//         },
-//         {
-//           "question": "have second thoughts ",
-//           "description": "Sid and Nancy were going to get married, and then Nancy had second thoughts so",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "they decided to wait",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "they're getting married sooner",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "they're getting a divorce",
-//               "iscorrect": false
-//             }
-//           ]
-//         },
-//         {
-//           "question": "zero-sum game ",
-//           "description":"In a zero-sum game, any gains made by one player will",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "be greater than their losses",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "increase the sum in the game",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "equal the losses of another",
-//               "iscorrect": true
-//             }
-//           ]
-//         },
-//         {
-//           "question": "dot the i's and cross the t's ",
-//           "description": "I've dotted the i's and crossed the t's, so there",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "will be a few mistakes",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "will be lots of mistakes",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "shouldn't be any mistakes",
-//               "iscorrect": true
-//             }
-//           ]
-//         },
-//         {
-//           "question": "a slap on the wrist ",
-//           "description":"The judge gave her a slap on the wrist by sentencing her to",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "thirty years in jail",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "execution in the electric chair",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "a few hours of community service",
-//               "iscorrect": true
-//             }
-//           ]
-//         },
-//         {
-//           "question": "another string to your bow ",
-//           "description": "John's a truck driver, but he wants another string to his bow so he's going to",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "take up archery",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "do a bartending course",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "go fishing on weekends",
-//               "iscorrect": false
-//             }
-//           ]
-//         },
-//         {
-//           "question": "(it's) raining cats and dogs ",
-//           "description": "It's raining cats and dogs, so",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "watch out for falling animals",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "make sure you take an umbrella",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "keep your pets inside",
-//               "iscorrect": false
-//             }
-//           ]
-//         },
-//         {
-//           "question": "have your head in the clouds",
-//           "description":"William's head is in the clouds. He needs to",
-//           "answeroption": [
-//             {
-//               "optionNo": "a.",
-//               "answertext": "take better care of himself",
-//               "iscorrect": false
-//             },
-//             {
-//               "optionNo": "b.",
-//               "answertext": "be a bit more realistic",
-//               "iscorrect": true
-//             },
-//             {
-//               "optionNo": "c.",
-//               "answertext": "stop thinking he's better than everyone else",
-//               "iscorrect": false
-//             }
-//           ]
-//         }
-//       ]
-// ,
-//       Level: 1,
-//       LevelTitle: "Idioms",
-//       instructionText: "Unlock the true vibes of these idioms! 🤓 Can you decode their SECRET MEANINGS?"
-//     }
-//     const docRef = await addDoc(collection(db, 'Test'), Data)
-//   }
-
-
+  //       questions: [
+  //         {
+  //           "question": "teething problems | teething troubles",
+  //           "description":" The project went through the usual teething troubles",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "early on",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "later on",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "at the end",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "deep pockets ",
+  //           "description":"Harold has very deep pockets, and",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "he doesn't have much money",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "he keeps losing his keys",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "he spends a lot of money",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "dressed (up) to the nines ",
+  //           "description":"We were all dressed to the nines because we were",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "going to a wedding",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "going to play golf",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "going to the beach",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "hot under the collar ",
+  //           "description": "Henry always gets hot under the collar when he thinks people are",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "trying to cheat him",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "doing a good job",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "treating him well",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "forty winks ",
+  //           "description": "I'll sometimes have forty winks if",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "I see a pretty girl",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "I get something in my eye",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "I feel a bit sleepy",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "have second thoughts ",
+  //           "description": "Sid and Nancy were going to get married, and then Nancy had second thoughts so",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "they decided to wait",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "they're getting married sooner",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "they're getting a divorce",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "zero-sum game ",
+  //           "description":"In a zero-sum game, any gains made by one player will",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "be greater than their losses",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "increase the sum in the game",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "equal the losses of another",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "dot the i's and cross the t's ",
+  //           "description": "I've dotted the i's and crossed the t's, so there",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "will be a few mistakes",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "will be lots of mistakes",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "shouldn't be any mistakes",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "a slap on the wrist ",
+  //           "description":"The judge gave her a slap on the wrist by sentencing her to",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "thirty years in jail",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "execution in the electric chair",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "a few hours of community service",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "another string to your bow ",
+  //           "description": "John's a truck driver, but he wants another string to his bow so he's going to",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "take up archery",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "do a bartending course",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "go fishing on weekends",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "(it's) raining cats and dogs ",
+  //           "description": "It's raining cats and dogs, so",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "watch out for falling animals",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "make sure you take an umbrella",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "keep your pets inside",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "have your head in the clouds",
+  //           "description":"William's head is in the clouds. He needs to",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "a.",
+  //               "answertext": "take better care of himself",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "b.",
+  //               "answertext": "be a bit more realistic",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "c.",
+  //               "answertext": "stop thinking he's better than everyone else",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         }
+  //       ]
+  // ,
+  //       Level: 1,
+  //       LevelTitle: "Idioms",
+  //       instructionText: "Unlock the true vibes of these idioms! 🤓 Can you decode their SECRET MEANINGS?"
+  //     }
+  //     const docRef = await addDoc(collection(db, 'Test'), Data)
+  //   }
 
   /**  *************************************************
    * Hanle Next Question Start
@@ -574,14 +578,14 @@ function Main() {
       !formPopup &&
       !isFormSubmit ? (
         <div
-          className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative md:overflow-hidden ${
+          className={`w-[100%] md:w-[79.3%]  md:pb-0  h-full ${
             congs === true
-              ? "after:contents-[] relative after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-[60]"
+              ? "after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-[60]"
               : null
           }`}
         >
           {congs === true ? (
-            <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[55%] md:-translate-y-[50%] z-[70] opacity-100">
+            <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 md:left-[60%] -translate-x-2/4 -translate-y-[55%] md:-translate-y-[50%] z-[70] opacity-100">
               <div>
                 <img src="./images/svg/trophy.svg" alt="Golden trophy" />
               </div>
@@ -604,8 +608,8 @@ function Main() {
               </div>
             </div>
           ) : null}
-          <div className=" flex flex-col  items-center  justify-center md:py-4 pt-3 lg:gap-10 gap-8 height_calc md:h-full">
-            <div className=" md:bg-[#66bcb4] overflow-y-scroll flex flex-col justify-between md:flex-none md:overflow-visible bg-[#FFFFFF] z-50 pb-5 pt-2 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc md:h-auto">
+          <div className=" flex flex-col  items-center  md:justify-center  md:py-4  lg:gap-10 gap-8 h-[90%]  md:h-full relative z-20 pt-2">
+            <div className=" md:bg-[#66bcb4]  flex flex-col justify-between md:flex-none md:overflow-visible bg-[#FFFFFF] z-50 pb-5 pt-2 rounded-xl md:rounded-3xl  relative max-w-[90%]  h-[88%] overflow-y-scroll  md:max-w-[85%] lg:max-w-[65%]  md:h-auto">
               <div>
                 <div
                   className="hidden md:flex   sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
@@ -664,20 +668,21 @@ function Main() {
                       selectedTitleTests[0].instructionText}
                   </p>
                   <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
-                  <div className="flex flex-wrap">
-                    <div className="flex flex-wrap text-black text-lg font-semibold" >
+                  <div className="flex flex-col">
+                    <div className="flex flex-wrap text-black text-lg font-semibold">
                       <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
                         {" "}
                         Question {currentQuestion + 1} / {questions.length} :
                       </span>
                       <span id="text">{question.question}</span>
                     </div>
-
-                    {question.description && (
-                      <span className="my-3 opacity-80 font-normal">
-                        {question.description}
-                      </span>
-                    )}
+                    <div className="my-3 text-start">
+                      {question.description && (
+                        <span className=" opacity-80 font-normal">
+                          {question.description}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
                 </div>
@@ -753,11 +758,11 @@ function Main() {
         </div>
       ) : isFormSubmit ? (
         <div
-          className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative overflow-hidden
+          className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0  overflow-hidden
           after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-40
          `}
         >
-          <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
+          <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 md:left-[60%] -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
             <div>
               <img src="./images/svg/trophy.svg" alt="Golden trophy" />
             </div>

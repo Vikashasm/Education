@@ -36,9 +36,9 @@ function Form3({ onSubmit }) {
     onSubmit(formData); // Submit the form data if validation passes
   };
   return (
-    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll">
-      <div className="flex items-center justify-center h-full py-80 md:py-20">
-        <div className=" bg-white rounded-[20px] p-10 lg:p-6 xl:p-10 w-[90%] md:w-[460px]">
+    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll flex items-center justify-center">
+      <div className="w-full h-[600px] sm:h-auto pb-4">
+        <div className=" bg-white rounded-[20px] p-10 lg:p-6 xl:p-10 w-[90%] md:w-[460px] mx-auto">
           <h2 className=" text-[#FF2000] text-center text-xl font-medium mb-8 lg:mb-6 xl:mb-8">
             Before you dive into your results, hang tight for just two more
             questions!
@@ -67,7 +67,8 @@ function Form3({ onSubmit }) {
                   className=" text-[#125566] text-sm font-normal"
                   htmlFor="Age"
                 >
-                  Also, spill the beans – how many trips around the sun have you completed?" I mean your Age.
+                  Also, spill the beans – how many trips around the sun have you
+                  completed?" I mean your Age.
                 </label>
                 <input
                   className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none"
