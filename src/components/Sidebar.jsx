@@ -38,7 +38,7 @@ function Sidebar() {
             >
               <div
                 className={`w-[60px] h-[60px] rounded-full flex flex-col items-center justify-center text-sm font-normal ${isCurrentLevel
-                    ? "bg-[#10C500] text-white"
+                  ? "bg-[#10C500] text-white border border-[#66BCB4]"
                     : isPreviousLevel
                       ? "bg-[#10C500] text-white"
                       : "bg-[#FF2000] text-white cursor-not-allowed"
