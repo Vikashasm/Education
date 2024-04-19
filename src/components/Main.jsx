@@ -581,7 +581,7 @@ function Main() {
           }`}
         >
           {congs === true ? (
-            <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-[70] opacity-100 over">
+            <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[55%] md:-translate-y-[50%] z-[70] opacity-100">
               <div>
                 <img src="./images/svg/trophy.svg" alt="Golden trophy" />
               </div>
@@ -604,69 +604,86 @@ function Main() {
               </div>
             </div>
           ) : null}
-          <div className=" flex flex-col overflow-y-scroll items-center  justify-center md:py-4 pt-3 lg:gap-10 gap-8 height_calc md:h-full">
-            <div className=" md:bg-[#66bcb4] bg-[#FFFFFF] z-50 py-5 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc md:h-auto">
-              <div
-                className="hidden md:flex   sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
-                id="maindiv"
-              >
+          <div className=" flex flex-col  items-center  justify-center md:py-4 pt-3 lg:gap-10 gap-8 height_calc md:h-full">
+            <div className=" md:bg-[#66bcb4] overflow-y-scroll flex flex-col justify-between md:flex-none md:overflow-visible bg-[#FFFFFF] z-50 pb-5 pt-2 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc md:h-auto">
+              <div>
+                <div
+                  className="hidden md:flex   sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
+                  id="maindiv"
+                >
                   {selectedTitleTests.length > 0 && (
                     <>
                       {currentQuestion <= 9 && (
                         <>
-                          {Array.from({ length: questionsToShow }, (_, index) => index).map((index) => (
+                          {Array.from(
+                            { length: questionsToShow },
+                            (_, index) => index
+                          ).map((index) => (
                             <div
                               key={index}
-                              className={`w-9 h-9 lg:mx-2  mx-2 ${currentQuestion === index
+                              className={`w-9 h-9 lg:mx-2  mx-2 ${
+                                currentQuestion === index
                                   ? "scale-[1.4] bg-white border-2 "
                                   : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
+                              }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
                             >
-                              <p className="text-sm font-normal text-slate-600">{index + 1}</p>
+                              <p className="text-sm font-normal text-slate-600">
+                                {index + 1}
+                              </p>
                             </div>
                           ))}
                         </>
                       )}
                       {remainingQuestions > 0 && currentQuestion > 9 && (
                         <div className="flex">
-                          {Array.from({ length: remainingQuestions }, (_, index) => index).map((index) => (
+                          {Array.from(
+                            { length: remainingQuestions },
+                            (_, index) => index
+                          ).map((index) => (
                             <div
                               key={index + questionsToShow}
-                              className={`w-9 h-9  lg:mx-2  mx-2 ${currentQuestion === index + questionsToShow
+                              className={`w-9 h-9  lg:mx-2  mx-2 ${
+                                currentQuestion === index + questionsToShow
                                   ? "scale-[1.4] bg-white border-2 "
                                   : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
+                              }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
                             >
-                              <p className="text-sm font-normal text-slate-600">{index + questionsToShow + 1}</p>
+                              <p className="text-sm font-normal text-slate-600">
+                                {index + questionsToShow + 1}
+                              </p>
                             </div>
                           ))}
                         </div>
                       )}
                     </>
                   )}
-              </div>
-              <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
-                <p className=" text-center font-medium text-base text-black md:hidden">
-                  {selectedTitleTests.length > 0 &&
-                    selectedTitleTests[0].instructionText}
-                </p>
-                <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
-                <div className="flex flex-wrap">
-                  <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
-                    {" "}
-                      Question {currentQuestion + 1} / { questions.length}  :
-                  </span>
-                    <span id="text">{question.question}</span>
-                    <br />
-                    {question.description && (
-                      <span className="my-3 opacity-80">{question.description}</span>
-                    )}
                 </div>
-                {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
-              </div>
+                <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
+                  <p className=" text-center font-medium text-base text-black md:hidden">
+                    {selectedTitleTests.length > 0 &&
+                      selectedTitleTests[0].instructionText}
+                  </p>
+                  <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
+                  <div className="flex flex-wrap">
+                    <div className="flex flex-wrap text-black text-lg font-semibold" >
+                      <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
+                        {" "}
+                        Question {currentQuestion + 1} / {questions.length} :
+                      </span>
+                      <span id="text">{question.question}</span>
+                    </div>
 
-              <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">
-                {/* {questions[0].part1[state].answeroption.map((value, i) => {
+                    {question.description && (
+                      <span className="my-3 opacity-80 font-normal">
+                        {question.description}
+                      </span>
+                    )}
+                  </div>
+                  {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
+                </div>
+
+                <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">
+                  {/* {questions[0].part1[state].answeroption.map((value, i) => {
               return (
                 <div className="w-full lg:w-5/12" key={i}>
                   <p
@@ -684,23 +701,25 @@ function Main() {
                 </div>
               );
             })} */}
-                {question &&
-                  question.answeroption.map((option, i) => (
-                    <div className="w-full lg:w-5/12" key={i}>
-                      <p
-                        onClick={() => handleOptionClick(i)}
-                        className={`w-full h-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
-                          selectedOption[currentQuestion] === i
-                            ? "md:bg-[#125566] bg-[#FF2000] text-white"
-                            : "bg-white border border-[#00000033]"
-                        }`}
-                      >
-                        {option.optionNo + " " + option.answertext}
-                      </p>
-                    </div>
-                  ))}
+                  {question &&
+                    question.answeroption.map((option, i) => (
+                      <div className="w-full lg:w-5/12" key={i}>
+                        <p
+                          onClick={() => handleOptionClick(i)}
+                          className={`w-full h-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
+                            selectedOption[currentQuestion] === i
+                              ? "md:bg-[#125566] bg-[#FF2000] text-white"
+                              : "bg-white border border-[#00000033]"
+                          }`}
+                        >
+                          {option.optionNo + " " + option.answertext}
+                        </p>
+                      </div>
+                    ))}
+                </div>
               </div>
-              <div className=" flex flex-col pb-5 md:pb-0 gap-3 md:gap-0 md:flex-row  rounded-b-2xl absolute bottom-0 w-full px-5 md:px-0">
+
+              <div className=" flex flex-col md:pb-0 gap-3 md:gap-0 md:flex-row  rounded-b-2xl md:absolute bottom-0 w-full px-5 md:px-0 ">
                 <button
                   id="prevbuton"
                   onClick={handlePrevQuestion}
@@ -738,7 +757,7 @@ function Main() {
           after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-40
          `}
         >
-          <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[68%] md:-translate-y-[50%] z-50 opacity-100">
+          <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
             <div>
               <img src="./images/svg/trophy.svg" alt="Golden trophy" />
             </div>

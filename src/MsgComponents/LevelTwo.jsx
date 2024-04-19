@@ -28,7 +28,7 @@ function LevelTwo({ onClose }) {
         alt="party_celebration"
       /> */}
       <div className="flex items-center justify-center h-full md:py-0">
-        <div className=" bg-white rounded-[20px] py-10 px-5  w-[88%] md:w-[460px]">
+        <div className=" bg-white rounded-[20px] py-10 px-5  w-[88%] md:w-[460px] overflow-y-scroll">
           <h1 className=" text-[#FF2000] md:text-[#125566] text-4xl font-bold text-center mt-3">
             {selectedLevel === 2 ? "Way to go! " : "Big Congrats!"}
           </h1>
