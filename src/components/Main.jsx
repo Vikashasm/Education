@@ -331,10 +331,6 @@ function Main() {
             </div>
           ) : null}
           <div className=" flex flex-col overflow-y-scroll items-center  justify-center md:py-4 pt-3 lg:gap-10 gap-8 height_calc md:h-full">
-            <h6 className=" font-normal text-sm lg:text-base text-white lg:max-w-[61%] max-w-[80%] lg:mb-0">
-              {selectedTitleTests.length > 0 &&
-                selectedTitleTests[0].instructionText}
-            </h6>
             <div className=" md:bg-[#66bcb4] bg-[#FFFFFF] z-50 py-5 rounded-xl md:rounded-3xl  relative max-w-[90%]  md:max-w-[85%] lg:max-w-[65%]  min_vh_calc md:h-auto">
               <div
                 className="hidden md:flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row lg:gap-3 gap-2 absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2"
