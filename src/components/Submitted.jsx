@@ -41,11 +41,11 @@ function Submitted() {
 
 
   return (
-    <div className="bg_img  z-10 pb-12 pt-5 md:pt-0 flex items-end justify-center md:inline  md:py-0 overflow-y-scroll  md:overflow-hidden h-screen w-full md:w-[79.3%]  relative   after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0">
-      <div>
-        <div className=" flex items-center justify-center  md:h-full relative ">
+    <div className="bg_img  z-10 pb-12 pt-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden min-h-screen md:h-screen w-full md:w-[79.3%]  relative   after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 overflow-y-scroll">
+      <div className=" md:min-h-screen md:overflow-y-scroll">
+        <div className=" flex items-center justify-center  md:h-full relative pt-40 sm:pt-0">
           <img
-            className=" absolute -top-40 sm:-top-52 md:top-[40px] lg:top-[0px] 2xl:top-12 flex z-30 sm:z-20"
+            className="absolute top-0 sm:-top-52 md:top-[40px] lg:top-[0px] 2xl:top-12 flex z-30 sm:z-20"
             src="/images/png/holiday.png"
             alt="holiday"
           />
@@ -64,16 +64,22 @@ function Submitted() {
             />
             <div className=" text-center">
               <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
-                {totalCorrectAnswerPercentage >= 80 ? "Excellent Scorer" : totalCorrectAnswerPercentage >= 60 ? "Very Good Scorer" : totalCorrectAnswerPercentage >= 33 ? "Good Scorer" : "Less Scorer"}
+                {totalCorrectAnswerPercentage >= 80
+                  ? "Excellent Scorer"
+                  : totalCorrectAnswerPercentage >= 60
+                  ? "Very Good Scorer"
+                  : totalCorrectAnswerPercentage >= 33
+                  ? "Good Scorer"
+                  : "Less Scorer"}
               </h1>
               <h1 className="text-[42px] font-bold text-[#455A64] text_shadow md:hidden">
                 {totalCorrectAnswerPercentage >= 80
                   ? "Excellent"
                   : totalCorrectAnswerPercentage >= 60
-                    ? "Very Good"
-                    : totalCorrectAnswerPercentage >= 33
-                      ? "Good"
-                      : "Less"}{" "}
+                  ? "Very Good"
+                  : totalCorrectAnswerPercentage >= 33
+                  ? "Good"
+                  : "Less"}{" "}
                 <span className="block">Scorer</span>
               </h1>
               <p className="md:text-black text-white font-normal text-base lg:text-xl mt-5 md:mt-0">
