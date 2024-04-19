@@ -624,7 +624,7 @@ function Main() {
       !formPopup &&
       !isFormSubmit ? (
         <div
-          className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative overflow-hidden ${
+          className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0 relative md:overflow-hidden ${
             congs === true
               ? "after:contents-[] relative after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-[60]"
               : null
