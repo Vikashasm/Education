@@ -664,7 +664,7 @@ function Main() {
                       selectedTitleTests[0].instructionText}
                   </p>
                   <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
-                  <div className="flex flex-wrap">
+                  <div className="fl ex fle x-wrap">
                     <div className="flex flex-wrap text-black text-lg font-semibold" >
                       <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
                         {" "}
@@ -672,16 +672,16 @@ function Main() {
                       </span>
                       <span id="text">{question.question}</span>
                     </div>
-
-                    {question.description && (
-                      <span className="my-3 opacity-80 font-normal">
-                        {question.description}
-                      </span>
-                    )}
+                      {question.description && (
+                        <span className="my-4 opacity-80 font-normal text-md">
+                          {question.description}
+                        </span>
+                      )}
                   </div>
+                  
                   {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
-                </div>
-
+                  </div>
+                  
                 <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">
                   {/* {questions[0].part1[state].answeroption.map((value, i) => {
               return (
