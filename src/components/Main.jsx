@@ -49,11 +49,11 @@ function Main() {
   const remainingQuestions = totalQuestions - questionsToShow;
 
   useEffect(() => {
-    const userString = localStorage.getItem("user");
+    const userString = sessionStorage.getItem("user");
     const user = JSON.parse(userString);
     const userid = user.userid;
 
-    const storedScoresString = localStorage.getItem("scores");
+    const storedScoresString = sessionStorage.getItem("scores");
     if (storedScoresString) {
       const storedScores = JSON.parse(storedScoresString);
       setScores(storedScores);
@@ -77,6 +77,7 @@ function Main() {
       // console.log("isFormSubmit is not present or false");
     }
   }, [Users]);
+
 
   //   const addDAta = async () => {
   //     const Data =
@@ -398,7 +399,7 @@ function Main() {
       } else {
         try {
           setLoading(true);
-          const userString = localStorage.getItem("user");
+          const userString = sessionStorage.getItem("user");
           // Parse the user object string to JSON
           const user = JSON.parse(userString);
           // Get the userid from the user object
@@ -510,7 +511,7 @@ function Main() {
     // console.log("Form data:", formData);
     setLoading(true);
     SetformPopup(false);
-    const userString = localStorage.getItem("user");
+    const userString = sessionStorage.getItem("user");
     // Parse the user object string to JSON
     const user = JSON.parse(userString);
     // Get the userid from the user object
@@ -556,6 +557,7 @@ function Main() {
       // Handle the error here
     }
   }
+
 
   /**  *************************************************
       Hanle Form Data  Submit  End

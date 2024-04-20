@@ -1,16 +1,15 @@
 import { useContext, createContext, useState } from "react";
 import { auth } from "../firebase";
-import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth"; 
+import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import Loader from "../Loader";
 
-
 const AuthContext = createContext();
-
 
 export const UseAuthcontext = () => {
     return useContext(AuthContext)
 }
+
 export function UserAuthContextProvider({ children }) {
     const [user, setuser] = useState(null)
     const [loading, setLoading] = useState(true);
@@ -23,24 +22,24 @@ export function UserAuthContextProvider({ children }) {
             console.error("Google sign-in error:", error);
         }
     }
+
     async function logoutUser() {
-        localStorage.clear()
-        await signOut(auth)
-        setuser(null)
+        sessionStorage.clear();
+        await signOut(auth);
+        setuser(null);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
-                // console.log("currentUser is ",currentUser)
                 const userData = { userid: currentUser.uid, useremail: currentUser.email };
-                localStorage.setItem('user', JSON.stringify(userData));
-                setuser(true)
+                sessionStorage.setItem('user', JSON.stringify(userData));
+                setuser(true);
             } else {
-                localStorage.removeItem('user');
-                setuser(null)
+                sessionStorage.removeItem('user');
+                setuser(null);
             }
-            setLoading(false)
+            setLoading(false);
         });
         return () => {
             unsubscribe();
@@ -50,9 +49,10 @@ export function UserAuthContextProvider({ children }) {
     if (loading) {
         return <Loader></Loader>
     }
-    return <AuthContext.Provider value={{ GoggleSignIn , logoutUser, user }}>
-        {children}
-    </AuthContext.Provider>
+
+    return (
+        <AuthContext.Provider value={{ GoggleSignIn, logoutUser, user }}>
+            {children}
+        </AuthContext.Provider>
+    );
 }
-
-
