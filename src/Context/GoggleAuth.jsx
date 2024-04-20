@@ -32,19 +32,31 @@ export function UserAuthContextProvider({ children }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
-                const userData = { userid: currentUser.uid, useremail: currentUser.email };
-                sessionStorage.setItem('user', JSON.stringify(userData));
+                const userData = {
+                    userid: currentUser.uid,
+                    useremail: currentUser.email,
+                };
+                sessionStorage.setItem("user", JSON.stringify(userData));
                 setuser(true);
             } else {
-                sessionStorage.removeItem('user');
+                sessionStorage.removeItem("user");
                 setuser(null);
             }
             setLoading(false);
         });
+
+        const handleWindowClose = () => {
+            logoutUser();
+        };
+        window.addEventListener("beforeunload", handleWindowClose);
         return () => {
+            window.removeEventListener("beforeunload", handleWindowClose);
             unsubscribe();
         };
     }, []);
+
+
+    
 
     if (loading) {
         return <Loader></Loader>
