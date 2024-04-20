@@ -1,33 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useTestcontext } from "../Context/GetallTest";
-import { UseAuthcontext } from "../Context/GoggleAuth";
-import { useNavigate } from "react-router-dom";
-import LevelOne from "../MsgComponents/LevelOne";
-import LevelTwo from "../MsgComponents/LevelTwo";
-import LevelThree from "../MsgComponents/LevelThree";
-import Form1 from "../FormComponents/Form1";
-import Form2 from "../FormComponents/Form2";
-import Form3 from "../FormComponents/Form3";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  addDoc,
-  collection,
-} from "firebase/firestore";
-import { db } from "../firebase";
-import Loader from "../Loader";
-import { useUserContext } from "../Context/GetUsers";
-import Submitted from "./Submitted";
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useTestcontext } from '../Context/GetallTest';
+import { UseAuthcontext } from '../Context/GoggleAuth';
+import { useNavigate } from 'react-router-dom';
+import LevelOne from '../MsgComponents/LevelOne';
+import LevelTwo from '../MsgComponents/LevelTwo';
+import LevelThree from '../MsgComponents/LevelThree';
+import Form1 from '../FormComponents/Form1';
+import Form2 from '../FormComponents/Form2';
+import Form3 from '../FormComponents/Form3';
+import { doc, setDoc, getDoc, updateDoc, addDoc, collection } from 'firebase/firestore';
+import { db } from '../firebase';
+import Loader from '../Loader';
+import { useUserContext } from '../Context/GetUsers';
+import Submitted from './Submitted';
 
 function Main() {
   const { logoutUser } = UseAuthcontext();
   const { Users, updateData } = useUserContext();
 
-  const { selectedTitleTests, Tests, selectedLevel, setselectedLevel } =
-    useTestcontext();
+  const { selectedTitleTests, Tests, selectedLevel, setselectedLevel } = useTestcontext();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [CongratulationsPopup, setCongratulationsPopup] = useState(false);
   const [formPopup, SetformPopup] = useState(false);
@@ -39,12 +31,10 @@ function Main() {
 
   const [scores, setScores] = useState([]);
 
-  const questions =
-    selectedTitleTests.length > 0 && selectedTitleTests[0].questions;
+  const questions = selectedTitleTests.length > 0 && selectedTitleTests[0].questions;
   const question = selectedTitleTests.length > 0 && questions[currentQuestion];
 
-  const totalQuestions =
-    selectedTitleTests.length > 0 ? selectedTitleTests[0].questions.length : 0;
+  const totalQuestions = selectedTitleTests.length > 0 ? selectedTitleTests[0].questions.length : 0;
   const questionsToShow = totalQuestions > 10 ? 10 : totalQuestions;
   const remainingQuestions = totalQuestions - questionsToShow;
 
@@ -68,7 +58,7 @@ function Main() {
 
     if (
       userData.length > 0 &&
-      userData[0].hasOwnProperty("isFormSubmit") &&
+      userData[0].hasOwnProperty('isFormSubmit') &&
       userData[0].isFormSubmit
     ) {
       // console.log("isFormSubmit is present and true");
@@ -354,10 +344,7 @@ function Main() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setIsSelected(false);
-      setSelectedOption([
-        ...selectedOption.slice(0, currentQuestion + 1),
-        null,
-      ]);
+      setSelectedOption([...selectedOption.slice(0, currentQuestion + 1), null]);
     } else if (
       currentQuestion === questions.length - 1 &&
       selectedOption[currentQuestion] !== null
@@ -389,9 +376,7 @@ function Main() {
 
       setScores([...scores, score]);
 
-      const currentIndex = Tests.findIndex(
-        (test) => test.Level === selectedLevel
-      );
+      const currentIndex = Tests.findIndex((test) => test.Level === selectedLevel);
       const nextIndex = currentIndex + 1;
       if (nextIndex < Tests.length) {
         setCongratulationsPopup(true);
@@ -404,14 +389,14 @@ function Main() {
           const user = JSON.parse(userString);
           // Get the userid from the user object
           const userid = user.userid;
-          console.log("userid", userid);
+          console.log('userid', userid);
 
-          const userRef = doc(db, "Users", userid);
+          const userRef = doc(db, 'Users', userid);
           const userSnap = await getDoc(userRef);
           if (userSnap.exists()) {
             const userData = userSnap.data();
             if (userData.isFormSubmit) {
-              console.log("Form already submitted");
+              console.log('Form already submitted');
               setLoading(false);
               setCongs(true);
               return;
@@ -432,7 +417,7 @@ function Main() {
           setLoading(false);
           setCongs(true);
         } catch (error) {
-          console.log("Error in last ", error);
+          console.log('Error in last ', error);
         }
       }
     }
@@ -485,10 +470,7 @@ function Main() {
     setCurrentQuestion(0);
     setIsSelected(false);
     setSelectedOption(
-      Array.from(
-        { length: selectedTitleTests?.[0]?.questions?.length ?? 0 },
-        () => null
-      )
+      Array.from({ length: selectedTitleTests?.[0]?.questions?.length ?? 0 }, () => null)
     );
   }, [selectedTitleTests, Tests]);
 
@@ -517,15 +499,12 @@ function Main() {
     // Get the userid from the user object
     const userid = user.userid;
     // console.log("userid", userid);
-    const formDataKeyValue = Object.entries(formData).reduce(
-      (acc, [key, value]) => {
-        return { ...acc, [key]: value };
-      },
-      {}
-    );
+    const formDataKeyValue = Object.entries(formData).reduce((acc, [key, value]) => {
+      return { ...acc, [key]: value };
+    }, {});
     // Update the form data in Firestore under the user's UID
     try {
-      const userRef = doc(db, "Users", userid);
+      const userRef = doc(db, 'Users', userid);
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
         await updateDoc(userRef, {
@@ -553,7 +532,7 @@ function Main() {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.error("Error updating document: ", error);
+      console.error('Error updating document: ', error);
       // Handle the error here
     }
   }
@@ -575,90 +554,74 @@ function Main() {
   return (
     <>
       {selectedLevel === 0 && <LevelOne></LevelOne>}
-      {selectedLevel !== 0 &&
-      !CongratulationsPopup &&
-      !formPopup &&
-      !isFormSubmit ? (
+      {selectedLevel !== 0 && !CongratulationsPopup && !formPopup && !isFormSubmit ? (
         <div
-          className={`w-[100%] md:w-[79.3%]  md:pb-0  h-full ${
+          className={`w-[100%] md:w-[79.3%]  md:pb-0 pb-6 ${
             congs === true
-              ? "after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-[60]"
+              ? 'after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-[60]'
               : null
-          }`}
-        >
+          }`}>
           {congs === true ? (
             <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 md:left-[60%] -translate-x-2/4 -translate-y-[55%] md:-translate-y-[50%] z-[70] opacity-100">
               <div>
                 <img src="./images/svg/trophy.svg" alt="Golden trophy" />
               </div>
-              <h3 className=" text-black font-medium text-2xl mt-3">
-                Congratulations
-              </h3>
-              <p className=" text-black text-sm font-normal my-2">
-                You have completed the test.
-              </p>
+              <h3 className=" text-black font-medium text-2xl mt-3">Congratulations</h3>
+              <p className=" text-black text-sm font-normal my-2">You have completed the test.</p>
               <div
                 className="w-full"
                 onClick={() => {
                   setCongs(false);
                   setResult(true);
-                }}
-              >
+                }}>
                 <h6 className="text-white cursor-pointer font-normal text-2xl bg-[#125566] rounded-lg text-center p-2">
                   Okay
                 </h6>
               </div>
             </div>
           ) : null}
-          <div className=" flex flex-col  items-center  md:justify-center  md:py-4  lg:gap-10 gap-8 h-[90%]  md:h-full relative z-20 pt-2">
-            <div className=" md:bg-[#66bcb4]  flex flex-col justify-between md:flex-none md:overflow-visible bg-[#FFFFFF] z-50 pb-5 pt-2 rounded-xl md:rounded-3xl  relative max-w-[90%]  h-[88%] overflow-y-scroll  md:max-w-[85%] lg:max-w-[65%]  md:h-auto">
+          <div className=" flex flex-col  items-center  md:justify-center  md:py-4  lg:gap-10 gap-8  md:h-full relative z-20 pt-2">
+            <div className=" md:bg-[#66bcb4]  flex flex-col justify-between md:flex-none md:overflow-visible bg-[#FFFFFF] z-50 pb-5 pt-2 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-[85%] lg:max-w-[65%]  md:h-auto">
               <div>
                 <div
                   className="hidden md:flex   sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
-                  id="maindiv"
-                >
+                  id="maindiv">
                   {selectedTitleTests.length > 0 && (
                     <>
                       {currentQuestion <= 9 && (
                         <>
-                          {Array.from(
-                            { length: questionsToShow },
-                            (_, index) => index
-                          ).map((index) => (
-                            <div
-                              key={index}
-                              className={`w-9 h-9 lg:mx-2  mx-2 ${
-                                currentQuestion === index
-                                  ? "scale-[1.4] bg-white border-2 "
-                                  : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                              }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
-                            >
-                              <p className="text-sm font-normal text-slate-600">
-                                {index + 1}
-                              </p>
-                            </div>
-                          ))}
+                          {Array.from({ length: questionsToShow }, (_, index) => index).map(
+                            (index) => (
+                              <div
+                                key={index}
+                                className={`w-9 h-9 lg:mx-2  mx-2 ${
+                                  currentQuestion === index
+                                    ? 'scale-[1.4] bg-white border-2 '
+                                    : 'scale-1 border-[#F1F1F1] bg-[#F1F1F1]'
+                                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}>
+                                <p className="text-sm font-normal text-slate-600">{index + 1}</p>
+                              </div>
+                            )
+                          )}
                         </>
                       )}
                       {remainingQuestions > 0 && currentQuestion > 9 && (
                         <div className="flex">
-                          {Array.from(
-                            { length: remainingQuestions },
-                            (_, index) => index
-                          ).map((index) => (
-                            <div
-                              key={index + questionsToShow}
-                              className={`w-9 h-9  lg:mx-2  mx-2 ${
-                                currentQuestion === index + questionsToShow
-                                  ? "scale-[1.4] bg-white border-2 "
-                                  : "scale-1 border-[#F1F1F1] bg-[#F1F1F1]"
-                              }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}
-                            >
-                              <p className="text-sm font-normal text-slate-600">
-                                {index + questionsToShow + 1}
-                              </p>
-                            </div>
-                          ))}
+                          {Array.from({ length: remainingQuestions }, (_, index) => index).map(
+                            (index) => (
+                              <div
+                                key={index + questionsToShow}
+                                className={`w-9 h-9  lg:mx-2  mx-2 ${
+                                  currentQuestion === index + questionsToShow
+                                    ? 'scale-[1.4] bg-white border-2 '
+                                    : 'scale-1 border-[#F1F1F1] bg-[#F1F1F1]'
+                                }  rounded-full bg-white border-2  border-[#125566] flex items-center justify-center`}>
+                                <p className="text-sm font-normal text-slate-600">
+                                  {index + questionsToShow + 1}
+                                </p>
+                              </div>
+                            )
+                          )}
                         </div>
                       )}
                     </>
@@ -666,28 +629,27 @@ function Main() {
                 </div>
                 <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
                   <p className=" text-center font-medium text-base text-black md:hidden">
-                    {selectedTitleTests.length > 0 &&
-                      selectedTitleTests[0].instructionText}
+                    {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
                   </p>
                   <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
                   <div className="fl ex fle x-wrap">
-                    <div className="flex flex-wrap text-black text-lg font-semibold" >
+                    <div className="flex flex-wrap text-black text-lg font-semibold">
                       <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
-                        {" "}
+                        {' '}
                         Question {currentQuestion + 1} / {questions.length} :
                       </span>
                       <span id="text">{question.question}</span>
                     </div>
-                      {question.description && (
-                        <span className="my-4 opacity-80 font-normal text-md">
-                          {question.description}
-                        </span>
-                      )}
+                    {question.description && (
+                      <span className="my-4 opacity-80 font-normal text-md">
+                        {question.description}
+                      </span>
+                    )}
                   </div>
-                  
+
                   {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
-                  </div>
-                  
+                </div>
+
                 <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">
                   {/* {questions[0].part1[state].answeroption.map((value, i) => {
               return (
@@ -714,11 +676,10 @@ function Main() {
                           onClick={() => handleOptionClick(i)}
                           className={`w-full h-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
                             selectedOption[currentQuestion] === i
-                              ? "md:bg-[#125566] bg-[#FF2000] text-white"
-                              : "bg-white border border-[#00000033]"
-                          }`}
-                        >
-                          {option.optionNo + " " + option.answertext}
+                              ? 'md:bg-[#125566] bg-[#FF2000] text-white'
+                              : 'bg-white border border-[#00000033]'
+                          }`}>
+                          {option.optionNo + ' ' + option.answertext}
                         </p>
                       </div>
                     ))}
@@ -731,27 +692,25 @@ function Main() {
                   onClick={handlePrevQuestion}
                   className={` ${
                     currentQuestion < 1
-                      ? "pointer-events-none opacity-30"
-                      : "pointer-events-auto opacity-100"
-                  } font-normal text-black md:text-md lg:text-2xl w-full md:w-2/4  text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-bl-3xl bg-[#E0E0E0]`}
-                >
+                      ? 'pointer-events-none opacity-30'
+                      : 'pointer-events-auto opacity-100'
+                  } font-normal text-black md:text-md lg:text-2xl w-full md:w-2/4  text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-bl-3xl bg-[#E0E0E0]`}>
                   Previous Question
                 </button>
                 <button
                   id="buton"
                   className={`${
                     !isselected && currentQuestion !== questions?.length - 1
-                      ? "pointer-events-none opacity-30"
+                      ? 'pointer-events-none opacity-30'
                       : currentQuestion === questions?.length - 1 && isselected
-                      ? "pointer-events-auto opacity-100"
-                      : "pointer-events-auto opacity-100"
+                      ? 'pointer-events-auto opacity-100'
+                      : 'pointer-events-auto opacity-100'
                   }
                  font-normal md:text-black md:text-md lg:text-2xl w-full md:w-2/4 text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-br-3xl  md:bg-[#FFCE32] bg-[#FF2000] text-white`}
-                  onClick={handleNextQuestion}
-                >
+                  onClick={handleNextQuestion}>
                   {currentQuestion === questions?.length - 1 && isselected
-                    ? "Next Stage"
-                    : "Next Question"}
+                    ? 'Next Stage'
+                    : 'Next Question'}
                 </button>
               </div>
             </div>
@@ -761,25 +720,19 @@ function Main() {
         <div
           className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0  overflow-hidden
           after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-40
-         `}
-        >
+         `}>
           <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 md:left-[60%] -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
             <div>
               <img src="./images/svg/trophy.svg" alt="Golden trophy" />
             </div>
-            <h3 className=" text-black font-medium text-2xl mt-3">
-              Congratulations
-            </h3>
-            <p className=" text-black text-sm font-normal my-2">
-              You have completed the test.
-            </p>
+            <h3 className=" text-black font-medium text-2xl mt-3">Congratulations</h3>
+            <p className=" text-black text-sm font-normal my-2">You have completed the test.</p>
             <div
               className="w-full"
               onClick={() => {
                 setCongs(false);
                 setResult(true);
-              }}
-            >
+              }}>
               <h6 className="text-white cursor-pointer font-normal text-2xl bg-[#125566] rounded-lg text-center p-2">
                 Okay
               </h6>
