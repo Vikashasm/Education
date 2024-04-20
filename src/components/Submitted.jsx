@@ -41,11 +41,11 @@ function Submitted() {
 
 
   return (
-    <div className="bg_img  z-10 pb-12 pt-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden min-h-screen md:h-screen w-full md:w-[79.3%]  relative   after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 overflow-y-scroll">
-      <div className=" md:min-h-screen md:overflow-y-scroll">
-        <div className=" flex items-center justify-center  md:h-full relative pt-40 sm:pt-0">
+    <div className="bg_img  z-10 pb-12 pt-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden h-screen md:h-screen w-full md:w-[79.3%]  relative   after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0">
+      <div className="overflow-y-scroll h-full">
+        <div className=" flex items-center justify-center sm:items-end md:items-center  sm:h-full relative pt-40 sm:pt-0 ">
           <img
-            className="absolute top-0 sm:-top-52 md:top-[40px] lg:top-[0px] 2xl:top-12 flex z-30 sm:z-20"
+            className="absolute top-0 sm:top-40 md:top-[40px] lg:top-[0px] 2xl:top-12 flex z-30 sm:z-20"
             src="/images/png/holiday.png"
             alt="holiday"
           />

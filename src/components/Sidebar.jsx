@@ -26,7 +26,7 @@ function Sidebar() {
           })}
         </div>
       </div>
-      {!activeComponent && <div className=" bg-white flex  justify-evenly gap-2 items-center left-[50%] -translate-x-2/4 w-[90%]  px-5 py-5 rounded-[30px] fixed bottom-[20px] z-30 md:hidden">
+      {!activeComponent && <div className=" bg-transparent flex  justify-evenly gap-2 items-center  px-5 py-5 rounded-[30px] sticky top-[0px] z-30 md:hidden">
         {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
           const isCurrentLevel = data.Level === parseInt(selectedLevel);
           const isPreviousLevel = data.Level < parseInt(selectedLevel);

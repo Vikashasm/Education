@@ -43,14 +43,11 @@ function Form1({ onSubmit }) {
     onSubmit(formData); // Submit the form data if validation passes
   }
   
-
-
-  
   return (
-    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll">
-      <div className="flex items-center justify-center h-full py-80">
-        <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[90%] md:w-[460px]">
-          <h2 className=" text-[#FF2000] md:text-[#125566] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center">
+    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll flex items-center justify-center">
+      <div className=" w-full h-[640px] sm:h-auto">
+        <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[90%] md:w-[460px] mx-auto ">
+          <h2 className=" text-[#FF2000] md:text-[#125566] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center ">
             Tell us about yourself
           </h2>
           <form>
