@@ -72,7 +72,7 @@ function Sidebar() {
       </div>
       {!activeComponent && (
         <div className="flex bg-[#4ab8d4a6] backdrop-blur-[10px]  justify-evenly gap-2 items-center  px-5 py-5 sticky top-[0px] z-30 md:hidden">
-          {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
+          {/* {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
             const isCurrentLevel = data.Level === parseInt(selectedLevel);
             const isPreviousLevel = data.Level < parseInt(selectedLevel);
             const isLockedLevel = data.Level > parseInt(selectedLevel);
@@ -92,7 +92,60 @@ function Sidebar() {
                 <p className=" text-sm font-normal text-black mt-2">{data.LevelTitle}</p>
               </NavLink>
             );
-          })}
+          })} */}
+          <div className="flex">
+            {Tests.sort((a, b) => a.Level - b.Level).map((data, index) => {
+              const isCurrentLevel = data.Level === parseInt(selectedLevel);
+              const isPreviousLevel = data.Level < parseInt(selectedLevel);
+              const isLockedLevel = data.Level > parseInt(selectedLevel);
+              return (
+                <div
+                  key={data.id}
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${
+                    isCurrentLevel
+                      ? ' text-black'
+                      : isPreviousLevel
+                      ? 'text-black'
+                      : 'text-black cursor-not-allowed'
+                  }justify-between`}>
+                  {isCurrentLevel && (
+                    <div
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
+                      <img
+                        className="py-[8px] relative z-10"
+                        src={'/images/png/unlock-level.png'}
+                        alt="VectorGreen"
+                      />
+                    </div>
+                  )}
+                  {isPreviousLevel && (
+                    <div
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
+                      <img
+                        className="py-[8px] relative z-10"
+                        src={'/images/png/unlock-level.png'}
+                        alt="VectorGreen"
+                      />
+                    </div>
+                  )}
+                  {isLockedLevel && (
+                    <div className={`lock_border_${index} w-full flex justify-center`}>
+                      <img
+                        className="py-[2px] relative z-10"
+                        src={'/images/png/lock-level.png'}
+                        alt="VectorGreen"
+                      />
+                    </div>
+                  )}
+                  <span className="pt-[8px]">{data.LevelTitle}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </>

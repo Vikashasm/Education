@@ -15,10 +15,10 @@ function LevelOne() {
   });
 
   return (
-    <div className=" bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll">
+    <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex justify-center m-auto p">
       <div className="flex items-center justify-center h-full md:py-0">
-        <div className=" bg-white rounded-[20px] w-[86%] md:w-[797px] md:flex md:items-center">
-          <div className='md:w-[70%] md:px-[40px]'>
+        <div className=" bg-white rounded-[20px] w-[86%] md:w-[720px] lg:w-[797px] md:flex md:items-center py-10 px-5 md:p-0">
+          <div className="md:w-[70%] md:px-[40px]">
             <h2 className=" text-[#125566] text-2xl font-medium text-center">Welcome to the</h2>
             <h1 className=" text-[#FF2000] text-4xl font-medium text-center mt-3">
               ETP English Level Test
@@ -36,7 +36,7 @@ function LevelOne() {
               </button>
             </div>
           </div>
-          <div className='hidden md:block'>
+          <div className="hidden md:block">
             <img src={'/images/png/woman.png'} alt="woman" />
           </div>
         </div>

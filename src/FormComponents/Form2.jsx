@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useTestcontext } from "../Context/GetallTest";
+import React, { useState, useEffect } from 'react';
+import { useTestcontext } from '../Context/GetallTest';
 
 function Form2({ onSubmit }) {
   const { SetactiveComponent } = useTestcontext();
@@ -9,12 +9,12 @@ function Form2({ onSubmit }) {
     return () => {
       SetactiveComponent(null); // Clear active component on unmount
     };
-  })
+  });
 
   const [formData, setFormData] = useState({
-    hometown: "",
-    coutryHigherStudies: "",
-    IeltsOrPte: "",
+    hometown: '',
+    coutryHigherStudies: '',
+    IeltsOrPte: '',
   });
 
   const handleChange = (e) => {
@@ -23,9 +23,9 @@ function Form2({ onSubmit }) {
   };
 
   const handleSubmit = (e) => {
-    if (Object.values(formData).some(value => value.trim() === "")) {
+    if (Object.values(formData).some((value) => value.trim() === '')) {
       // Display an error message or handle the error as needed
-      alert("Please fill in all fields.");
+      alert('Please fill in all fields.');
       return;
     }
     e.preventDefault();
@@ -33,53 +33,48 @@ function Form2({ onSubmit }) {
   };
 
   return (
-    <div className="bg_img h-screen w-[100%] md:w-[79.3%]  md:py-4 relative overflow-y-scroll flex items-center justify-center">
-      <div className="w-full h-[600px] sm:h-auto pb-4">
-        <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[85%] md:w-[460px] mx-auto">
-          <h2 className=" text-[#FF2000] md:text-[#125566] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center">
+    <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex items-center justify-center m-auto md:pt-12">
+      <div className="w-full h-[600px] sm:h-auto py-4">
+        <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[85%] md:max-w-[800px] mx-auto">
+          <h2 className=" text-[#FF2000] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center">
             Alright, time to dream big! Tell us:
           </h2>
           <form>
             <div className=" flex flex-col gap-8 lg:gap-5 xl:gap-8">
-              <div className=" flex flex-col gap-3">
-                <label
-                  className=" text-[#125566] text-sm font-normal"
-                  htmlFor="hometown"
-                >
-                  Where's the hometown for you?
-                </label>
-                <input
-                  className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none"
-                  type="text"
-                  id="hometown"
-                  name="hometown"
-                  placeholder="Enter Your Answer"
-                  value={formData.hometown}
-                  onChange={handleChange}
-                />
+              <div className="flex flex-col md:flex-row md:gap-7 w-full h-[100%]">
+                <div className=" flex flex-col gap-3 w-full justify-between">
+                  <label className=" text-[#125566] text-sm font-normal" htmlFor="hometown">
+                    Where's the hometown for you?
+                  </label>
+                  <input
+                    className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none w-full"
+                    type="text"
+                    id="hometown"
+                    name="hometown"
+                    placeholder="Enter Your Answer"
+                    value={formData.hometown}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className=" flex flex-col gap-3 w-full mt-8 md:mt-0">
+                  <label
+                    className=" text-[#125566] text-sm font-normal"
+                    htmlFor="coutryHigherStudies">
+                    Which country is calling your name for higher studies?
+                  </label>
+                  <input
+                    className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none w-full"
+                    type="text"
+                    id="coutryHigherStudies"
+                    name="coutryHigherStudies"
+                    placeholder="Enter Your Answer"
+                    value={formData.coutryHigherStudies}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
               <div className=" flex flex-col gap-3">
-                <label
-                  className=" text-[#125566] text-sm font-normal"
-                  htmlFor="coutryHigherStudies"
-                >
-                  Which country is calling your name for higher studies?
-                </label>
-                <input
-                  className=" bg-[#EEEEEE] rounded-xl py-[12px] px-[20px] text-[#00000080] font-normal text-base outline-none"
-                  type="text"
-                  id="coutryHigherStudies"
-                  name="coutryHigherStudies"
-                  placeholder="Enter Your Answer"
-                  value={formData.coutryHigherStudies}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className=" flex flex-col gap-3">
-                <label
-                  className=" text-[#125566] text-sm font-normal"
-                  htmlFor="IeltsOrPte"
-                >
+                <label className=" text-[#125566] text-sm font-normal" htmlFor="IeltsOrPte">
                   And hey, are you eyeing IELTS or PTE for your next move?
                 </label>
                 <input
@@ -95,8 +90,7 @@ function Form2({ onSubmit }) {
               <div className=" text-end">
                 <button
                   onClick={handleSubmit}
-                  className=" text-white text-lg font-normal md:bg-[#66BCB4] bg-[#FF2000] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center"
-                >
+                  className=" text-white text-lg font-normal bg-[#FF2000] rounded-[10px] py-[10px] w-full md:w-auto px-[30px] text-center">
                   Move to Level 03
                 </button>
               </div>
@@ -108,4 +102,4 @@ function Form2({ onSubmit }) {
   );
 }
 
-export default Form2
+export default Form2;

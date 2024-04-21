@@ -39,11 +39,11 @@ function Main() {
   const remainingQuestions = totalQuestions - questionsToShow;
 
   useEffect(() => {
-    const userString = sessionStorage.getItem("user");
+    const userString = sessionStorage.getItem('user');
     const user = JSON.parse(userString);
     const userid = user.userid;
 
-    const storedScoresString = sessionStorage.getItem("scores");
+    const storedScoresString = sessionStorage.getItem('scores');
     if (storedScoresString) {
       const storedScores = JSON.parse(storedScoresString);
       setScores(storedScores);
@@ -67,7 +67,6 @@ function Main() {
       // console.log("isFormSubmit is not present or false");
     }
   }, [Users]);
-
 
   //   const addDAta = async () => {
   //     const Data =
@@ -384,7 +383,7 @@ function Main() {
       } else {
         try {
           setLoading(true);
-          const userString = sessionStorage.getItem("user");
+          const userString = sessionStorage.getItem('user');
           // Parse the user object string to JSON
           const user = JSON.parse(userString);
           // Get the userid from the user object
@@ -493,7 +492,7 @@ function Main() {
     // console.log("Form data:", formData);
     setLoading(true);
     SetformPopup(false);
-    const userString = sessionStorage.getItem("user");
+    const userString = sessionStorage.getItem('user');
     // Parse the user object string to JSON
     const user = JSON.parse(userString);
     // Get the userid from the user object
@@ -536,7 +535,6 @@ function Main() {
       // Handle the error here
     }
   }
-
 
   /**  *************************************************
       Hanle Form Data  Submit  End
@@ -581,13 +579,13 @@ function Main() {
             </div>
           ) : null}
           <div className=" flex flex-col  items-center  md:justify-center  md:py-4  lg:gap-10 gap-8  md:h-full relative z-20 pt-2">
-            <div className=" flex justify-between md:flex-none md:overflow-visible md:mt-[100px] bg-[#FFFFFF] z-50 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-full md:min-w-full md:w-full pb-7 pt-3 md:pt-0 md:mx-5 md:pb-0 md:ps-[20px]  md:h-auto">
+            <div className=" flex md:flex-none md:overflow-visible md:mt-[100px] bg-[#FFFFFF] z-50 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-full md:w-full pb-7 pt-3 md:pt-0 md:mx-5 md:pb-0 md:ps-[20px]  md:h-auto">
               <div className="hidden md:block">
                 <p className="text-xl font-medium text-black w-[253px] pe-[20px] border-r-2 border-[#00000033] h-full flex items-center justify-center text-center">
                   {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
                 </p>
               </div>
-              <div className="md:min-w-[420px] md:max-w-[500px] lg:min-w-[500px]  md:p-[20px] lg:p-[40px]">
+              <div className="md:min-w-[420px] md:max-w-[420px] lg:min-w-[500px]  md:p-[20px] md:pe-0 lg:p-[40px] lg:pe-0">
                 <div>
                   <div
                     className="hidden md:flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
@@ -653,7 +651,7 @@ function Main() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col w-full gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around overflow-hidden pb-20 md:pb-[30px]">
+                  <div className="flex flex-col w-full gap-3 lg:gap-y-8 mt-8 lg:mt-8 lg:px-0 lg:justify-around overflow-hidden pb-20 md:pb-[30px] px-[20px] md:px-0">
                     {question &&
                       question.answeroption.map((option, i) => (
                         <div className="w-full" key={i}>
@@ -707,21 +705,28 @@ function Main() {
           className={`h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0  overflow-hidden
           after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-40
          `}>
-          <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 md:left-[60%] -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
-            <div>
-              <img src="./images/svg/trophy.svg" alt="Golden trophy" />
+          <div className="bg-white rounded-3xl flex justify-center md:justify-between items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[700px] lg:w-[797px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
+            <div className="hidden md:block">
+              <img src="./images/png/2boys.png" alt="Golden trophy" />
             </div>
-            <h3 className=" text-black font-medium text-2xl mt-3">Congratulations</h3>
-            <p className=" text-black text-sm font-normal my-2">You have completed the test.</p>
-            <div
-              className="w-full"
-              onClick={() => {
-                setCongs(false);
-                setResult(true);
-              }}>
-              <h6 className="text-white cursor-pointer font-normal text-2xl bg-[#125566] rounded-lg text-center p-2">
-                Okay
-              </h6>
+            <div className="md:w-[311px] text-center md:me-8">
+              <h3 className=" text-[#FF2000] font-medium text-2xl mt-3">Big Congrats!</h3>
+              <p className=" text-black text-lg font-medium my-2 text-center mt-3">
+                You've officially joined the rare league of finishers.
+              </p>
+              <div className="md:hidden mt-5 text-center flex justify-center">
+                <img src="./images/png/2boys.png" alt="Golden trophy" />
+              </div>
+              <div
+                className="w-full mt-5"
+                onClick={() => {
+                  setCongs(false);
+                  setResult(true);
+                }}>
+                <h6 className="text-white cursor-pointer font-medium text-lg bg-[#FF2000] rounded-lg text-center p-2">
+                  Move to Final Step
+                </h6>
+              </div>
             </div>
           </div>
         </div>
