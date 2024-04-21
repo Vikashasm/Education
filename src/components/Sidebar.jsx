@@ -7,9 +7,9 @@ function Sidebar() {
   return (
     <>
       <div className=" hidden md:flex md:max-w-[1200px] w-full absolute z-10 start-[50%] top-[40px] translate-x-[-50%] px-5">
-        <div className="flex justify-between bg-[#ffffff]  flex w-full px-[30] rounded-[20px] items-center py-[3px]">
-          <p className="text-lg font-normal text-[#455A64]  max-w-[355px] w-full lh-20">
-            <span className="text-xl text-[#FF2000] font-bold lh_20">ETP</span> <br />
+        <div className="flex justify-between bg-[#ffffff] w-full px-[30] rounded-[20px] items-center py-[3px]">
+          <p className="text-sm lg:text-lg font-normal text-[#455A64]  max-w-[355px] w-full lh-20">
+            <span className="text-lg lg:text-xl text-[#FF2000] font-bold lh_20">ETP</span> <br />
             English Level Test!
           </p>
           <div className="flex">
@@ -71,7 +71,7 @@ function Sidebar() {
         </div>
       </div>
       {!activeComponent && (
-        <div className="flex bg-[#4ab8d4a6] backdrop-blur-[10px]  justify-evenly gap-2 items-center  px-5 py-5 sticky top-[0px] z-30 md:hidden">
+        <div className="flex bg-[#4ab8d4a6] backdrop-blur-[10px]  justify-evenly gap-2 items-center px-5 py-2 sticky top-[0px] z-30 md:hidden">
           {/* {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
             const isCurrentLevel = data.Level === parseInt(selectedLevel);
             const isPreviousLevel = data.Level < parseInt(selectedLevel);
@@ -101,7 +101,7 @@ function Sidebar() {
               return (
                 <div
                   key={data.id}
-                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px] sm:w-[143px]  ${
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px]  sm:w-[200px] md:w-[143px]  ${
                     isCurrentLevel
                       ? ' text-black'
                       : isPreviousLevel
