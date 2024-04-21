@@ -101,7 +101,7 @@ function Sidebar() {
               return (
                 <div
                   key={data.id}
-                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px] sm:w-[143px]  ${
                     isCurrentLevel
                       ? ' text-black'
                       : isPreviousLevel
