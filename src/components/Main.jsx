@@ -554,7 +554,7 @@ function Main() {
       {selectedLevel === 0 && <LevelOne></LevelOne>}
       {selectedLevel !== 0 && !CongratulationsPopup && !formPopup && !isFormSubmit ? (
         <div
-          className={`w-[100%] md:w-[79.3%]  md:pb-0 pb-6 ${
+          className={`w-[100%]  md:pb-0 pb-6 grow-[1] flex items-center justify-center ${
             congs === true
               ? 'after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-[60]'
               : null
@@ -579,14 +579,20 @@ function Main() {
             </div>
           ) : null}
           <div className=" flex flex-col  items-center  md:justify-center  md:py-4  lg:gap-10 gap-8  md:h-full relative z-20 pt-2">
-            <div className=" md:bg-[#66bcb4]  flex flex-col justify-between md:flex-none md:overflow-visible bg-[#FFFFFF] z-50 pb-5 pt-2 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-[85%] lg:max-w-[65%]  md:h-auto">
-              <div>
-                <div
-                  className="hidden md:flex   sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
-                  id="maindiv">
-                  {selectedTitleTests.length > 0 && (
-                    <>
-                      {currentQuestion <= 9 && (
+            <div className=" flex justify-between md:flex-none md:overflow-visible md:mt-[100px] bg-[#FFFFFF] z-50 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-full md:min-w-full md:w-full pb-7 pt-3 md:pt-0 md:mx-5 md:pb-0 md:ps-[20px]  md:h-auto">
+              <div className="hidden md:block">
+                <p className="text-xl font-medium text-black w-[253px] pe-[20px] border-r-2 border-[#00000033] h-full flex items-center justify-center text-center">
+                  {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
+                </p>
+              </div>
+              <div className="md:min-w-[420px] md:max-w-[500px] lg:min-w-[500px]  md:p-[20px] lg:p-[40px]">
+                <div>
+                  <div
+                    className="hidden md:flex sm:flex-row  sm:-top-5 sm:left-2/4 sm:-translate-x-1/2 lg:flex-row  absolute  lg:-top-5 lg:left-2/4 lg:-translate-x-1/2 min-w-[100px] "
+                    id="maindiv">
+                    {selectedTitleTests.length > 0 && (
+                      <>
+                        {/* {currentQuestion <= 9 && (
                         <>
                           {Array.from({ length: questionsToShow }, (_, index) => index).map(
                             (index) => (
@@ -602,8 +608,8 @@ function Main() {
                             )
                           )}
                         </>
-                      )}
-                      {remainingQuestions > 0 && currentQuestion > 9 && (
+                      )} */}
+                        {/* {remainingQuestions > 0 && currentQuestion > 9 && (
                         <div className="flex">
                           {Array.from({ length: remainingQuestions }, (_, index) => index).map(
                             (index) => (
@@ -621,102 +627,82 @@ function Main() {
                             )
                           )}
                         </div>
-                      )}
-                    </>
-                  )}
-                </div>
-                <div className=" md:text-md lg:text-2xl text-black font-medium  px-5 lg:pt-6 md:mt-3 py-3 capitalize flex-wrap overflow-hidden flex">
-                  <p className=" text-center font-medium text-base text-black md:hidden">
-                    {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
-                  </p>
-                  <div className=" bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
-                  <div className="fl ex fle x-wrap">
-                    <div className="flex flex-wrap text-black text-lg font-semibold">
-                      <span className="bg-transparent md:bg-[#66BCB4] z-30  pe-1">
-                        {' '}
-                        Question {currentQuestion + 1} / {questions.length} :
-                      </span>
-                      <span id="text">{question.question}</span>
-                    </div>
-                    {question.description && (
+                      )} */}
+                      </>
+                    )}
+                  </div>
+                  <div className=" md:text-md lg:text-2xl text-black font-medium pb-3 capitalize flex-wrap overflow-hidden flex">
+                    <p className=" text-center font-medium text-base text-black md:hidden px-5 md:px-0">
+                      {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
+                    </p>
+                    <div className="bg-[#00000033] w-full h-[1px] my-5 md:hidden"></div>
+                    <div className="fl ex fle x-wrap">
+                      <div className="flex flex-wrap text-black text-lg font-medium px-5 md:px-0">
+                        <span className="bg-transparent z-30  pe-1">
+                          Question {currentQuestion + 1} :
+                        </span>
+                        <span id="text">{question.question}</span>
+                      </div>
+                      {/* {question.description && (
                       <span className="my-4 opacity-80 font-normal text-md">
                         {question.description}
                       </span>
-                    )}
+                    )} */}
+                    </div>
                   </div>
 
-                  {/* <span onClick={() => addDAta()} className="font-medium px-9 text-black " >Submit</span> */}
+                  <div className="flex flex-col w-full gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around overflow-hidden pb-20 md:pb-[30px]">
+                    {question &&
+                      question.answeroption.map((option, i) => (
+                        <div className="w-full" key={i}>
+                          <p
+                            onClick={() => handleOptionClick(i)}
+                            className={`w-full h-full text-lg font-normal  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
+                              selectedOption[currentQuestion] === i
+                                ? 'bg-[#FF2000] text-white'
+                                : 'bg-white border border-[#00000033]'
+                            }`}>
+                            {option.optionNo + ' ' + option.answertext}
+                          </p>
+                        </div>
+                      ))}
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3 lg:gap-y-8 mt-8 lg:mt-8 px-5 lg:px-0 lg:justify-around lg:pb-32 xl:pb-44 pb-28 overflow-hidden">
-                  {/* {questions[0].part1[state].answeroption.map((value, i) => {
-              return (
-                <div className="w-full lg:w-5/12" key={i}>
-                  <p
-                    id={i}
-                    onClick={() =>
-                      handelchange(
-                        questions[0].part1[0].answeroption[i].iscorrect,
-                        i
-                      )
+                <div className=" flex flex-col md:pb-0 gap-3 md:flex-row   rounded-b-2xl bottom-0 w-full px-5 md:px-0">
+                  <button
+                    id="prevbuton"
+                    onClick={handlePrevQuestion}
+                    className={` ${
+                      currentQuestion < 1
+                        ? 'pointer-events-none opacity-30'
+                        : 'pointer-events-auto opacity-100'
+                    } font-normal text-black text-sm md:w-[50%] rounded-[10px] text-center py-2 lg:py-3    bg-[#E0E0E0]`}>
+                    Previous Question
+                  </button>
+                  <button
+                    id="buton"
+                    className={`${
+                      !isselected && currentQuestion !== questions?.length - 1
+                        ? 'pointer-events-none opacity-30'
+                        : currentQuestion === questions?.length - 1 && isselected
+                        ? 'pointer-events-auto opacity-100'
+                        : 'pointer-events-auto opacity-100'
                     }
-                    className="w-full font_lg md:text-md lg:text-lg xl:text-2xl bg-white  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-default"
-                  >
-                    {value.optionNo + " " + value.answertext}
-                  </p>
+                 font-normal text-sm md:w-[50%] rounded-[10px] text-center py-2 lg:py-3 bg-[#FF2000] text-white`}
+                    onClick={handleNextQuestion}>
+                    {currentQuestion === questions?.length - 1 && isselected
+                      ? 'Next Stage'
+                      : 'Next Question'}
+                  </button>
                 </div>
-              );
-            })} */}
-                  {question &&
-                    question.answeroption.map((option, i) => (
-                      <div className="w-full lg:w-5/12" key={i}>
-                        <p
-                          onClick={() => handleOptionClick(i)}
-                          className={`w-full h-full font_lg md:text-md lg:text-lg xl:text-2xl  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
-                            selectedOption[currentQuestion] === i
-                              ? 'md:bg-[#125566] bg-[#FF2000] text-white'
-                              : 'bg-white border border-[#00000033]'
-                          }`}>
-                          {option.optionNo + ' ' + option.answertext}
-                        </p>
-                      </div>
-                    ))}
-                </div>
-              </div>
-
-              <div className=" flex flex-col md:pb-0 gap-3 md:gap-0 md:flex-row  rounded-b-2xl md:absolute bottom-0 w-full px-5 md:px-0 ">
-                <button
-                  id="prevbuton"
-                  onClick={handlePrevQuestion}
-                  className={` ${
-                    currentQuestion < 1
-                      ? 'pointer-events-none opacity-30'
-                      : 'pointer-events-auto opacity-100'
-                  } font-normal text-black md:text-md lg:text-2xl w-full md:w-2/4  text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-bl-3xl bg-[#E0E0E0]`}>
-                  Previous Question
-                </button>
-                <button
-                  id="buton"
-                  className={`${
-                    !isselected && currentQuestion !== questions?.length - 1
-                      ? 'pointer-events-none opacity-30'
-                      : currentQuestion === questions?.length - 1 && isselected
-                      ? 'pointer-events-auto opacity-100'
-                      : 'pointer-events-auto opacity-100'
-                  }
-                 font-normal md:text-black md:text-md lg:text-2xl w-full md:w-2/4 text-center py-2 lg:py-3 rounded-xl md:rounded-none md:rounded-br-3xl  md:bg-[#FFCE32] bg-[#FF2000] text-white`}
-                  onClick={handleNextQuestion}>
-                  {currentQuestion === questions?.length - 1 && isselected
-                    ? 'Next Stage'
-                    : 'Next Question'}
-                </button>
               </div>
             </div>
           </div>
         </div>
       ) : isFormSubmit ? (
         <div
-          className={`bg_img h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0  overflow-hidden
+          className={`h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0  overflow-hidden
           after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-40
          `}>
           <div className="bg-white rounded-3xl flex flex-col justify-center items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[410px] top-2/4 left-2/4 md:left-[60%] -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">

@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 function Layout() {
   return (
-    <div className="md:flex bg_img min-h-screen md:overflow-hidden">
+    <div className="flex flex-col bg_img min-h-screen md:overflow-hidden">
       <Sidebar />
       <Outlet />
     </div>

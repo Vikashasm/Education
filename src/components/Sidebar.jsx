@@ -6,28 +6,68 @@ function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
   return (
     <>
-      <div className=" hidden md:flex w-[25%]">
-        <div className=" bg-[#125566] min-h-screen flex flex-col gap-4 ps-3 pt-3 w-full">
-          {Tests.sort((a, b) => a.Level - b.Level).map((data) => {
-            const isCurrentLevel = data.Level === parseInt(selectedLevel);
-            const isPreviousLevel = data.Level < parseInt(selectedLevel);
-            const isLockedLevel = data.Level > parseInt(selectedLevel);
-            return (
-              <div
-                key={data.id}
-                className={`flex items-center font-normal md:text-sm lg:text-base ${
-                  isCurrentLevel
-                    ? 'bg-white text-black'
-                    : isPreviousLevel
-                    ? 'bg-white text-black'
-                    : 'bg-[#66BCB4] text-black cursor-not-allowed'
-                } pl-3 md:pl-5 pr-4 justify-between rounded-l-full py-2 lg:py-4`}>
-                <span className="mr-3">{data.LevelTitle}</span>
-                {isPreviousLevel && <img src={'/images/svg/Vector2.svg'} alt="VectorGreen" />}
-                {isLockedLevel && <img src={'/images/svg/Vector.svg'} alt="VectorGreen" />}
-              </div>
-            );
-          })}
+      <div className=" hidden md:flex md:max-w-[1200px] w-full absolute z-10 start-[50%] top-[40px] translate-x-[-50%] px-5">
+        <div className="flex justify-between bg-[#ffffff]  flex w-full px-[30] rounded-[20px] items-center py-[3px]">
+          <p className="text-lg font-normal text-[#455A64]  max-w-[355px] w-full lh-20">
+            <span className="text-xl text-[#FF2000] font-bold lh_20">ETP</span> <br />
+            English Level Test!
+          </p>
+          <div className="flex">
+            {Tests.sort((a, b) => a.Level - b.Level).map((data, index) => {
+              const isCurrentLevel = data.Level === parseInt(selectedLevel);
+              const isPreviousLevel = data.Level < parseInt(selectedLevel);
+              const isLockedLevel = data.Level > parseInt(selectedLevel);
+              return (
+                <div
+                  key={data.id}
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${
+                    isCurrentLevel
+                      ? 'bg-white text-black'
+                      : isPreviousLevel
+                      ? 'bg-white text-black'
+                      : 'text-black cursor-not-allowed'
+                  }justify-between`}>
+                  {isCurrentLevel && (
+                    <div
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
+                      <img
+                        className="py-[8px] relative z-10"
+                        src={'/images/png/unlock-level.png'}
+                        alt="VectorGreen"
+                      />
+                    </div>
+                  )}
+                  {isPreviousLevel && (
+                    <div
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
+                      <img
+                        className="py-[8px] relative z-10"
+                        src={'/images/png/unlock-level.png'}
+                        alt="VectorGreen"
+                      />
+                    </div>
+                  )}
+                  {isLockedLevel && (
+                    <div className={`lock_border_${index} w-full flex justify-center`}>
+                      <img
+                        className="py-[2px] relative z-10"
+                        src={'/images/png/lock-level.png'}
+                        alt="VectorGreen"
+                      />
+                    </div>
+                  )}
+                  <span className="pt-[8px]">{data.LevelTitle}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="w-full max-w-[355px] text-right flex justify-end items-center">
+            <img src={'/images/png/user.png'} alt="" />
+          </div>
         </div>
       </div>
       {!activeComponent && (
