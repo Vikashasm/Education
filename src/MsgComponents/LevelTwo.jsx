@@ -48,7 +48,7 @@ function LevelTwo({ onClose }) {
             </div>
             <div onClick={onClose} className=" text-end mt-5">
               <button className=" text-white text-lg font-normal bg-[#FF2000]  rounded-[10px] py-[10px] w-full px-[30px] text-center">
-                Move to Level 03
+                {selectedLevel === 2 ?  'Move to Level 03' : 'Move to Final Step' }
               </button>
             </div>
           </div>

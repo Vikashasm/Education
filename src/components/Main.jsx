@@ -64,6 +64,7 @@ function Main() {
       // console.log("isFormSubmit is present and true");
       setIsFormSubmit(true);
     } else {
+      setIsFormSubmit(false)
       // console.log("isFormSubmit is not present or false");
     }
   }, [Users]);
@@ -362,7 +363,6 @@ function Main() {
           }
         }
       });
-
       // Save the score
       const score = {
         Level: selectedTitleTests[0].Level,
@@ -381,7 +381,10 @@ function Main() {
         setCongratulationsPopup(true);
         // setselectedLevel(Tests[nextIndex].Level);
       } else {
+        setCongratulationsPopup(true)
+        // console.log("else working here")
         try {
+          // console.log("try working here")
           setLoading(true);
           const userString = sessionStorage.getItem('user');
           // Parse the user object string to JSON
@@ -389,32 +392,32 @@ function Main() {
           // Get the userid from the user object
           const userid = user.userid;
           console.log('userid', userid);
-
           const userRef = doc(db, 'Users', userid);
           const userSnap = await getDoc(userRef);
           if (userSnap.exists()) {
             const userData = userSnap.data();
+            console.log("user working here")
             if (userData.isFormSubmit) {
               console.log('Form already submitted');
               setLoading(false);
-              setCongs(true);
+              setResult(true);
               return;
+            } else {
+              console.log('Submitting form data')
+              // Submit form data and update isForm
+              await updateDoc(userRef, {
+                Level: selectedLevel,
+                uid: userid,
+                scores: [...scores, score],
+              });
+              updateData(userid, {
+                Level: selectedLevel,
+                scores: [...scores, score],
+              });
+              setLoading(false);
             }
-            await updateDoc(userRef, {
-              Level: selectedLevel,
-              uid: userid,
-              scores: [...scores, score],
-              isFormSubmit: true,
-            });
-            setIsFormSubmit(true);
           }
-          updateData(userid, {
-            Level: selectedLevel,
-            scores: [...scores, score],
-            isFormSubmit: true,
-          });
           setLoading(false);
-          setCongs(true);
         } catch (error) {
           console.log('Error in last ', error);
         }
@@ -507,28 +510,34 @@ function Main() {
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
         await updateDoc(userRef, {
-          Level: selectedLevel + 1,
+          Level: Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel,
           uid: userid,
           ...formDataKeyValue,
           scores,
+          isFormSubmit: selectedLevel === 3,
         });
         updateData(userid, {
-          Level: selectedLevel + 1,
+          Level: Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel,
           scores: scores,
           uid: userid,
+          isFormSubmit: selectedLevel === 3,
         });
       } else {
         await setDoc(userRef, {
-          Level: selectedLevel + 1,
+          Level: Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel,
           uid: userid,
           ...formDataKeyValue,
           scores,
         });
       }
       // Update the level
-      const nextLevel = selectedLevel + 1;
+      const nextLevel = Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel;
       setselectedLevel(nextLevel);
       setLoading(false);
+
+      if (Tests.length === selectedLevel) { 
+        setResult(true)
+      }
     } catch (error) {
       setLoading(false);
       console.error('Error updating document: ', error);
@@ -544,10 +553,13 @@ function Main() {
   if (loading) {
     return <Loader></Loader>;
   }
-
-  if (resultpopup) {
+  if (resultpopup){
     return <Submitted></Submitted>;
   }
+
+  if (resultpopup ||  isFormSubmit && (selectedLevel === Tests.length)) {
+    return <Submitted></Submitted>;
+  }  
 
   return (
     <>
@@ -657,7 +669,7 @@ function Main() {
                         <div className="w-full" key={i}>
                           <p
                             onClick={() => handleOptionClick(i)}
-                            className={`w-full h-full text-lg font-normal  text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
+                            className={`w-full h-full text-lg   text-black font-normal outline-none rounded-xl p-2 capitalize cursor-pointer ${
                               selectedOption[currentQuestion] === i
                                 ? 'bg-[#FF2000] text-white'
                                 : 'bg-white border border-[#00000033]'
@@ -689,43 +701,13 @@ function Main() {
                         ? 'pointer-events-auto opacity-100'
                         : 'pointer-events-auto opacity-100'
                     }
-                 font-normal text-sm md:w-[50%] rounded-[10px] text-center py-2 lg:py-3 bg-[#FF2000] text-white`}
+                  font-normal text-sm md:w-[50%] rounded-[10px] text-center py-2 lg:py-3 bg-[#FF2000] text-white`}
                     onClick={handleNextQuestion}>
                     {currentQuestion === questions?.length - 1 && isselected
                       ? 'Next Stage'
                       : 'Next Question'}
                   </button>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : isFormSubmit ? (
-        <div
-          className={`h-screen w-[100%] md:w-[79.3%] pb-[110px] md:pb-0  overflow-hidden
-          after:contents-[]  after:bg-[#0000008A] after:absolute after:h-full after:w-full after:top-0 after:left-0 after:z-40
-         `}>
-          <div className="bg-white rounded-3xl flex justify-center md:justify-between items-center p-8 absolute w-[90%] sm:w-[70%] md:w-[700px] lg:w-[797px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-[50%] md:-translate-y-[50%] z-50 opacity-100">
-            <div className="hidden md:block">
-              <img src="./images/png/2boys.png" alt="Golden trophy" />
-            </div>
-            <div className="md:w-[311px] text-center md:me-8">
-              <h3 className=" text-[#FF2000] font-medium text-2xl mt-3">Big Congrats!</h3>
-              <p className=" text-black text-lg font-medium my-2 text-center mt-3">
-                You've officially joined the rare league of finishers.
-              </p>
-              <div className="md:hidden mt-5 text-center flex justify-center">
-                <img src="./images/png/2boys.png" alt="Golden trophy" />
-              </div>
-              <div
-                className="w-full mt-5"
-                onClick={() => {
-                  setCongs(false);
-                  setResult(true);
-                }}>
-                <h6 className="text-white cursor-pointer font-medium text-lg bg-[#FF2000] rounded-lg text-center p-2">
-                  Move to Final Step
-                </h6>
               </div>
             </div>
           </div>
