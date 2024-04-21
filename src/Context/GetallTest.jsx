@@ -16,11 +16,11 @@ export const TestContextProvider = ({ children }) => {
     const [isdatafetched, setIsDataFetched] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
     const [selectedLevel, setselectedLevel] = useState(() => {
-        const storedLevel = localStorage.getItem('selectedLevel');
+        const storedLevel = sessionStorage.getItem('selectedLevel');
         return storedLevel ? parseInt(storedLevel) : 0;
     });
 
-    const [activeComponent,SetactiveComponent] = useState(null)
+    const [activeComponent, SetactiveComponent] = useState(null)
 
     useEffect(() => {
         const fetchTests = async () => {
@@ -50,24 +50,23 @@ export const TestContextProvider = ({ children }) => {
     }, [isdatafetched])
 
     useEffect(() => {
-        localStorage.setItem('selectedLevel', selectedLevel);
+        sessionStorage.setItem('selectedLevel', selectedLevel);
     }, [selectedLevel]);
 
     const memodata = useMemo(() => Tests, [Tests])
 
     const selectedTitleTests = useMemo(() => {
         if (selectedLevel === 0 && Tests.length > 0) {
-            return  [];
+            return [];
         }
         return Tests.filter(test => test.Level === parseInt(selectedLevel));
     }, [Tests, selectedLevel]);
 
-
     // Fetch user-specific data from Firestore
     useEffect(() => {
         const fetchUserData = async () => {
-            let userid =''
-            const userString = localStorage.getItem('user');
+            let userid = ''
+            const userString = sessionStorage.getItem('user');
             if (userString) {
                 // Parse the user object string to JSON
                 const user = JSON.parse(userString);
@@ -93,12 +92,13 @@ export const TestContextProvider = ({ children }) => {
     }, [user]);
 
 
-    
+
     //  return context 
     return (
         <TestContext.Provider value={{ Tests: memodata, selectedLevel, setselectedLevel, selectedTitleTests, SetactiveComponent, activeComponent }}>
-            {isLoading ? <Loader></Loader>  :  children}
+            {isLoading ? <Loader></Loader> : children}
         </TestContext.Provider>
     )
 }
+
 
