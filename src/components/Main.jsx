@@ -651,10 +651,9 @@ function Main() {
                     <div className="fl ex fle x-wrap">
                       <div className="flex flex-wrap text-black text-lg font-medium px-5 md:px-0">
                         <span className="bg-transparent z-30  pe-1">
-                          Question {currentQuestion + 1} / { questions.length}
+                          Question {currentQuestion + 1}/{ questions.length}
                         </span>
-                      
-                        <span id="text"> {question.question }</span>
+                        <span id="text" className='ms-3'> {question.question }</span>
                       </div>
                       {question.description && (
                       <span className="my-4 opacity-80 font-normal  text-sm">
@@ -728,6 +727,7 @@ function Main() {
       ) : null}
     </>
   );
+  
 }
 
 export default Main;
