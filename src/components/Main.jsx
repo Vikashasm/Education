@@ -657,7 +657,7 @@ function Main() {
                         <span id="text"> {question.question }</span>
                       </div>
                       {question.description && (
-                      <span className="my-4 opacity-80 font-normal  text-sm">
+                      <span className="mt-3 opacity-80 font-normal  text-sm inline-block ps-5">
                         {question.description}
                       </span>
                     )}
