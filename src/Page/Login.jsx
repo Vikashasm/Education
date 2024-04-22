@@ -48,9 +48,9 @@ function Login() {
           </p>
         </div> */}
         <div className="  min-h-screen  px-8 ">
-          <div className="flex flex-col items-center justify-center min-h-screen py-8  relative z-10">
+          <div className="flex flex-col items-center justify-center min-h-screen pb-8 md:pt-8  relative z-10">
             <div className=" text-center relative md:hidden w-[80%]">
-              <div className=" flex justify-center ">
+              <div className=" flex justify-center w-[85%] custom:w-[55%] m-auto ">
                 {/* <img
                   className="w-[100%] h-full hidden md:inline"
                   src="/images/svg/Mlogin_img.svg"
@@ -63,8 +63,8 @@ function Login() {
                 />
               </div>
             </div>
- 
-            <div className=" flex justify-center flex-col items-center w-full md:w-[412px] md:border-2 md:border-[#FFB80066] rounded-[20px] md:me-20 md:bg-[#FFFFFF54] login_drop_shadow md:py-[40px] md:px-[20px]">
+
+            <div className=" flex justify-center flex-col items-center w-full md:w-[412px] md:border-2 md:border-[#FFB80066] rounded-[20px] md:me-[150px] md:bg-[#FFFFFF54] login_drop_shadow md:py-[40px] md:px-[20px]">
               <h5 className="text-black text-xl font-semibold hidden md:inline text-center">
                 Welcome to the
               </h5>

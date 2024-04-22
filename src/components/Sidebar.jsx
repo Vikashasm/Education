@@ -4,8 +4,32 @@ import { useTestcontext } from '../Context/GetallTest';
 
 function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
+  const [sideBar, setSideBar] = useState(true);
   return (
     <>
+      {sideBar ? (
+        <div className="bg-[#0000006a] fixed h-screen w-full z-50 left-0 start-0 md:hidden"></div>
+      ) : null}
+      <div className="relative md:hidden">
+        <div
+          className={`sidebar_left fixed w-[50%] bg-[#ffffffc6] z-50 h-screen  p-5 pt-10 text-center backdrop-blur-sm top-0 transition-all ${
+            sideBar === true ? 'left-0' : 'left-[-50%]'
+          }`}>
+          <img
+            onClick={() => setSideBar(false)}
+            className="absolute cursor-pointer top-[15px] right-3"
+            src={'/images/svg/close.svg'}
+            alt="close"
+          />
+          <button className="logout_btn mt-5">Logout</button>
+        </div>
+        <img
+          onClick={() => setSideBar(true)}
+          className="absolute cursor-pointer top-[22px] left-0 custom:left-4 z-40"
+          src={'/images/svg/menu.svg'}
+          alt="menu"
+        />
+      </div>
       <div className=" hidden md:flex md:max-w-[1200px] w-full absolute z-10 start-[50%] top-[40px] translate-x-[-50%] px-5">
         <div className="flex justify-between bg-[#ffffff] w-full px-[30] rounded-[20px] items-center py-[3px]">
           <p className="text-sm lg:text-lg font-normal text-[#455A64]  max-w-[355px] w-full lh-20">
@@ -66,7 +90,8 @@ function Sidebar() {
             })}
           </div>
           <div className="w-full max-w-[355px] text-right flex justify-end items-center">
-            <img src={'/images/png/user.png'} alt="" />
+            <img className="cursor-pointer" src={'/images/png/user.png'} alt="" />
+            <button className="logout_btn ml-5">Logout</button>
           </div>
         </div>
       </div>

@@ -84,6 +84,16 @@
 .lh_22 {
   line-height: 22px !important;
 }
+.lh_16 {
+  line-height: 16px !important;
+}
+.logout_btn {
+  border: 0;
+  background-color: #ff2000;
+  padding: 6px 13px;
+  border-radius: 5px;
+  color: white;
+}
 @media (max-width: 580px) {
   .w_100 {
     width: 100%;
