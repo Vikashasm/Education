@@ -14,7 +14,7 @@ function Submitted() {
   });
 
   useEffect(() => {
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     const user = JSON.parse(userString);
     const userid = user.userid;
     let data = Users.filter((Data) => Data.id === userid);

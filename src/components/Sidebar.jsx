@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTestcontext } from '../Context/GetallTest';
-
+import { UseAuthcontext } from '../Context/GoggleAuth';
 function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
   const [sideBar, setSideBar] = useState(true);
+  const { logoutUser } = UseAuthcontext()
+
+  async function Logout() {
+    try {
+      await logoutUser()
+    } catch (error) {
+      console.log("Error in Logout",error)
+    }
+  } 
+
+
   return (
     <>
       {sideBar ? (
@@ -21,7 +32,7 @@ function Sidebar() {
             src={'/images/svg/close.svg'}
             alt="close"
           />
-          <button className="logout_btn mt-5">Logout</button>
+          <button className="logout_btn mt-5" onClick={() => Logout()} >Logout</button>
         </div>
         <img
           onClick={() => setSideBar(true)}
@@ -91,7 +102,7 @@ function Sidebar() {
           </div>
           <div className="w-full max-w-[355px] text-right flex justify-end items-center">
             <img className="cursor-pointer" src={'/images/png/user.png'} alt="" />
-            <button className="logout_btn ml-5">Logout</button>
+            <button className="logout_btn ml-5" onClick={() => Logout()}>Logout</button>
           </div>
         </div>
       </div>

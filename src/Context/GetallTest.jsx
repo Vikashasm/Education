@@ -16,7 +16,7 @@ export const TestContextProvider = ({ children }) => {
     const [isdatafetched, setIsDataFetched] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
     const [selectedLevel, setselectedLevel] = useState(() => {
-        const storedLevel = sessionStorage.getItem('selectedLevel');
+        const storedLevel = localStorage.getItem('selectedLevel');
         return storedLevel ? parseInt(storedLevel) : 0;
     });
 
@@ -50,7 +50,7 @@ export const TestContextProvider = ({ children }) => {
     }, [isdatafetched])
 
     useEffect(() => {
-        sessionStorage.setItem('selectedLevel', selectedLevel);
+        localStorage.setItem('selectedLevel', selectedLevel);
     }, [selectedLevel]);
 
     const memodata = useMemo(() => Tests, [Tests])
@@ -66,7 +66,7 @@ export const TestContextProvider = ({ children }) => {
     useEffect(() => {
         const fetchUserData = async () => {
             let userid = ''
-            const userString = sessionStorage.getItem('user');
+            const userString = localStorage.getItem('user');
             if (userString) {
                 // Parse the user object string to JSON
                 const user = JSON.parse(userString);

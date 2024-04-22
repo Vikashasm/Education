@@ -39,11 +39,11 @@ function Main() {
   const remainingQuestions = totalQuestions - questionsToShow;
 
   useEffect(() => {
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     const user = JSON.parse(userString);
     const userid = user.userid;
 
-    const storedScoresString = sessionStorage.getItem('scores');
+    const storedScoresString = localStorage.getItem('scores');
     if (storedScoresString) {
       const storedScores = JSON.parse(storedScoresString);
       setScores(storedScores);
@@ -386,7 +386,7 @@ function Main() {
         try {
           // console.log("try working here")
           setLoading(true);
-          const userString = sessionStorage.getItem('user');
+          const userString = localStorage.getItem('user');
           // Parse the user object string to JSON
           const user = JSON.parse(userString);
           // Get the userid from the user object
@@ -495,7 +495,7 @@ function Main() {
     // console.log("Form data:", formData);
     setLoading(true);
     SetformPopup(false);
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     // Parse the user object string to JSON
     const user = JSON.parse(userString);
     // Get the userid from the user object
@@ -680,7 +680,6 @@ function Main() {
                       ))}
                   </div>
                 </div>
-
                 <div className=" flex flex-col md:pb-0 gap-3 md:flex-row   rounded-b-2xl bottom-0 w-full px-5 md:px-0">
                   <button
                     id="prevbuton"
