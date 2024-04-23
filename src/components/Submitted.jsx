@@ -40,11 +40,10 @@ function Submitted() {
   // Calculate total correct answer percentage
 
   return (
-    <div className="z-10 py-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden min-h-screen md:h-screen w-full relative after:bg-[#0000008A] bg_box_shadow">
-      <div className="">
-        <div className=" flex items-center justify-center sm:items-end md:items-center  sm:h-full relative">
-          <div className=" bg-[#ffffff]  z-10 rounded-3xl m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-[100%] md:w-[700px] llg:w-[800px] md:max-h[538px] flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:p-10 md:gap-10 mt-12">
-            {/* <div className=" text-center">
+    <div className="-z-0 py-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden min-h-screen md:h-screen w-full max-w-[1185px] relative m-auto md:max-h-[605px] sm:px-5">
+      <div className="relative top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] items-center justify-center sm:items-end md:items-center  sm:h-full max-h-[506px]">
+        <div className=" bg-[#ffffff]  z-10 rounded-3xl m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-full  flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:py-6 custom:px-8 md:gap-10 mt-12">
+          {/* <div className=" text-center">
               <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
                 {totalCorrectAnswerPercentage >= 80
                   ? 'Excellent Score'
@@ -68,48 +67,43 @@ function Submitted() {
                 Your Message goes here......
               </p>
             </div> */}
-            <div className="md:max-w-[300px] llg:max-w-[345px] text-center">
-              <p className="text-lg font-normal text-black">
-                "<span className="text-xl font-bold text-[#FF2000]">Congratulations</span> <br />
-                on leveling up your English skills! You've aced all three levels like a pro! 🎉 Time
-                to celebrate your linguistic triumph with a high-five and a victory dance! Keep
-                shining bright with your newfound language prowess! ✨"
-              </p>
-              <div className="hidden md:block">
-                <img className="w-full" src="/images/png/2boys.png" alt="party_celebration" />
-              </div>
+          <div className="text-center">
+            <p className="text-lg font-normal text-black">
+              "<span className="text-xl font-bold text-[#FF2000]">Congratulations</span> <br />
+              on leveling up your English skills! You've aced all three levels like a pro! 🎉 Time
+              to celebrate your linguistic triumph with a high-five and a victory dance! Keep
+              shining bright with your newfound language prowess! ✨"
+            </p>
+            <div className="hidden md:block max-w-[380px] m-auto">
+              <img className="w-full" src="/images/png/2boys.png" alt="party_celebration" />
             </div>
-            <div className=" flex flex-col gap-3 mt-7  pb-2 justify-around lg:justify-center w-full">
-              {userData &&
-                userData.length > 0 &&
-                userData[0].scores.map((data, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className=" bg-white rounded-2xl border-[1px] border-[#455A6433] p-5 w-full">
-                      <h6 className="text-[#FF2000] font-bold text-xl text-center">{data.title}</h6>
-                      <div className=" flex justify-between border-t-[1px] border-[#00000033] mt-2 pt-2  custom:px-7">
-                        <div className=" flex flex-col items-center gap-2 text-center">
-                          <p className=" text-sm text-black font-normal lh_16">
-                            Total <br />
-                            Questions
-                          </p>
-                          <h6 className="text-black font-bold text-xl">{data.totalQuestions}</h6>
-                        </div>
-                        <div className=" flex flex-col items-center gap-2 text-center">
-                          <p className=" text-sm text-black font-normal lh_16">
-                            Correct <br />
-                            Answers
-                          </p>
-                          <h6 className="text-[#00C11F] font-bold text-xl">
-                            {data.correctAnswers}
-                          </h6>
-                        </div>
+          </div>
+          <div className=" flex flex-col gap-3 mt-7  pb-2 justify-around lg:justify-center max-w-[405px] w-full">
+            {userData &&
+              userData.length > 0 &&
+              userData[0].scores.map((data, index) => {
+                return (
+                  <div
+                    key={index}
+                    className=" bg-white rounded-2xl border-[1px] border-[#455A6433] p-5 w-full">
+                    <h6 className="text-[#FF2000] font-bold text-xl text-center">{data.title}</h6>
+                    <div className=" flex justify-between border-t-[1px] border-[#00000033] mt-2 pt-2 custom:px-3  lg:px-7 gap-3">
+                      <div className=" flex flex-col items-center gap-2 text-center">
+                        <p className=" text-sm text-black font-normal lh_16 custom:whitespace-nowrap">
+                          Total Questions
+                        </p>
+                        <h6 className="text-black font-bold text-xl">{data.totalQuestions}</h6>
+                      </div>
+                      <div className=" flex flex-col items-center gap-2 text-center">
+                        <p className=" text-sm text-black font-normal lh_16 custom:whitespace-nowrap">
+                          Correct Answers
+                        </p>
+                        <h6 className="text-[#00C11F] font-bold text-xl">{data.correctAnswers}</h6>
                       </div>
                     </div>
-                  );
-                })}
-            </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
