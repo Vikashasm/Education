@@ -6,6 +6,9 @@ function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
   const [sideBar, setSideBar] = useState(true);
   const { logoutUser } = UseAuthcontext()
+  
+
+  //  logout function Start  here
 
   async function Logout() {
     try {
@@ -14,6 +17,9 @@ function Sidebar() {
       console.log("Error in Logout",error)
     }
   } 
+
+
+  // logout function end here
 
 
   return (
