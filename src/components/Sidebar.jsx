@@ -1,44 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTestcontext } from '../Context/GetallTest';
-import { UseAuthcontext } from '../Context/GoggleAuth';
+import { UseAuthcontext, logoutUser } from '../Context/GoggleAuth';
 function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
   const [sideBar, setSideBar] = useState(true);
-  const { logoutUser } = UseAuthcontext()
-  
-
-  //  logout function Start  here
-
+  const [logoutPopup, setLogoutPopup] = useState(false);
+  const { logoutUser } = UseAuthcontext();
   async function Logout() {
     try {
-      await logoutUser()
+      await logoutUser();
     } catch (error) {
-      console.log("Error in Logout",error)
+      console.log('Error in Logout', error);
     }
-  } 
-
-
-  // logout function end here
-
+  }
 
   return (
     <>
+      {logoutPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-[#00000076] z-[55]"></div>
+      )}
+      {logoutPopup ? (
+        <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[60] w-[90%] custom:w-[500px] px-4 pt-4 pb-6 text-center rounded-xl">
+          <div className="flex justify-end">
+            <img
+              onClick={() => setLogoutPopup(false)}
+              className=" cursor-pointer"
+              src={'/images/svg/close.svg'}
+              alt="closeIcon"
+            />
+          </div>
+          <p className="text-2xl fw-700 black mb-0 text-center">Logout</p>
+          <p className="text-lg fw-500 black text-center mt-4">Are you sure want to Logout</p>
+          <div className="flex items-center justify-center gap-6 mt-4 pt-2">
+            <button
+              onClick={() => setLogoutPopup(false)}
+              className="text-base border-[1px] border-[#455A64] px-5 py-2 w-[100px] rounded-lg">
+              Cancel
+            </button>
+            <button
+              onClick={() => Logout()}
+              className="text-base border-[1px] border-[#455A64] bg-[#455A64] px-5 py-2 w-[100px] rounded-lg text-white">
+              Logout
+            </button>
+          </div>
+        </div>
+      ) : null}
       {sideBar ? (
         <div className="bg-[#0000006a] fixed h-screen w-full z-50 left-0 start-0 md:hidden"></div>
       ) : null}
       <div className="relative md:hidden">
         <div
-          className={`sidebar_left fixed w-[50%] bg-[#ffffffc6] z-50 h-screen  p-5 pt-10 text-center backdrop-blur-sm top-0 transition-all ${
-            sideBar === true ? 'left-0' : 'left-[-50%]'
-          }`}>
+          className={`sidebar_left fixed w-[50%] bg-[#ffffffc6] z-50 h-screen  p-5 pt-10 text-center backdrop-blur-sm top-0 transition-all ${sideBar === true ? 'left-0' : 'left-[-50%]'
+            }`}>
           <img
             onClick={() => setSideBar(false)}
             className="absolute cursor-pointer top-[15px] right-3"
             src={'/images/svg/close.svg'}
             alt="close"
           />
-          <button className="logout_btn mt-5" onClick={() => Logout()} >Logout</button>
+          <button
+            className="logout_btn mt-5"
+            onClick={() => {
+              setLogoutPopup(true);
+              setSideBar(false);
+            }}>
+            Logout
+          </button>
         </div>
         <img
           onClick={() => setSideBar(true)}
@@ -61,18 +89,16 @@ function Sidebar() {
               return (
                 <div
                   key={data.id}
-                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${
-                    isCurrentLevel
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${isCurrentLevel
                       ? 'bg-white text-black'
                       : isPreviousLevel
-                      ? 'bg-white text-black'
-                      : 'text-black cursor-not-allowed'
-                  }justify-between`}>
+                        ? 'bg-white text-black'
+                        : 'text-black cursor-not-allowed'
+                    }justify-between`}>
                   {isCurrentLevel && (
                     <div
-                      className={`${
-                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                      } w-full flex justify-center`}>
+                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                        } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
@@ -82,9 +108,8 @@ function Sidebar() {
                   )}
                   {isPreviousLevel && (
                     <div
-                      className={`${
-                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                      } w-full flex justify-center`}>
+                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                        } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
@@ -108,7 +133,9 @@ function Sidebar() {
           </div>
           <div className="w-full max-w-[355px] text-right flex justify-end items-center">
             <img className="cursor-pointer" src={'/images/png/user.png'} alt="" />
-            <button className="logout_btn ml-5" onClick={() => Logout()}>Logout</button>
+            <button className="logout_btn ml-5" onClick={() => setLogoutPopup(true)}>
+              Logout
+            </button>
           </div>
         </div>
       </div>
@@ -143,18 +170,16 @@ function Sidebar() {
               return (
                 <div
                   key={data.id}
-                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px]  sm:w-[200px] md:w-[143px]  ${
-                    isCurrentLevel
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px]  sm:w-[200px] md:w-[143px]  ${isCurrentLevel
                       ? ' text-black'
                       : isPreviousLevel
-                      ? 'text-black'
-                      : 'text-black cursor-not-allowed'
-                  }justify-between`}>
+                        ? 'text-black'
+                        : 'text-black cursor-not-allowed'
+                    }justify-between`}>
                   {isCurrentLevel && (
                     <div
-                      className={`${
-                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                      } w-full flex justify-center`}>
+                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                        } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
@@ -164,9 +189,8 @@ function Sidebar() {
                   )}
                   {isPreviousLevel && (
                     <div
-                      className={`${
-                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                      } w-full flex justify-center`}>
+                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                        } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}

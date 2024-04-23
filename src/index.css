@@ -94,6 +94,9 @@
   border-radius: 5px;
   color: white;
 }
+.bg_box_shadow {
+  box-shadow: 0px 0px 37px #b8b8b8;
+}
 @media (max-width: 580px) {
   .w_100 {
     width: 100%;
