@@ -4,7 +4,7 @@ import { useTestcontext } from '../Context/GetallTest';
 import { UseAuthcontext, logoutUser } from '../Context/GoggleAuth';
 function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
-  const [sideBar, setSideBar] = useState(true);
+  const [sideBar, setSideBar] = useState(false);
   const [logoutPopup, setLogoutPopup] = useState(false);
   const { logoutUser } = UseAuthcontext();
   async function Logout() {
@@ -21,27 +21,33 @@ function Sidebar() {
         <div className="fixed top-0 left-0 w-full h-full bg-[#00000076] z-[55]"></div>
       )}
       {logoutPopup ? (
-        <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[60] w-[90%] custom:w-[500px] px-4 pt-4 pb-6 text-center rounded-xl">
-          <div className="flex justify-end">
+        <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[60] w-[90%] custom:w-[500px] px-7 py-5 custom:px-[50px] custom:py-[40px] text-center rounded-[20px]">
+          <div className="flex justify-center">
             <img
               onClick={() => setLogoutPopup(false)}
               className=" cursor-pointer"
-              src={'/images/svg/close.svg'}
+              src={'/images/png/logout.png'}
               alt="closeIcon"
             />
           </div>
-          <p className="text-2xl fw-700 black mb-0 text-center">Logout</p>
-          <p className="text-lg fw-500 black text-center mt-4">Are you sure want to Logout</p>
+          <p className="text-3xl font-medium black mb-0 text-center text-[#FF0000] pt-5">
+            Are you leaving?
+          </p>
+          <p className="text-base font-normal text-black text-center mt-5">
+            Are you sure want to log out? All your unsaved data will be lost.
+          </p>
           <div className="flex items-center justify-center gap-6 mt-4 pt-2">
             <button
               onClick={() => setLogoutPopup(false)}
-              className="text-base border-[1px] border-[#455A64] px-5 py-2 w-[100px] rounded-lg">
-              Cancel
+              className="text-base px-[15px] py-[10px] rounded-[10px] flex items-center gap-[10px] bg-[#EDEDED]">
+              <img src={'/images/png/cancel.png'} alt="" />
+              <p className="text-base text-black">Cancel</p>
             </button>
             <button
               onClick={() => Logout()}
-              className="text-base border-[1px] border-[#455A64] bg-[#455A64] px-5 py-2 w-[100px] rounded-lg text-white">
-              Logout
+              className="text-base px-[15px] py-[10px] rounded-[10px] flex items-center gap-[10px] bg-[#04B92C]">
+              <p className="text-base text-white">Yes</p>
+              <img src={'/images/png/yes.png'} alt="" />
             </button>
           </div>
         </div>
