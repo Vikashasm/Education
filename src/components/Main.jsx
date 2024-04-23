@@ -653,7 +653,8 @@ function Main() {
                         <span className="bg-transparent z-30  pe-1">
                           Question {currentQuestion + 1}/{ questions.length}
                         </span>
-                        <span id="text" className='ms-3'> {question.question }</span>
+                        <span id="text" className='ms-3'> {question.question}</span>
+                      
                       </div>
                       {question.description && (
                       <span className="mt-3 opacity-80 font-normal  text-sm inline-block ps-5 md:ps-0">
