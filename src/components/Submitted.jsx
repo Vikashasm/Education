@@ -40,10 +40,10 @@ function Submitted() {
   // Calculate total correct answer percentage
 
   return (
-    <div className="bg_img z-10 py-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden min-h-screen md:h-screen w-full relative after:bg-[#0000008A]">
+    <div className="z-10 py-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-hidden min-h-screen md:h-screen w-full relative after:bg-[#0000008A] bg_box_shadow">
       <div className="">
         <div className=" flex items-center justify-center sm:items-end md:items-center  sm:h-full relative">
-          <div className=" bg-[#ffffff]  z-10 rounded-3xl m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-[100%] md:w-[700px] llg:w-[800px] md:max-h[538px] flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:p-10 md:gap-10">
+          <div className=" bg-[#ffffff]  z-10 rounded-3xl m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-[100%] md:w-[700px] llg:w-[800px] md:max-h[538px] flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:p-10 md:gap-10 mt-12">
             {/* <div className=" text-center">
               <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
                 {totalCorrectAnswerPercentage >= 80

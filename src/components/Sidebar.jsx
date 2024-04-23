@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTestcontext } from '../Context/GetallTest';
-import { UseAuthcontext } from '../Context/GoggleAuth';
+import { UseAuthcontext, logoutUser } from '../Context/GoggleAuth';
 function Sidebar() {
   const { Tests, selectedLevel, activeComponent } = useTestcontext();
   const [sideBar, setSideBar] = useState(true);
-  const [loginPopup, setLoginPopup] = useState(false);
+  const [logoutPopup, setLogoutPopup] = useState(false);
+  const { logoutUser } = UseAuthcontext();
+  async function Logout() {
+    try {
+      await logoutUser();
+    } catch (error) {
+      console.log('Error in Logout', error);
+    }
+  }
+
   return (
     <>
-      {loginPopup ? (
-        <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50 w-[500px] px-4 pt-4 pb-6 text-center">
+      {logoutPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-[#00000076] z-[55]"></div>
+      )}
+      {logoutPopup ? (
+        <div className="bg-white fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[60] w-[90%] custom:w-[500px] px-4 pt-4 pb-6 text-center rounded-xl">
           <div className="flex justify-end">
             <img
-              className="cursor_pointer"
-              // onClick={handehidePopup}
+              onClick={() => setLogoutPopup(false)}
+              className=" cursor-pointer"
               src={'/images/svg/close.svg'}
               alt="closeIcon"
             />
@@ -22,15 +34,13 @@ function Sidebar() {
           <p className="text-lg fw-500 black text-center mt-4">Are you sure want to Logout</p>
           <div className="flex items-center justify-center gap-6 mt-4 pt-2">
             <button
-              className="text-base border-[1px] border-[#455A64] px-5 py-2 w-[100px] rounded-lg"
-              // onClick={handehidePopup}
-            >
+              onClick={() => setLogoutPopup(false)}
+              className="text-base border-[1px] border-[#455A64] px-5 py-2 w-[100px] rounded-lg">
               Cancel
             </button>
             <button
-              className="text-base border-[1px] border-[#455A64] bg-[#455A64] px-5 py-2 w-[100px] rounded-lg text-white"
-              // onClick={handleDeleteClick}
-            >
+              onClick={() => Logout()}
+              className="text-base border-[1px] border-[#455A64] bg-[#455A64] px-5 py-2 w-[100px] rounded-lg text-white">
               Logout
             </button>
           </div>
@@ -50,7 +60,14 @@ function Sidebar() {
             src={'/images/svg/close.svg'}
             alt="close"
           />
-          <button className="logout_btn mt-5" onClick={() => Logout()} >Logout</button>
+          <button
+            className="logout_btn mt-5"
+            onClick={() => {
+              setLogoutPopup(true);
+              setSideBar(false);
+            }}>
+            Logout
+          </button>
         </div>
         <img
           onClick={() => setSideBar(true)}
@@ -120,7 +137,9 @@ function Sidebar() {
           </div>
           <div className="w-full max-w-[355px] text-right flex justify-end items-center">
             <img className="cursor-pointer" src={'/images/png/user.png'} alt="" />
-            <button className="logout_btn ml-5" onClick={() => Logout()}>Logout</button>
+            <button className="logout_btn ml-5" onClick={() => setLogoutPopup(true)}>
+              Logout
+            </button>
           </div>
         </div>
       </div>
