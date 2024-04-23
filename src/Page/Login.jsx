@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 function Login() {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
-  const { GoggleSignIn, user } = UseAuthcontext();
+  const { GoggleSignIn, user} = UseAuthcontext();
 
   const handleLogin = async () => {
     try {
