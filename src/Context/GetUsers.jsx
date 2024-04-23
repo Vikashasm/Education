@@ -42,7 +42,6 @@ export const UserContextProvider = ({ children }) => {
         setUsers((prevUsers) => {
             return prevUsers.map(user => {
                 if (user.id === userId) {
-                    console.log("updateData")
                     return { ...user, ...updatedData };
                 }
                 return user;

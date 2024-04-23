@@ -24,7 +24,7 @@ export function UserAuthContextProvider({ children }) {
     }
 
     async function logoutUser() {
-        sessionStorage.clear();
+        localStorage.clear();
         await signOut(auth);
         setuser(null);
     }
@@ -36,27 +36,18 @@ export function UserAuthContextProvider({ children }) {
                     userid: currentUser.uid,
                     useremail: currentUser.email,
                 };
-                sessionStorage.setItem("user", JSON.stringify(userData));
+                localStorage.setItem("user", JSON.stringify(userData));
                 setuser(true);
             } else {
-                sessionStorage.removeItem("user");
+                localStorage.removeItem("user");
                 setuser(null);
             }
             setLoading(false);
         });
-
-        const handleWindowClose = () => {
-            logoutUser();
-        };
-        window.addEventListener("beforeunload", handleWindowClose);
         return () => {
-            window.removeEventListener("beforeunload", handleWindowClose);
-            unsubscribe();
+            unsubscribe(); // Unsubscribe when the component unmounts
         };
     }, []);
-
-
-    
 
     if (loading) {
         return <Loader></Loader>
