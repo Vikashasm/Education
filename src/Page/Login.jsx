@@ -58,7 +58,7 @@ function Login() {
                 /> */}
                 <img
                   className="w-[100%] h-full md:hidden"
-                  src="/images/svg/Mlogin_img1.svg"
+                  src="/images/png/woman2.png"
                   alt="Login_img"
                 />
               </div>

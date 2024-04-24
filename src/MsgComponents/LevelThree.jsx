@@ -17,7 +17,7 @@ function LevelThree({ onClose }) {
         <div className="hidden md:block">
           {<img className="py-[8px]" src={'/images/png/cartoon-boy.png'} alt="VectorGreen" />}
         </div>
-        <div className=" py-10 px-5 lg:p-10  w-[86%] md:w-[460px] relative">
+        <div className=" py-10 px-5 lg:p-10  custom:w-[86%] md:w-[460px] relative">
           <h1 className=" text-[#FF2000] text-4xl font-bold text-center ">Congrats!</h1>
           <h2 className=" text-[#125566] text-lg font-medium text-center mt-3 lh_20">
             You've conquered <br /> Level 01!
@@ -28,9 +28,8 @@ function LevelThree({ onClose }) {
           <div className=" flex justify-center">
             <img
               className="md:hidden"
-              width="194px"
-              height="260px"
-              src="images/svg/dance3_group.svg"
+              width="250px"
+              src="images/png/cartoon-boy.png"
               alt="dance_group"
             />
           </div>
