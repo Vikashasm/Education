@@ -7,6 +7,8 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // interface CountryType {
 //   code: string;
@@ -461,15 +463,31 @@ function Form2({ onSubmit }) {
     setFormData({ ...formData, [name]: value });
   };
 
+
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (Object.values(formData).some((value) => value.trim() === '')) {
       // Display an error message or handle the error as needed
-      alert('Please fill in all fields.');
+      toast.error('Please Fill All The Fields', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
-    e.preventDefault();
     onSubmit(formData); // Submit the form data if validation passes
   };
+
+
+
+  // useEffect(() => {
+  //   console.log("form data ",formData)
+  // },[formData])
 
   return (
     <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex items-center justify-center m-auto md:pt-12">
@@ -539,7 +557,35 @@ function Form2({ onSubmit }) {
                           }}
                         />
                       )}
+                      onChange={(e) => {
+                        setFormData(prevState => ({
+                          ...prevState,
+                          coutryHigherStudies: e.target.innerText // Update the value in the form data
+                        }));
+                      }}
                     />
+                    {/* <Box>
+                      <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Select Country</InputLabel>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={formData.coutryHigherStudies}
+                          label="Age"
+                          name="coutryHigherStudies"
+                          onChange={(e) => {
+                            setFormData(prevState => ({
+                              ...prevState,
+                              coutryHigherStudies: e.target.value // Update the value in the form data
+                            }));
+                          }}
+                        >
+                          {countries.map(country => (
+                            <MenuItem key={country.code} value={country.label}>{country.label}</MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Box> */}
                   </div>
                 </div>
               </div>
@@ -570,7 +616,7 @@ function Form2({ onSubmit }) {
                       <MenuItem value={'IELTS'}>IELTS </MenuItem>
                     </Select>
                   </FormControl>
-                </Box>
+                </Box>  
               </div>
               <div className=" text-end">
                 <button
@@ -583,6 +629,7 @@ function Form2({ onSubmit }) {
           </form>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
