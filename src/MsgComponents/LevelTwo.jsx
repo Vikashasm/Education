@@ -26,7 +26,7 @@ function LevelTwo({ onClose }) {
       /> */}
       <div className="flex items-center justify-center h-full mx-5 md:mx-0">
         <div className="flex items-center justify-center bg-white rounded-[20px] md:gap-[70px] py-10 md:py-[56px] md:ps-5">
-          <div className='hidden md:block'>
+          <div className="hidden md:block">
             <img src="images/png/girl-boy.png" alt="girl-boy" />
           </div>
           <div className="w-[88%] md:w-[317px] md:pe-[60px]">
@@ -42,13 +42,13 @@ function LevelTwo({ onClose }) {
               <img
                 className="md:hidden"
                 width="90%"
-                src="images/svg/dance2_group.svg"
+                src="images/png/girl-boy.png"
                 alt="dance_group"
               />
             </div>
             <div onClick={onClose} className=" text-end mt-5">
               <button className=" text-white text-lg font-normal bg-[#FF2000]  rounded-[10px] py-[10px] w-full px-[30px] text-center">
-                {selectedLevel === 2 ?  'Move to Level 03' : 'Move to Final Step' }
+                {selectedLevel === 2 ? 'Move to Level 03' : 'Move to Final Step'}
               </button>
             </div>
           </div>

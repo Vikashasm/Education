@@ -97,6 +97,33 @@
 .bg_box_shadow {
   box-shadow: 0px -3px 8px #b8b8b8;
 }
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  background-color: #eeeeee !important;
+  padding: 12px 20px !important;
+}
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-family: 'Ubuntu', sans-serif !important;
+  font-size: 16px !important;
+  color: #00000080 !important;
+}
+.css-q8hpuo-MuiFormControl-root {
+  height: 48px !important;
+  overflow: hidden !important;
+  border-radius: 12px;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: 0 !important;
+}
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  border-radius: 10px !important;
+}
+.css-clttge-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
+  color: #00000080 !important;
+}
+.css-clttge-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input::placeholder {
+  color: #00000080 !important;
+  opacity: 1 !important;
+}
 @media (max-width: 580px) {
   .w_100 {
     width: 100%;
