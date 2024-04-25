@@ -27,7 +27,7 @@ function LevelTwo({ onClose }) {
       <div className="flex items-center justify-center h-full mx-5 md:mx-0">
         <div className="flex items-center justify-center bg-white rounded-[20px] md:gap-[70px] py-10 md:py-[56px] md:ps-5">
           <div className="hidden md:block">
-            <img src="images/png/girl-boy.png" alt="girl-boy" />
+            <img src="images/svg/girl-boy.svg" alt="girl-boy" />
           </div>
           <div className="w-[88%] md:w-[317px] md:pe-[60px]">
             <h1 className=" text-[#FF2000] text-4xl font-bold text-center mt-3">
@@ -42,7 +42,7 @@ function LevelTwo({ onClose }) {
               <img
                 className="md:hidden"
                 width="90%"
-                src="images/png/girl-boy.png"
+                src="images/svg/girl-boy.svg"
                 alt="dance_group"
               />
             </div>

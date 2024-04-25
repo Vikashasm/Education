@@ -117,12 +117,42 @@
 .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
   border-radius: 10px !important;
 }
+.css-tzsjye {
+  border-radius: 10px !important;
+}
 .css-clttge-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
   color: #00000080 !important;
 }
 .css-clttge-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input::placeholder {
   color: #00000080 !important;
   opacity: 1 !important;
+}
+.css-igs3ac {
+  border-color: transparent !important;
+}
+.css-qiwgdb {
+  padding: 12px 12px !important;
+  background-color: #eeeeee;
+  font-family: 'Ubuntu', sans-serif !important;
+  color: #00000080 !important;
+}
+.css-fvipm8.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+.css-igs3ac {
+  border: none !important;
+}
+.css-segi59:hover .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+.css-1uvydh2 {
+  color: #00000080 !important;
+  font-family: 'Ubuntu', sans-serif !important;
+}
+@media (hover: none) {
+  .css-segi59:hover .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+  }
 }
 @media (max-width: 580px) {
   .w_100 {
