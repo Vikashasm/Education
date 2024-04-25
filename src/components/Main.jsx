@@ -409,10 +409,12 @@ function Main() {
                 Level: selectedLevel,
                 uid: userid,
                 scores: [...scores, score],
+                updatedAt: new Date().toISOString(),
               });
               updateData(userid, {
                 Level: selectedLevel,
                 scores: [...scores, score],
+                updatedAt: new Date().toISOString(),
               });
               setLoading(false);
             }
@@ -515,19 +517,33 @@ function Main() {
           ...formDataKeyValue,
           scores,
           isFormSubmit: selectedLevel === 3,
+          updatedAt: new Date().toISOString(),
         });
         updateData(userid, {
           Level: Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel,
           scores: scores,
           uid: userid,
           isFormSubmit: selectedLevel === 3,
+          updatedAt: new Date().toISOString(),
         });
       } else {
         await setDoc(userRef, {
           Level: Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel,
           uid: userid,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          Status : 'New',
           ...formDataKeyValue,
           scores,
+        });
+
+        updateData(userid, {
+          Level: Tests.length > selectedLevel ? selectedLevel + 1 : selectedLevel,
+          scores: scores,
+          uid: userid,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          Status: 'New',
         });
       }
       // Update the level
@@ -653,7 +669,8 @@ function Main() {
                         <span className="bg-transparent z-30  pe-1">
                           Question {currentQuestion + 1}/{ questions.length}
                         </span>
-                        <span id="text" className='ms-3'> {question.question }</span>
+                        <span id="text" className='ms-3'> {question.question}</span>
+                      
                       </div>
                       {question.description && (
                       <span className="mt-3 opacity-80 font-normal  text-sm inline-block ps-5 md:ps-0">

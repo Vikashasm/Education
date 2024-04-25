@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTestcontext } from '../Context/GetallTest';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Form1({ onSubmit }) {
   const { SetactiveComponent } = useTestcontext();
@@ -27,7 +29,16 @@ function Form1({ onSubmit }) {
     e.preventDefault();
     if (Object.values(formData).some((value) => value.trim() === '')) {
       // Display an error message or handle the error as needed
-      alert('Please fill in all fields.');
+      toast.error('Please Fill All The Fields', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     if (formData.phoneNumber === formData.alternatePhoneNumber) {
@@ -126,6 +137,7 @@ function Form1({ onSubmit }) {
           </form>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

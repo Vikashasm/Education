@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useTestcontext } from '../Context/GetallTest';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Form3({ onSubmit }) {
   const { SetactiveComponent } = useTestcontext();
@@ -25,7 +27,16 @@ function Form3({ onSubmit }) {
   const handleSubmit = (e) => {
     if (Object.values(formData).some((value) => value.trim() === '')) {
       // Display an error message or handle the error as needed
-      alert('Please fill in all fields.');
+      toast.error('Please Fill All The Fields', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     e.preventDefault();
@@ -84,6 +95,7 @@ function Form3({ onSubmit }) {
           </div>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
