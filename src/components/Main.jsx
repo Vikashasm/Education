@@ -532,7 +532,7 @@ function Main() {
           uid: userid,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
-          Status : 'New',
+          Status : 'NEW',
           ...formDataKeyValue,
           scores,
         });
@@ -543,7 +543,7 @@ function Main() {
           uid: userid,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
-          Status: 'New',
+          Status: 'NEW',
         });
       }
       // Update the level
