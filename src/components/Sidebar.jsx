@@ -10,6 +10,7 @@ function Sidebar() {
   async function Logout() {
     try {
       await logoutUser();
+      window.location.reload();
     } catch (error) {
       console.log('Error in Logout', error);
     }
@@ -57,8 +58,9 @@ function Sidebar() {
       ) : null}
       <div className="relative md:hidden">
         <div
-          className={`sidebar_left fixed w-[50%] bg-[#ffffffc6] z-50 h-screen  p-5 pt-10 text-center backdrop-blur-sm top-0 transition-all ${sideBar === true ? 'left-0' : 'left-[-50%]'
-            }`}>
+          className={`sidebar_left fixed w-[50%] bg-[#ffffffc6] z-50 h-screen  p-5 pt-10 text-center backdrop-blur-sm top-0 transition-all ${
+            sideBar === true ? 'left-0' : 'left-[-50%]'
+          }`}>
           <img
             onClick={() => setSideBar(false)}
             className="absolute cursor-pointer top-[15px] right-3"
@@ -95,16 +97,18 @@ function Sidebar() {
               return (
                 <div
                   key={data.id}
-                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${isCurrentLevel
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[143px]  ${
+                    isCurrentLevel
                       ? 'bg-white text-black'
                       : isPreviousLevel
-                        ? 'bg-white text-black'
-                        : 'text-black cursor-not-allowed'
-                    }justify-between`}>
+                      ? 'bg-white text-black'
+                      : 'text-black cursor-not-allowed'
+                  }justify-between`}>
                   {isCurrentLevel && (
                     <div
-                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                        } w-full flex justify-center`}>
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
@@ -114,8 +118,9 @@ function Sidebar() {
                   )}
                   {isPreviousLevel && (
                     <div
-                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                        } w-full flex justify-center`}>
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
@@ -139,7 +144,11 @@ function Sidebar() {
           </div>
           <div className="w-full max-w-[355px] text-right flex justify-end items-center">
             <img className="cursor-pointer" src={'/images/png/user.png'} alt="" />
-            <button className="logout_btn ml-5" onClick={() => setLogoutPopup(true)}>
+            <button
+              className="logout_btn ml-5"
+              onClick={() => {
+                setLogoutPopup(true);
+              }}>
               Logout
             </button>
           </div>
@@ -176,16 +185,18 @@ function Sidebar() {
               return (
                 <div
                   key={data.id}
-                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px]  sm:w-[200px] md:w-[143px]  ${isCurrentLevel
+                  className={` font-normal  text-center flex items-center flex-col justify-center w-[100px]  sm:w-[200px] md:w-[143px]  ${
+                    isCurrentLevel
                       ? ' text-black'
                       : isPreviousLevel
-                        ? 'text-black'
-                        : 'text-black cursor-not-allowed'
-                    }justify-between`}>
+                      ? 'text-black'
+                      : 'text-black cursor-not-allowed'
+                  }justify-between`}>
                   {isCurrentLevel && (
                     <div
-                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                        } w-full flex justify-center`}>
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
@@ -195,8 +206,9 @@ function Sidebar() {
                   )}
                   {isPreviousLevel && (
                     <div
-                      className={`${data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
-                        } w-full flex justify-center`}>
+                      className={`${
+                        data.Level == 1 || data.Level == 2 ? 'unlock_border' : null
+                      } w-full flex justify-center`}>
                       <img
                         className="py-[8px] relative z-10"
                         src={'/images/png/unlock-level.png'}
