@@ -30,20 +30,30 @@ function Form1({ onSubmit }) {
     if (Object.values(formData).some((value) => value.trim() === '')) {
       // Display an error message or handle the error as needed
       toast.error('Please Fill All The Fields', {
-        position: "top-right",
+        position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: 'light',
       });
       return;
     }
     if (formData.phoneNumber === formData.alternatePhoneNumber) {
       // Display an error message or handle the error as needed
-      alert('Phone Number and Alternate Phone Number cannot be the same.');
+      toast.error('Phone Number and Alternate Phone Number cannot be the same.', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+      // alert('Phone Number and Alternate Phone Number cannot be the same.');
       return;
     }
     onSubmit(formData); // Submit the form data if validation passes

@@ -455,7 +455,7 @@ function Form2({ onSubmit }) {
   const [formData, setFormData] = useState({
     hometown: '',
     coutryHigherStudies: '',
-    IeltsOrPte: '',
+    IeltsOrPte: 'PTE',
   });
 
   const handleChange = (e) => {

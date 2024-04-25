@@ -75,7 +75,7 @@ function Submitted() {
               shining bright with your newfound language prowess! ✨"
             </p>
             <div className="hidden md:block max-w-[380px] m-auto">
-              <img className="w-full" src="/images/png/2boys.png" alt="party_celebration" />
+              <img className="w-full" src="/images/svg/2boys1.svg" alt="party_celebration" />
             </div>
           </div>
           <div className=" flex flex-col gap-3 mt-7  pb-2 justify-around lg:justify-center max-w-[405px] w-full">

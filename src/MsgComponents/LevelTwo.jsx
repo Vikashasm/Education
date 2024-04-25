@@ -27,7 +27,11 @@ function LevelTwo({ onClose }) {
       <div className="flex items-center justify-center h-full mx-5 md:mx-0">
         <div className="flex items-center justify-center bg-white rounded-[20px] md:gap-[70px] py-10 md:py-[56px] md:ps-5">
           <div className="hidden md:block">
-            <img src="images/svg/girl-boy.svg" alt="girl-boy" />
+            {selectedLevel === 2 ? (
+              <img src="images/svg/girl-boy.svg" alt="girl-boy" />
+            ) : (
+              <img src="images/svg/2boys.svg" alt="girl-boy" />
+            )}
           </div>
           <div className="w-[88%] md:w-[317px] md:pe-[60px]">
             <h1 className=" text-[#FF2000] text-4xl font-bold text-center mt-3">
@@ -39,12 +43,21 @@ function LevelTwo({ onClose }) {
                 : "You've Officially Joined the rare league of finishers."}
             </p>
             <div className=" flex justify-center items-center">
-              <img
-                className="md:hidden"
-                width="90%"
-                src="images/svg/girl-boy.svg"
-                alt="dance_group"
-              />
+              {selectedLevel === 2 ? (
+                <img
+                  className="md:hidden"
+                  width="90%"
+                  src="images/svg/2boys.svg"
+                  alt="dance_group"
+                />
+              ) : (
+                <img
+                  className="md:hidden"
+                  width="90%"
+                  src="images/svg/2boys.svg"
+                  alt="dance_group"
+                />
+              )}
             </div>
             <div onClick={onClose} className=" text-end mt-5">
               <button className=" text-white text-lg font-normal bg-[#FF2000]  rounded-[10px] py-[10px] w-full px-[30px] text-center">
