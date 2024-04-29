@@ -38,6 +38,8 @@ function Main() {
   const questionsToShow = totalQuestions > 10 ? 10 : totalQuestions;
   const remainingQuestions = totalQuestions - questionsToShow;
 
+
+
   useEffect(() => {
     const userString = localStorage.getItem('user');
     const user = JSON.parse(userString);
@@ -75,262 +77,311 @@ function Main() {
 
   //       questions: [
   //         {
-  //           "question": "teething problems | teething troubles",
-  //           "description":" The project went through the usual teething troubles",
+  //           "question": "Choose the correct spelling of a person who assists in the commission of a crime, but who does not actually participate in the commission of the crime as a joint principal.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "early on",
-  //               "iscorrect": true
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "later on",
+  //               "optionNo": "A.",
+  //               "answertext": "Acessory",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "at the end",
+  //               "optionNo": "B.",
+  //               "answertext": "Accessory",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Accesory",
   //               "iscorrect": false
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "deep pockets ",
-  //           "description":"Harold has very deep pockets, and",
+  //           "question": "Choose the correct spelling of the word that describes the condition or quality of being true, correct, or exact; freedom from error or defect; precision or exactness; correctness.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "he doesn't have much money",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "he keeps losing his keys",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "c.",
-  //               "answertext": "he spends a lot of money",
-  //               "iscorrect": true
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           "question": "dressed (up) to the nines ",
-  //           "description":"We were all dressed to the nines because we were",
-  //           "answeroption": [
-  //             {
-  //               "optionNo": "a.",
-  //               "answertext": "going to a wedding",
+  //               "optionNo": "A.",
+  //               "answertext": "Accuracy",
   //               "iscorrect": true
   //             },
   //             {
-  //               "optionNo": "b.",
-  //               "answertext": "going to play golf",
+  //               "optionNo": "B.",
+  //               "answertext": "Accurecy",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "going to the beach",
+  //               "optionNo": "C.",
+  //               "answertext": "Acurracy",
   //               "iscorrect": false
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "hot under the collar ",
-  //           "description": "Henry always gets hot under the collar when he thinks people are",
+  //           "question": "Choose the correct spelling of the word that means to cease to be seen; vanish from sight.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "trying to cheat him",
+  //               "optionNo": "A.",
+  //               "answertext": "Disappear",
   //               "iscorrect": true
   //             },
   //             {
-  //               "optionNo": "b.",
-  //               "answertext": "doing a good job",
+  //               "optionNo": "B.",
+  //               "answertext": "Dissapear",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "treating him well",
+  //               "optionNo": "C.",
+  //               "answertext": "Disapier",
   //               "iscorrect": false
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "forty winks ",
-  //           "description": "I'll sometimes have forty winks if",
+  //           "question": "Choose the correct spelling of the word that means to offer an excuse for some fault, insult, failure, or injury.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "I see a pretty girl",
+  //               "optionNo": "A.",
+  //               "answertext": "Apologise",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "b.",
-  //               "answertext": "I get something in my eye",
+  //               "optionNo": "B.",
+  //               "answertext": "Apoligize",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "I feel a bit sleepy",
+  //               "optionNo": "C.",
+  //               "answertext": "Apologize",
   //               "iscorrect": true
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "have second thoughts ",
-  //           "description": "Sid and Nancy were going to get married, and then Nancy had second thoughts so",
+  //           "question": "Choose the correct spelling of the word that describes a person or group of persons elected or appointed to perform some service or function, as to investigate, report on, or act upon a particular matter.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "they decided to wait",
+  //               "optionNo": "A.",
+  //               "answertext": "Committee",
   //               "iscorrect": true
   //             },
   //             {
-  //               "optionNo": "b.",
-  //               "answertext": "they're getting married sooner",
+  //               "optionNo": "B.",
+  //               "answertext": "Comittee",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "they're getting a divorce",
+  //               "optionNo": "C.",
+  //               "answertext": "Commitee",
   //               "iscorrect": false
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "zero-sum game ",
-  //           "description":"In a zero-sum game, any gains made by one player will",
+  //           "question": "Choose the correct spelling of the word that describes an act or circumstance of entering upon an action or state.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "be greater than their losses",
+  //               "optionNo": "A.",
+  //               "answertext": "Begginning",
   //               "iscorrect": false
   //             },
   //             {
-  //               "optionNo": "b.",
-  //               "answertext": "increase the sum in the game",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "c.",
-  //               "answertext": "equal the losses of another",
-  //               "iscorrect": true
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           "question": "dot the i's and cross the t's ",
-  //           "description": "I've dotted the i's and crossed the t's, so there",
-  //           "answeroption": [
-  //             {
-  //               "optionNo": "a.",
-  //               "answertext": "will be a few mistakes",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "will be lots of mistakes",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "c.",
-  //               "answertext": "shouldn't be any mistakes",
-  //               "iscorrect": true
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           "question": "a slap on the wrist ",
-  //           "description":"The judge gave her a slap on the wrist by sentencing her to",
-  //           "answeroption": [
-  //             {
-  //               "optionNo": "a.",
-  //               "answertext": "thirty years in jail",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "execution in the electric chair",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "c.",
-  //               "answertext": "a few hours of community service",
-  //               "iscorrect": true
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           "question": "another string to your bow ",
-  //           "description": "John's a truck driver, but he wants another string to his bow so he's going to",
-  //           "answeroption": [
-  //             {
-  //               "optionNo": "a.",
-  //               "answertext": "take up archery",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "do a bartending course",
+  //               "optionNo": "B.",
+  //               "answertext": "Beginning",
   //               "iscorrect": true
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "go fishing on weekends",
+  //               "optionNo": "C.",
+  //               "answertext": "Begining",
   //               "iscorrect": false
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "(it's) raining cats and dogs ",
-  //           "description": "It's raining cats and dogs, so",
+  //           "question": "Choose the correct spelling of the word that describes performing or functioning in the best possible manner with the least waste of time and effort; having and using requisite knowledge, skill, and industry; competent; capable.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "watch out for falling animals",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "make sure you take an umbrella",
+  //               "optionNo": "A.",
+  //               "answertext": "Efficient",
   //               "iscorrect": true
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "keep your pets inside",
+  //               "optionNo": "B.",
+  //               "answertext": "Effichent",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Effecient",
   //               "iscorrect": false
   //             }
   //           ]
   //         },
   //         {
-  //           "question": "have your head in the clouds",
-  //           "description":"William's head is in the clouds. He needs to",
+  //           "question": "Choose the correct spelling of the word that describes having suitable or sufficient skill, knowledge, experience, etc., for some purpose; properly qualified.",
   //           "answeroption": [
   //             {
-  //               "optionNo": "a.",
-  //               "answertext": "take better care of himself",
-  //               "iscorrect": false
-  //             },
-  //             {
-  //               "optionNo": "b.",
-  //               "answertext": "be a bit more realistic",
+  //               "optionNo": "A.",
+  //               "answertext": "Competent",
   //               "iscorrect": true
   //             },
   //             {
-  //               "optionNo": "c.",
-  //               "answertext": "stop thinking he's better than everyone else",
+  //               "optionNo": "B.",
+  //               "answertext": "Competant",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Compatent",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that describes a lack of adequate power, strength, or physical or mental ability; incapacity.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Disibility",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Desability",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Disability",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that describes any proceeding, experience, or the like considered as a mode of anticipation for the future.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Preperation",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Preparation",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Perparation",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that means to persist in anything undertaken; maintain a purpose in spite of difficulty, obstacles, or discouragement; continue steadfastly.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Persevere",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Presevere",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Persevear",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that means to be pleasing to the receiver; satisfactory; agreeable; welcome.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Accepteble",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Accepptable",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Acceptable",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that means without any name acknowledged, as that of author, contributor, or the like.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Anonimous",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Anonymous",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Anonymos",
+  //               "iscorrect": false
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that means being essential, indispensable, or requisite.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Necesary",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Necessery",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Necessary",
+  //               "iscorrect": true
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "question": "Choose the correct spelling of the word that describes the manufactured goods bought and sold in any business.",
+  //           "answeroption": [
+  //             {
+  //               "optionNo": "A.",
+  //               "answertext": "Merchandise",
+  //               "iscorrect": true
+  //             },
+  //             {
+  //               "optionNo": "B.",
+  //               "answertext": "Merchandice",
+  //               "iscorrect": false
+  //             },
+  //             {
+  //               "optionNo": "C.",
+  //               "answertext": "Merchendise",
   //               "iscorrect": false
   //             }
   //           ]
   //         }
   //       ]
+
   // ,
-  //       Level: 1,
-  //       LevelTitle: "Idioms",
-  //       instructionText: "Unlock the true vibes of these idioms! 🤓 Can you decode their SECRET MEANINGS?"
+  //       Level: 3,
+  //       LevelTitle: "Spell It Out",
+  //       instructionText: "Spell It Out: Let's Dive into Spelling Shenanigans!"
   //     }
   //     const docRef = await addDoc(collection(db, 'Test'), Data)
   //   }
@@ -554,6 +605,7 @@ function Main() {
       if (Tests.length === selectedLevel) { 
         setResult(true)
       }
+
     } catch (error) {
       setLoading(false);
       console.error('Error updating document: ', error);
@@ -611,7 +663,9 @@ function Main() {
               <div className="hidden md:block">
                 <p className="text-xl font-medium text-black w-[253px] pe-[20px] border-r-2 border-[#00000033] h-full flex items-center justify-center text-center">
                   {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
+
                 </p>
+                {/* <p onClick={() => addDAta()}>Submit</p> */}
               </div>
               <div className="md:min-w-[420px] md:max-w-[420px] lg:min-w-[500px]  md:p-[20px] md:pe-0 lg:p-[40px] lg:pe-0">
                 <div>

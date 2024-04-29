@@ -63,7 +63,6 @@ function Login() {
                 />
               </div>
             </div>
-
             <div className=" flex justify-center flex-col items-center w-full md:w-[412px] md:border-2 md:border-[#FFB80066] rounded-[20px] md:me-[150px] md:bg-[#FFFFFF54] login_drop_shadow md:py-[40px] md:px-[20px]">
               <h5 className="text-black text-xl font-semibold hidden md:inline text-center">
                 Welcome to the
