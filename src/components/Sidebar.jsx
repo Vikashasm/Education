@@ -143,7 +143,7 @@ function Sidebar() {
             })}
           </div>
           <div className="w-full max-w-[355px] text-right flex justify-end items-center">
-            <img className="cursor-pointer" src={'/images/png/user.png'} alt="" />
+            {/* <img className="cursor-pointer" src={'/images/png/user.png'} alt="" /> */}
             <button
               className="logout_btn ml-5"
               onClick={() => {
