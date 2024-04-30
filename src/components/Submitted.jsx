@@ -41,7 +41,7 @@ function Submitted() {
 
   return (
     <div className="-z-0 py-5 md:pt-0 flex items-center justify-center md:py-0 min-h-screen w-full max-w-[1185px] relative m-auto sm:px-5 width_calc_scroll">
-      <div className="relative sm:h-full min-h-[525px] top-[50%] left-[50%]  translate-x-[-50%] width_calc md:mt-[130px] flex-grow-[1]">
+      <div className="relative sm:h-full md:min-h-[525px] md:top-[50%] md:left-[50%]  md:translate-x-[-50%] width_calc md:mt-[130px] flex-grow-[1] mx-3 flex items-center justify-center">
         <div className=" bg-[#ffffff]  z-10 rounded-3xl sm:m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-full  flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:py-6 custom:px-8 md:gap-10 mt-12">
           {/* <div className=" text-center">
               <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
