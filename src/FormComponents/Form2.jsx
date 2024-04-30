@@ -508,6 +508,7 @@ function Form2({ onSubmit }) {
                     type="text"
                     id="hometown"
                     name="hometown"
+                    required
                     placeholder="Enter Your Answer"
                     value={formData.hometown}
                     onChange={handleChange}

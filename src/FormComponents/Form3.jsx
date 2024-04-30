@@ -62,6 +62,7 @@ function Form3({ onSubmit }) {
                       type="text"
                       id="School"
                       name="School"
+                      required
                       placeholder="Enter Your Answer"
                       value={formData.School}
                       onChange={handleChange}
@@ -77,6 +78,7 @@ function Form3({ onSubmit }) {
                       type="text"
                       id="Age"
                       name="Age"
+                      required
                       placeholder="Enter Your Answer"
                       value={formData.Age}
                       onChange={handleChange}
