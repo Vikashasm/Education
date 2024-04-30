@@ -24,7 +24,7 @@ function LevelTwo({ onClose }) {
         src="images/svg/Rparty_celebration.svg"
         alt="party_celebration"
       /> */}
-      <div className="flex items-center justify-center h-full mx-5 md:mx-0">
+      <div className="flex items-center justify-center h-full mx-5 md:mx-0 mt-[100px]">
         <div className="flex items-center justify-center bg-white rounded-[20px] md:gap-[70px] py-10 md:py-[56px] md:ps-5">
           <div className="hidden md:block">
             {selectedLevel === 2 ? (
