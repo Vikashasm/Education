@@ -40,9 +40,9 @@ function Submitted() {
   // Calculate total correct answer percentage
 
   return (
-    <div className="-z-0 py-5 md:pt-0 flex items-end justify-center md:inline  md:py-0  md:overflow-y-auto min-h-screen w-full max-w-[1185px] relative m-auto sm:px-5 width_calc_scroll">
-      <div className="relative md:absolute md:top-[50%] md:left-[50%] md:translate-x-[-50%] md:translate-y-[-50%] items-center justify-center sm:items-end md:items-center  sm:h-full max-h-full  md:max-h-[506px] width_calc">
-        <div className=" bg-[#ffffff]  z-10 rounded-3xl mt-5 sm:m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-full  flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:py-6 custom:px-8 md:gap-10 mt-12">
+    <div className="-z-0 py-5 md:pt-0 flex items-end justify-center md:inline  md:py-0 md:overflow-y-auto  xl:overflow-y-hidden min-h-screen w-full max-w-[1185px] relative m-auto sm:px-5 width_calc_scroll">
+      <div className="relative md:absolute md:top-[50%] md:left-[50%] md:translate-x-[-50%] md:translate-y-[-50%] items-center justify-center sm:items-end md:items-center  sm:h-full max-h-full  md:max-h-[750px] width_calc mt-6 md:my-[120px]">
+        <div className=" bg-[#ffffff]  z-10 rounded-3xl sm:m-5 custom:mx-10 md:mx-0 relative max-w-[600px] md:max-w-full  flex items-center flex-col md:flex-row md:overflow-x-hidden p-5 custom:py-6 custom:px-8 md:gap-10 mt-12">
           {/* <div className=" text-center">
               <h1 className=" text-black font-medium text-5xl lg:text-6xl hidden md:block">
                 {totalCorrectAnswerPercentage >= 80
