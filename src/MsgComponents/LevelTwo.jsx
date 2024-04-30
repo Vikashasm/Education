@@ -13,7 +13,7 @@ function LevelTwo({ onClose }) {
   });
 
   return (
-    <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative m-auto md:pt-12">
+    <div className="min-h-screen w-[100%] md:w-[79.3%]  md:py-4 relative m-auto md:pt-12 flex items-center justify-center">
       {/* <img
         className=" absolute left-[16%] top-0"
         src="images/svg/party_celebration.svg"
@@ -24,7 +24,7 @@ function LevelTwo({ onClose }) {
         src="images/svg/Rparty_celebration.svg"
         alt="party_celebration"
       /> */}
-      <div className="flex items-center justify-center h-full mx-5 md:mx-0 mt-[100px]">
+      <div className="flex items-center justify-center h-full mx-5 md:mx-0 md:mt-[100px]">
         <div className="flex items-center justify-center bg-white rounded-[20px] md:gap-[70px] py-10 md:py-[56px] md:ps-5">
           <div className="hidden md:block">
             {selectedLevel === 2 ? (
@@ -47,7 +47,7 @@ function LevelTwo({ onClose }) {
                 <img
                   className="md:hidden"
                   width="90%"
-                  src="images/svg/2boys.svg"
+                  src="images/svg/girl-boy.svg"
                   alt="dance_group"
                 />
               ) : (

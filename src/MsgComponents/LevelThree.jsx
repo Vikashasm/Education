@@ -12,8 +12,8 @@ function LevelThree({ onClose }) {
   });
 
   return (
-    <div className=" flex items-center justify-center h-screen w-[100%]  md:py-4 w-[79%] m-auto mt-[100px]">
-      <div className="flex items-center justify-center md:py-0 bg-white rounded-[20px] md:w-[797px] md:mt-12">
+    <div className=" flex items-center justify-center min-h-screen w-[100%] md:py-4 w-[79%] m-auto">
+      <div className="flex items-center justify-center md:py-0 bg-white rounded-[20px] md:w-[797px] md:mt-[150px]">
         <div className="hidden md:block">
           {<img className="py-[8px]" src={'/images/svg/cartoon-boy.svg'} alt="VectorGreen" />}
         </div>

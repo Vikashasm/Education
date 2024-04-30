@@ -43,8 +43,8 @@ function Form3({ onSubmit }) {
     onSubmit(formData); // Submit the form data if validation passes
   };
   return (
-    <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex items-center justify-center m-auto md:pt-12">
-      <div className="w-full  sm:h-auto pb-4">
+    <div className="min-h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex items-center justify-center m-auto md:pt-12">
+      <div className="w-full  sm:h-auto pb-4 flex-grow-[1] mt-8 md:mt-[100px]">
         <div className=" bg-white rounded-[20px] p-10 lg:p-6 xl:p-10 w-[90%] md:max-w-[800px] mx-auto md:min-h-[390px] flex items-center justify-center">
           <div className="">
             <h2 className=" text-[#FF2000] text-center text-xl font-medium mb-8 lg:mb-6 xl:mb-8">

@@ -60,9 +60,9 @@ function Form1({ onSubmit }) {
   };
 
   return (
-    <div className="h-screen w-[100%] md:py-4 relative overflow-y-scroll flex items-center justify-center">
+    <div className="min-h-screen w-[100%] md:py-4 relative overflow-y-auto flex items-center justify-center">
       <div className=" w-full h-[640px] sm:h-auto flex justify-center items-center">
-        <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[90%] md:max-w-[800px] mx-auto md:mt-12">
+        <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[90%] md:max-w-[800px] mx-auto md:mt-[150px]">
           <h2 className=" text-[#FF2000] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center ">
             Tell us about yourself
           </h2>

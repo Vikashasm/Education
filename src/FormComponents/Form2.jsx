@@ -490,8 +490,8 @@ function Form2({ onSubmit }) {
   // },[formData])
 
   return (
-    <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex items-center justify-center m-auto md:pt-12">
-      <div className="w-full h-[600px] sm:h-auto py-4">
+    <div className="min-h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex items-center justify-center m-auto md:pt-12">
+      <div className="w-full h-[600px] sm:h-auto py-4 flex-grow-[1] mt-8 md:mt-[100px]">
         <div className=" bg-white rounded-[20px] p-8 lg:p-6 xl:p-10 w-[85%] md:max-w-[800px] mx-auto">
           <h2 className=" text-[#FF2000] text-xl font-medium mb-8 lg:mb-6 xl:mb-8 text-center">
             Alright, time to dream big! Tell us:
