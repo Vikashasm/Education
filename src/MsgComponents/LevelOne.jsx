@@ -15,7 +15,9 @@ function LevelOne() {
   });
 
   return (
-    <div className="h-screen w-[100%] md:w-[79.3%]  md:py-4 relative flex justify-center m-auto mt-[100px]">
+    <div
+      style={{ height: 'calc(100vh - 101px)' }}
+      className="w-[100%] md:w-[79.3%]  md:py-4 relative flex justify-center m-auto md: md:mt-[150px]">
       <div className="flex items-center justify-center h-full md:py-0">
         <div className=" bg-white rounded-[20px] w-[86%] md:w-[720px] lg:w-[797px] md:flex md:items-center py-10 px-5 md:p-0">
           <div className="md:w-[70%] md:px-[40px]">
