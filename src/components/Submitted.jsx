@@ -72,7 +72,7 @@ function Submitted() {
               "<span className="text-xl font-bold text-[#FF2000]">Congratulations</span> <br />
               on leveling up your English skills! You've aced all three levels like a pro! 🎉 Time
               to celebrate your linguistic triumph with a high-five and a victory dance! Keep
-              shining bright with your newfound language prowes! ✨"
+              shining bright with your newfound language prowess! ✨"
             </p>
             <div className="hidden md:block max-w-[380px] m-auto">
               <img className="w-full" src="/images/svg/2boys1.svg" alt="party_celebration" />

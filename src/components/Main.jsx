@@ -659,7 +659,7 @@ function Main() {
             </div>
           ) : null}
           <div className=" flex flex-col  items-center  md:justify-center  md:py-4  lg:gap-10 gap-8  md:h-full relative z-20 pt-2">
-            <div className=" flex md:flex-none md:overflow-visible md:mt-[100px] bg-[#FFFFFF] z-50 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-full md:w-full pb-7 pt-3 md:pt-0 md:mx-5 md:pb-0 md:ps-[20px]  md:h-auto">
+            <div className=" flex md:flex-none md:overflow-visible md:mt-[150px] bg-[#FFFFFF] z-50 rounded-xl md:rounded-3xl  relative max-w-[90%] md:max-w-full md:w-full pb-7 pt-3 md:pt-0 md:mx-5 md:pb-0 md:ps-[20px]  md:h-auto">
               <div className="hidden md:block">
                 <p className="text-xl font-medium text-black w-[253px] pe-[20px] border-r-2 border-[#00000033] h-full flex items-center justify-center text-center">
                   {selectedTitleTests.length > 0 && selectedTitleTests[0].instructionText}
