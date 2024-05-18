@@ -7,16 +7,33 @@ import Loader from '../Loader';
 import { useEffect } from 'react';
 function Login() {
   const [loading, setloading] = useState(false);
+  const [isCondition, setIsCondition] = useState(false);
   const navigate = useNavigate();
-  const { GoggleSignIn, user} = UseAuthcontext();
+  const { GoggleSignIn, user } = UseAuthcontext();
 
   const handleLogin = async () => {
-    try {
-      setloading(true);
-      await GoggleSignIn();
-      setloading(false);
-    } catch (error) {
-      console.log('Error in Goggle sign in ', error);
+    if (isCondition) {
+      try {
+        setloading(true);
+        await GoggleSignIn();
+        setloading(false);
+      } catch (error) {
+        console.log('Error in Goggle sign in ', error);
+      }
+    } else {
+      toast.error(
+        'Please confirm that you have read and understood the privacy policy and terms of services',
+        {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        }
+      );
     }
   };
   useEffect(() => {
@@ -70,7 +87,7 @@ function Login() {
               <h2 className="  text-[#FF0000] font-semibold text-[32px] hidden md:inline mt-3 text-center">
                 ETP English Level Test!
               </h2>
-              <p className=" text-lg font-normal text-center text-black my-7 text-center hidden md:inline">
+              <p className=" text-lg font-normal text-black my-7 text-center hidden md:inline">
                 Get set for an exhilarating journey through this thrilling game of English
                 proficiency. Are you prepared to put your skills to the test? Let the English
                 adventure commence!
@@ -78,6 +95,18 @@ function Login() {
               <h1 className="text-black text-xl font-semibold hidden md:inline text-center mb-7">
                 LOGIN TO YOUR ACCOUNT
               </h1>
+              <div className="items-start gap-3 hidden md:flex mb-7">
+                <input
+                  onChange={() => setIsCondition(true)}
+                  type="checkbox"
+                  className="mt-2 min-w-[15px] h-[15px]"
+                />
+                <p className=" text-lg font-normal text-black">
+                  By using this Level Test, you give consent to the use of your personal information
+                  to improve services and for marketing, and to share only as required by Pearson
+                  India Education Private Ltd., Grey Matters Group, or by law.
+                </p>
+              </div>
               <div className=" bg-[#FF2000] px-[20px] py-[40px] rounded-[20px] md:hidden  w-full">
                 <h5 className="text-white text-lg font-normal md:hidden text-center">
                   Welcome to the
@@ -85,7 +114,7 @@ function Login() {
                 <h2 className="  text-white  font-bold text-2xl md:hidden mt-3 text-center">
                   ETP English Level Test!
                 </h2>
-                <p className=" text-sm font-normal text-center text-white mt-3 w-[85%] mx-auto">
+                <p className=" text-sm font-normal text-center text-white mt-3 sm:w-[85%] mx-auto">
                   Get set for an exhilarating journey through this thrilling game of English
                   proficiency. Are you prepared to put your skills to the test? Let the English
                   adventure commence!
@@ -93,6 +122,14 @@ function Login() {
                 <h1 className="text-center text-white font-bold text-xl lg:text-2xl mt-856  md:hidden my-3">
                   LOGIN TO YOUR ACCOUNT
                 </h1>
+                <div className="flex items-start gap-3 mb-7">
+                  <input onChange={() => setIsCondition(true)} type="checkbox" className='mt-1' />
+                  <p className=" text-sm font-normal text-white ">
+                    By using this Level Test, you give consent to the use of your personal
+                    information to improve services and for marketing, and to share only as required
+                    by Pearson India Education Private Ltd., Grey Matters Group, or by law.
+                  </p>
+                </div>
                 <button
                   onClick={() => handleLogin()}
                   className=" bg-[#E8E8E8] rounded-xl py-[18px] px-[10px] flex justify-center w-full">
@@ -101,7 +138,7 @@ function Login() {
               </div>
               <button
                 onClick={() => handleLogin()}
-                className=" bg-white py-[18px] rounded-xl  px-[10px] md:flex justify-center w-full xl:max-w-[125%] hidden">
+                className=" bg-white py-[18px] rounded-xl  px-[10px] md:flex justify-center w-full xl:max-w-[125%] hidden cursor-pointer">
                 <img src="images/svg/GoggleLogo.svg" alt="GoggleLogo" />
               </button>
             </div>

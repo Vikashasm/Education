@@ -158,6 +158,9 @@
   .w_100 {
     width: 100%;
   }
+  .Toastify__toast-body{
+    font-size: 12px !important;
+  }
 }
 @media (min-width: 768px) {
   .login_bg {
