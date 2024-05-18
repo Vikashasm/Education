@@ -5,9 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { UseAuthcontext } from '../Context/GoggleAuth';
 import Loader from '../Loader';
 import { useEffect } from 'react';
+import { FirebaseError } from 'firebase/app';
 function Login() {
   const [loading, setloading] = useState(false);
   const [isCondition, setIsCondition] = useState(false);
+  const [showCondition, setShowCondition] = useState(false);
   const navigate = useNavigate();
   const { GoggleSignIn, user } = UseAuthcontext();
 
@@ -16,9 +18,13 @@ function Login() {
       try {
         setloading(true);
         await GoggleSignIn();
-        setloading(false);
       } catch (error) {
+        if (error.name === 'FirebaseError') {
+          setIsCondition(false);
+        }
         console.log('Error in Goggle sign in ', error);
+      } finally {
+        setloading(false);
       }
     } else {
       toast.error(
@@ -97,16 +103,35 @@ function Login() {
               </h1>
               <div className="items-start gap-3 hidden md:flex mb-7">
                 <input
-                  onChange={() => setIsCondition(true)}
+                  onChange={() => setIsCondition(!isCondition)}
                   type="checkbox"
-                  className="mt-2 min-w-[15px] h-[15px]"
+                  className="mt-1 min-w-[15px] h-[15px]"
                 />
-                <p className=" text-lg font-normal text-black">
-                  By using this Level Test, you give consent to the use of your personal information
-                  to improve services and for marketing, and to share only as required by Pearson
-                  India Education Private Ltd., Grey Matters Group, or by law.
+                <p className=" text-base font-normal text-black">
+                  I agree to the processing of my personal data in accordance with a privacy policy.{' '}
+                  <span
+                    onClick={() => setShowCondition(!showCondition)}
+                    className="text-blue-900 font-medium whitespace-nowrap cursor-pointer">
+                    {' '}
+                    Read More...
+                  </span>
                 </p>
               </div>
+              {showCondition && (
+                <div className="bg-white fixed w-[310px] xsm:w-[350px] p-6 pt-7 rounded-[10px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
+                  <img
+                    onClick={() => setShowCondition(false)}
+                    className="absolute right-3 top-1 cursor-pointer"
+                    src="images/svg/close.svg"
+                    alt=""
+                  />
+                  <p>
+                    By using this Level Test, you give consent to the use of your personal
+                    information to improve services and for marketing, and to share only as required
+                    by Pearson India Education Private Ltd., Grey Matters Group, or by law.
+                  </p>
+                </div>
+              )}
               <div className=" bg-[#FF2000] px-[20px] py-[40px] rounded-[20px] md:hidden  w-full">
                 <h5 className="text-white text-lg font-normal md:hidden text-center">
                   Welcome to the
@@ -123,11 +148,21 @@ function Login() {
                   LOGIN TO YOUR ACCOUNT
                 </h1>
                 <div className="flex items-start gap-3 mb-7">
-                  <input onChange={() => setIsCondition(true)} type="checkbox" className='mt-1' />
+                  <input
+                    onChange={() => setIsCondition(!isCondition)}
+                    type="checkbox"
+                    className="mt-1"
+                    checked={isCondition === true}
+                  />
                   <p className=" text-sm font-normal text-white ">
-                    By using this Level Test, you give consent to the use of your personal
-                    information to improve services and for marketing, and to share only as required
-                    by Pearson India Education Private Ltd., Grey Matters Group, or by law.
+                    I agree to the processing of my personal data in accordance with a privacy
+                    policy.{' '}
+                    <span
+                      onClick={() => setShowCondition(!showCondition)}
+                      className="text-blue-900 font-medium whitespace-nowrap cursor-pointer">
+                      {' '}
+                      Read More...
+                    </span>
                   </p>
                 </div>
                 <button

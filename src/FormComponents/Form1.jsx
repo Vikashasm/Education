@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Form1({ onSubmit }) {
   const { SetactiveComponent } = useTestcontext();
-
+  const [isCondition, setIsCondition] = useState(false);
   useEffect(() => {
     SetactiveComponent(true); // Set active component to LevelOne
     return () => {
@@ -27,6 +27,7 @@ function Form1({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (Object.values(formData).some((value) => value.trim() === '')) {
       // Display an error message or handle the error as needed
       toast.error('Please Fill All The Fields', {
@@ -40,8 +41,7 @@ function Form1({ onSubmit }) {
         theme: 'light',
       });
       return;
-    }
-    if (formData.phoneNumber === formData.alternatePhoneNumber) {
+    } else if (formData.phoneNumber === formData.alternatePhoneNumber) {
       // Display an error message or handle the error as needed
       toast.error('Phone Number and Alternate Phone Number cannot be the same.', {
         position: 'top-right',
@@ -55,8 +55,27 @@ function Form1({ onSubmit }) {
       });
       // alert('Phone Number and Alternate Phone Number cannot be the same.');
       return;
+    } else {
+      if (isCondition === false) {
+        toast.error(
+          'Please confirm that you have read and understood the privacy policy and terms of services',
+          {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          }
+        );
+      }
     }
-    onSubmit(formData); // Submit the form data if validation passes
+
+    if (isCondition) {
+      onSubmit(formData);
+    } // Submit the form data if validation passes
   };
 
   return (
@@ -135,6 +154,17 @@ function Form1({ onSubmit }) {
                     />
                   </div>
                 </div>
+              </div>
+              <div className="flex items-start md:items-center gap-2">
+                <input
+                  onChange={() => setIsCondition(!isCondition)}
+                  checked={isCondition === true}
+                  type="checkbox"
+                  className="mt-1 md:mt-0 md:w-[15px] h-[15px]"
+                />
+                <p className="text-sm md:text-lg font-normal text-black">
+                  I agree to the processing of my personal data in accordance with a privacy policy.
+                </p>
               </div>
               <div className="text-end">
                 <button
